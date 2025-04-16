@@ -1,10 +1,10 @@
 <?php
 
+use App\Livewire\CarList;
 use App\Livewire\CarTest;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', CarTest::class);
+
+Route::get('/car-list', CarList::class);
