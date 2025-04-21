@@ -11,4 +11,9 @@ class Car extends Model
     'min_age', 'free_cancelation', 'bag_space'];
     // protected $guarded = [];
     
+
+    /* Relaciones BBDD */
+    public function categories() {
+        $this->belongsToMany(Category::class('category_id'));
+    }
 }

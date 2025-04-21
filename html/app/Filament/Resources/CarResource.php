@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CarResource\Pages;
 use App\Filament\Resources\CarResource\RelationManagers;
 use App\Models\Car;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -61,11 +62,9 @@ class CarResource extends Resource
                     ->maxValue(7),
                 Toggle::make('free_cancelation')
                     ->label("Cancelación gratuita"),
-                // Select::make('category_id')
-                //     ->required()
-                //     ->options([
-                        
-                //     ]),
+                Select::make('category_id')
+                    ->required()
+                    ->options(Category::pluck('category_name', 'category_id')),
                 TextInput::make('bag_space')
                     ->required()
                     ->numeric()
