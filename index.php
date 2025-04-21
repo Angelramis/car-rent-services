@@ -1,11 +1,6 @@
 <?php //Header
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
 ?>
-
-<head>
-  <link rel="stylesheet" href="/student073/dwes/css/index.css">
-  <link rel="stylesheet" href="/student073/dwes/css/reviews.css">
-</head>
 
 
 <main class="gap-2">
@@ -30,12 +25,8 @@
 
   <a href="/student073/dwes/views/forms/users/form_user_review_send.php" class="button_action">Create review</a>
 
-  <div class="reviews-list">
-    <?php include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/users/db_users_reviews_show.php'; ?>
-  </div>
-
 </main>
 
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
 ?>

@@ -1,5 +1,5 @@
 <?php //Header
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
 ?>
 
 <h1 class="text-center text-2xl p-3">New user</h1>
@@ -79,5 +79,5 @@
 
 
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
 ?>

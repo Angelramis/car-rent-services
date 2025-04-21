@@ -11,8 +11,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotel Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/student073/dwes/css/style.css">
+  
+    <link rel="stylesheet" href="/car-rent-services/public/output.css" rel="stylesheet">
+
   </head>
 
   <body>

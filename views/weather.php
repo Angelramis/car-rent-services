@@ -1,5 +1,5 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
 
   // Clave de la API
   $apiKey = 'VXQP3Z1VDUnnnHtuDrOa6oAcZe9NqGTO';
@@ -43,5 +43,5 @@
 </main>
 
 <?php
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
 ?>

@@ -1,5 +1,5 @@
 <?php //Header
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
   
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',) && !strstr($session_user_roles, 'employee')) { 
@@ -39,5 +39,5 @@
   </div>
 </main>
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
 ?>
