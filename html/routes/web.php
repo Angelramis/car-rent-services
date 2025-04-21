@@ -1,10 +1,10 @@
 <?php
 
-use App\Livewire\CarList;
-use App\Livewire\CarTest;
+
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
+// rutas?
 
-Route::get('/', CarTest::class);
 
-Route::get('/car-list', CarList::class);
+Route::get('/', Home::class);

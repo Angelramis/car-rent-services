@@ -8,10 +8,11 @@
          @endif
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
-    <body>
-    hola soy el header
-        {{ $slot }}
-
-    hola soy el footer
+    <body >
+    @include('components.header')
+        <main class="min-h-screen">
+            {{ $slot }}
+        </main>
+    @include('components.footer')
     </body>
 </html>

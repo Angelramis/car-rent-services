@@ -22,6 +22,6 @@
     <body class="font-sans antialiased">
       
        hola mundo
-     <Livewire:car-test />
+
     </body>
 </html>
