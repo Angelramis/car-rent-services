@@ -11,7 +11,7 @@
     <body >
     @include('components.header')
         <main class="min-h-screen">
-            {{ $slot }}
+            @yield('content')
         </main>
     @include('components.footer')
     </body>
