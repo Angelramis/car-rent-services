@@ -6,7 +6,10 @@ use App\Filament\Resources\CarResource\Pages;
 use App\Filament\Resources\CarResource\RelationManagers;
 use App\Models\Car;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,8 +28,55 @@ class CarResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('plate'),
+                TextInput::make('brand')
+                    ->required(),
                 TextInput::make('model')
+                    ->required(),
+                TextInput::make('plate')
+                    ->required()
+                    ->maxLength(7)
+                    ->minLength(5),
+                TextInput::make('price_per_day')
+                    ->required()
+                    ->numeric()
+                    ->step(0.01),
+                Select::make('fuel_type')
+                    ->required()
+                    ->options([
+                        'gasoline' => 'Gasolina',
+                        'diesel' => 'Diésel',
+                        'electric' => 'Eléctrico',
+                        'hybrid' => 'Híbrido',
+                    ]),
+                Select::make('transmission')
+                    ->required()
+                    ->options([
+                        'manual' => 'Manual',
+                        'automatic' => 'Automatic',
+                    ]),
+                TextInput::make('doors_number')
+                    ->required()
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(7),
+                Toggle::make('free_cancelation')
+                    ->label("Cancelación gratuita"),
+                // Select::make('category_id')
+                //     ->required()
+                //     ->options([
+                        
+                //     ]),
+                TextInput::make('bag_space')
+                    ->required()
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(15),
+                TextInput::make('min_age')
+                    ->required()
+                    ->numeric(),
+                FileUpload::make('image')
+                    ->required()
+                    ->image(),
             ]);
     }
 
