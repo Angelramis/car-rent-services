@@ -1,7 +1,7 @@
 
     </main>
     <footer>
-      <p>Angel Hotel Project 2024-25</p>
+      <p>Car Rent Services</p>
     </footer>
     
     <script src="/car-rent-services/js/functions.js"></script>
