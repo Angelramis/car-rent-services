@@ -3,13 +3,13 @@
   
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',) && !strstr($session_user_roles, 'employee')) { 
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
 
 <head> <!-- Head extra -->
-  <link rel="stylesheet" href="/student073/dwes/css/manuals.css">
+  <link rel="stylesheet" href="/car-rent-services/css/manuals.css">
 </head>
 
 <main>

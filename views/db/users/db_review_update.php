@@ -3,14 +3,14 @@
   
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
 <main>
 <?php
   // Conexion a BBDD
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Si se ha pulsado el botón form submit, iniciar gestión
   if (isset($_POST['form_review_update'])) {
@@ -51,7 +51,7 @@
         <?php } elseif ($button_state == '0') { ?>
           <p>Review refused succesfully</p>
         <?php } ?>
-        <a href="/student073/dwes/views/forms/users/form_reviews_management.php">
+        <a href="/car-rent-services/views/forms/users/form_reviews_management.php">
           <button class="button_action">Go back</button>
         </a>
       </div>

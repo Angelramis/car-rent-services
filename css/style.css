@@ -1,0 +1,282 @@
+/* Paleta de colores
+#0e0e0e -> primario
+#0e0e0e -> Texto
+#fcd34d -> Call to action
+#f7f7f7 -> Color de fondo
+*/
+
+/*General*/
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #0e0e0e;
+}
+
+header > nav > nav > a:hover {
+  color: rgba(252, 211, 77);
+}
+
+
+/* Header */
+header {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: #0077ff;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  box-shadow: 0 0 3px 0px #0e0e0e;
+  align-items: center;
+}
+
+.a-account-icon {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  align-items: center;
+}
+
+.a-menu-icon > img, .a-admin-icon > img, .a-manuals-display-icon > img {
+  width: 30px;
+  height: 30px;
+}
+
+.a-admin-icon, .a-manuals-display-icon {
+  align-items: center;
+  gap: 5px;
+}
+
+.a-account-icon > img {
+  height: 30px;
+  width: 30px;
+}
+
+.right_header {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.a-menu-icon {
+  display: none;
+}
+
+.pages_nav_bar {
+  display: flex;
+  position: static;
+  flex-direction: row ;
+  justify-content: center;
+  align-items: center;
+  top: 0 ;
+  width: max-content;
+  gap: 4vW ;
+}
+
+.pages_nav_bar a {
+  text-align: center;
+  color: #f0f0f0; 
+}
+
+.nav-bar-manuals, .nav_bar_account {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 45px;
+  left: 60vW;
+  background-color: #0e0e0e;
+  z-index: 3;
+  padding: 5px;
+  box-shadow: 0px 0px 3px 0px #0e0e0e;
+}
+
+.nav_bar_account {
+  z-index: 4;
+}
+
+/*Clase para menus desplegables*/
+.show_menu {
+  display: flex !important; 
+  flex-direction: column !important;
+}
+
+/*Main*/
+
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  min-height: 100VH;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
+  max-width: 850px;
+  margin-top: 50px;
+}
+
+.div_border {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #0e0e0e;
+  border-radius: 5px;
+}
+
+.title, .subtitle {
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 3px;
+  margin: 5px 0;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+.button_action {
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 0px 3px 0px #0e0e0e;
+  color: #fcd34d;
+  background-color: #0e0e0e;
+  border: 2px solid #fcd34d;
+  margin: 10px;
+  width: 150px;
+  max-width: 170px;
+  max-height: 70px;
+}
+
+.button_action:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/*Avaliability content*/
+.div_content_available {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0px 10px;
+}
+
+.product_div {
+  box-shadow: 0px 0px 4px 0px #4b5563;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+}
+
+.photo_preview {
+  border-radius: 5px;
+  aspect-ratio: 3 / 2;
+}
+
+.info_preview {
+ margin: 10px 0px;
+}
+
+/* Para más anchura de divs */
+.widther {
+  width: 90vW;
+  max-width: 1000px;
+}
+
+/*Form*/
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.standard_input {
+  background-color: rgba(229, 231, 235);
+  border-radius: 3px;
+  margin: 3px 0px 10px 0px;
+  padding: 2px;
+  border: 1px solid #0e0e0e;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  max-width: 220px;
+}
+
+
+
+/*Footer*/
+
+footer {
+  background-color: #0e0e0e;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 50px;
+  padding: 10px;
+}
+
+footer > p {
+  color: #f0f0f0;
+}
+
+/* Media queries */
+/* Mobile */
+@media screen and (max-width: 650px) {
+  
+  /* Header */
+  .a-account-icon > p{
+    display: none;
+  }
+
+  header > .pages_nav_bar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #0077ff;
+    padding: 10px;
+    right: 0px;
+    top: 46px;
+    width: 50vW;
+    box-shadow: 0 0 3px 0px #0e0e0e;
+  }
+
+  .a-menu-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .right_header {
+    gap: 5px;
+  }
+
+  .a-admin-icon > p, .a-manuals-display-icon > p {
+    display: none;
+  }
+ 
+  /* Main */
+
+  .div_border {
+    padding: 5px;
+    border-radius: 0;
+  }
+
+}

@@ -3,7 +3,7 @@
 
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
@@ -13,7 +13,7 @@
     <h1 class="text-center text-2xl p-2">Update reservation</h1>
     <p>Insert the desired reservation number.</p>
 
-    <form action="/student073/dwes/views/forms/reservations/form_reservation_update.php" method="POST">
+    <form action="/car-rent-services/views/forms/reservations/form_reservation_update.php" method="POST">
       
       <label>Reservation number</label>
       <input type="number" name="reservation_number" class="standard_input" required> 

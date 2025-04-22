@@ -1,12 +1,12 @@
 <?php //Includes
   include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/includes/functions.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/functions.php';
 ?>
 <main>
 
 <?php
 // include conexion a bbdd
-include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
 // Verificar si se ha enviado el formulario login o usuario se ha registrado
 if (isset($_POST['form_user_login']) || isset($_POST['user_registered_autologin'])) {
@@ -20,7 +20,7 @@ if (isset($_POST['form_user_login']) || isset($_POST['user_registered_autologin'
   if (empty($user_email) || empty($user_pwd)) {
     ?>
       <p class='text-center text-red-500'> <?php echo "All the fields need to be filled"; ?></p>
-      <a href="/student073/dwes/views/forms/users/form_user_login.php">
+      <a href="/car-rent-services/views/forms/users/form_user_login.php">
         <input type="button" value="Go Back" class="button_action">
       </a>
     <?php
@@ -55,13 +55,13 @@ if (isset($_POST['form_user_login']) || isset($_POST['user_registered_autologin'
           actualizarLoginLog($user_email);
 
           // Redirigir a la página principal
-          header("Location: /student073/dwes/index.php");
+          header("Location: /car-rent-services/index.php");
           exit();
       } else {
           // Contraseña incorrecta
           ?>
             <p class='text-center text-red-500'> <?php echo "Incorrect password. Please try again."; ?></p>
-            <a href="/student073/dwes/views/forms/users/form_user_login.php">
+            <a href="/car-rent-services/views/forms/users/form_user_login.php">
               <input type="button" value="Go Back" class="button_action">
             </a>
           <?php
@@ -71,7 +71,7 @@ if (isset($_POST['form_user_login']) || isset($_POST['user_registered_autologin'
       // Usuario no encontrado
       ?>
       <p class='text-center text-red-500'> <?php echo "User not found. Please try again"; ?></p>
-      <a href="/student073/dwes/views/forms/users/form_user_login.php">
+      <a href="/car-rent-services/views/forms/users/form_user_login.php">
         <input type="button" value="Go Back" class="button_action">
       </a>
       <?php

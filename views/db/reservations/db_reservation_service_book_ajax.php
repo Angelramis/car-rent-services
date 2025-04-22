@@ -12,7 +12,7 @@
   $available_hours = null;
 
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Consulta para obtener las horas del servicio escogido
   $sql_service_hours = "SELECT timetable_json

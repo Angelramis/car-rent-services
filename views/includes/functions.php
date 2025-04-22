@@ -4,7 +4,7 @@
 // Escribir logs hechos por usuarios en archivo login-log
 function actualizarLoginLog($user_email) {
   // Declarar archivo log
-  $file = $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/logs/login-log.json';
+  $file = $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/logs/login-log.json';
 
   // Comprobación previa de si existe el archivo
   if (file_exists($file)) {

@@ -8,7 +8,7 @@
     // Archivo al darle a submit para pagar un servicio
 
     // Conexion a bbdd
-    include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
     // Si se ha pulsado el botón form submit, iniciar gestión
     if (isset($_POST['form_reservation_service_book'])) {
@@ -102,7 +102,7 @@
   mysqli_close($conn);
   ?>
 
-  <a href="/student073/dwes/index.php">
+  <a href="/car-rent-services/index.php">
     <input type="button" value="Home" class="button_action">
   </a>
 

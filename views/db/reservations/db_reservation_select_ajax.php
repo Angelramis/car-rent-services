@@ -3,7 +3,7 @@
   $query = htmlspecialchars(strval($_GET['query']));
 
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   $sql_query ="SELECT * 
               FROM `073_reservations_view`
@@ -25,7 +25,7 @@
 
         <!-- Botón editar reserva si no ha sido cancelada-->
          <?php if ($row['reservation_state'] !== 'Cancelled') { ?>
-          <form action="/student073/dwes/views/forms/reservations/form_reservation_update.php" method="POST">
+          <form action="/car-rent-services/views/forms/reservations/form_reservation_update.php" method="POST">
                 <input type="text" name="reservation_number" class="hidden" required value="<?php echo $row['reservation_number'];?>">
                 <input type="submit" value="Update" name="form_reservation_update_call_id" class="button_action">
           </form>

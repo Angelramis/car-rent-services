@@ -7,7 +7,7 @@
 
 <?php
 // include conexion a bbdd
-include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Si se ha hecho submit form, iniciar gestión
   if (isset($_POST['submit-form-review'])) {
@@ -46,7 +46,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_conn
       } catch (\Throwable $th) {
         echo "Error creating the review: Only one per completed reservation is accepted";
         ?>
-          <a href="/student073/dwes/index.php">
+          <a href="/car-rent-services/index.php">
             <button class="button_action">Home</button>
           </a>
         <?php
@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_conn
       if ($execute_query_review) {
         echo "Review created successfully";
         ?>
-          <a href="/student073/dwes/index.php">
+          <a href="/car-rent-services/index.php">
           <button class="button_action">Home</button>
         </a>
         <?php

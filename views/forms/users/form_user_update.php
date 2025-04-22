@@ -3,7 +3,7 @@
  
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
@@ -22,7 +22,7 @@
   $user_country = "";
 
   // Incluir conexión
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Si se ha pulsado el botón de submit, iniciar consulta.
   if (isset($_POST['form_user_update_call_id'])) {
@@ -66,7 +66,7 @@
   <p>Change the desired columns</p>
 
 
-  <form action="/student073/dwes/views/db/users/db_user_update.php" method="POST">
+  <form action="/car-rent-services/views/db/users/db_user_update.php" method="POST">
     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"> <!-- Campo oculto para enviar a fichero db. -->
  
     <label>Email</label>

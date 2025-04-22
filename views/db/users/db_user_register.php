@@ -4,7 +4,7 @@
 <main>
 <?php
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Verificar si se ha enviado el formulario register
   if (isset($_POST['form_user_register'])) {
@@ -34,7 +34,7 @@
     if (empty($user_email) || empty($user_nif) || empty($user_firstname) || empty($user_lastname) || empty($user_phone) || empty($user_address) || empty($user_country) || empty($user_pwd) || empty($user_pwd_repeated)) {
       ?>
         <p class='text-center text-red-500'> <?php echo "All the fields need to be filled"; ?></p>
-        <a href="/student073/dwes/views/forms/users/form_user_register.php">
+        <a href="/car-rent-services/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php
@@ -45,7 +45,7 @@
     if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
       ?>
         <p class='text-center text-red-500'> <?php echo "Invalid email"; ?></p>
-        <a href="/student073/dwes/views/forms/users/form_user_register.php">
+        <a href="/car-rent-services/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php
@@ -56,7 +56,7 @@
     if ($user_pwd != $user_pwd_repeated) {
       ?>
         <p class='text-center text-red-500'> <?php echo "Passwords does not match"; ?></p>
-        <a href="/student073/dwes/views/forms/users/form_user_register.php">
+        <a href="/car-rent-services/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php
@@ -75,7 +75,7 @@
     if (mysqli_num_rows( $execute_sql_email) > 0) {
       ?>
         <p class='text-center text-red-500'> <?php echo "Email already exists. Try another one"; ?></p>
-        <a href="/student073/dwes/views/forms/users/form_user_register.php">
+        <a href="/car-rent-services/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php
@@ -95,7 +95,7 @@
       ?>
         <p class='text-center'> <?php echo "User registered successfully"; ?></p>
         
-        <form action="/student073/dwes/views/db/users/db_user_login.php" method="POST">
+        <form action="/car-rent-services/views/db/users/db_user_login.php" method="POST">
           <input type="text" name="user_email" value="<?php echo $user_email; ?>" class="hidden">
           <input type="text" name="user_pwd" value="<?php echo $user_pwd; ?>" class="hidden">
           <input type="submit" name="user_registered_autologin" value="Login now" class="button_action">
@@ -113,7 +113,7 @@
     } else {
       ?>
         <p class='text-center text-red-500'> <?php echo "Error registering user"; ?></p>
-        <a href="/student073/dwes/views/forms/users/form_user_register.php">
+        <a href="/car-rent-services/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php

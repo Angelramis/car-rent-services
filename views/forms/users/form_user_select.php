@@ -3,7 +3,7 @@
   
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
@@ -48,7 +48,7 @@
       };
 
       // Conexión con base de datos
-      httpQuery.open("POST","/student073/dwes/views/db/users/db_user_select_ajax.php",true);
+      httpQuery.open("POST","/car-rent-services/views/db/users/db_user_select_ajax.php",true);
       httpQuery.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       httpQuery.send("query=" + textInput); // Mandamos datos ocultados de la url
     }

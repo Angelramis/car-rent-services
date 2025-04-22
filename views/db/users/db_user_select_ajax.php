@@ -3,7 +3,7 @@
   $query = htmlspecialchars(strval($_POST['query']));
 
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   $sql_query ="SELECT * 
               FROM `073_users`

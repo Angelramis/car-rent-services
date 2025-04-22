@@ -4,17 +4,17 @@
 <?php
   // Mandar usuario a log in si no ha iniciado sesión
   if ($session_user_id == 'guest') {
-    header("Location: /student073/dwes/views/forms/users/form_user_login.php"); 
+    header("Location: /car-rent-services/views/forms/users/form_user_login.php"); 
   }
 ?>
 <head>
-  <link rel="stylesheet" href="/student073/dwes/css/reviews.css">
+  <link rel="stylesheet" href="/car-rent-services/css/reviews.css">
 </head>
 
 <main>
   <div class="div_border">
     <h1 class="text-center text-2xl">Create review</h1>
-    <form action="/student073/dwes/views/db/users/db_user_review_send.php" method="POST">
+    <form action="/car-rent-services/views/db/users/db_user_review_send.php" method="POST">
       <label>Review</label>
       <textarea name="review-comment"  rows="4" cols="50" id="review-comment" class="standard_input"></textarea>
 

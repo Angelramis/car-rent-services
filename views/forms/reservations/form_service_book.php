@@ -6,13 +6,13 @@
 
   // Control log in
   if ($session_user_id == 'guest') {
-    header("Location: /student073/dwes/views/forms/users/form_user_login.php"); 
+    header("Location: /car-rent-services/views/forms/users/form_user_login.php"); 
   }
 
   // Gestión obtener reservas activas del cliente
 
   // Conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // SQL obtencion de reservas a nombre de usuario disponibles
   $sql = "SELECT reservation_number
@@ -39,7 +39,7 @@
     <div class="div_border">
       <h1 class="text-center text-2xl p-2">Book service</h1>
       
-      <form name="form_service" action="/student073/dwes/views/db/reservations/db_reservation_service_book.php" method="POST">
+      <form name="form_service" action="/car-rent-services/views/db/reservations/db_reservation_service_book.php" method="POST">
 
         <label>Service</label>
         <select name="service_name" class="standard_input" required onchange='inputManagement()'>
@@ -133,7 +133,7 @@
                       "&dateInput=" + dateInput;
 
       // Conexión con base de datos
-      httpQuery.open("POST","/student073/dwes/views/db/reservations/db_reservation_service_book_ajax.php", true);
+      httpQuery.open("POST","/car-rent-services/views/db/reservations/db_reservation_service_book_ajax.php", true);
       httpQuery.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       httpQuery.send(parameters);
     }

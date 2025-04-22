@@ -5,7 +5,7 @@
 <main>
   <div class="div_border widther">
     <h1 class="text-center text-2xl">Register</h1>
-    <form class="flex flex-col text-center p-5" action="/student073/dwes/views/db/users/db_user_register.php" method="POST">
+    <form class="flex flex-col text-center p-5" action="/car-rent-services/views/db/users/db_user_register.php" method="POST">
       
       <label>Email</label>
       <input type="text" name="user_email" class="standard_input" value="<?php echo isset($_COOKIE['user_email']) ? htmlspecialchars($_COOKIE['user_email']) : ''; ?>">

@@ -3,18 +3,18 @@
   
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin')) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
 <head>
-  <link rel="stylesheet" href="/student073/dwes/css/reviews.css">
+  <link rel="stylesheet" href="/car-rent-services/css/reviews.css">
 </head>
 
 <?php
 
 // Incluir conexión a la base de datos
-include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
 // Consultar las reviews aceptadas
 $sql_select_reviews = "SELECT review_id, user_firstname, user_lastname, review_date, review_comment, review_rate 
@@ -46,7 +46,7 @@ $reviews = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
             <p><?php echo $review['review_date']?></p>
           </div>
           <p class="review-comment"><?php echo $review['review_comment']?></p>
-          <form action="/student073/dwes/views/db/users/db_review_update.php" method="POST">
+          <form action="/car-rent-services/views/db/users/db_review_update.php" method="POST">
             <input type="hidden" name="review_id" value="<?php echo $review['review_id']; ?>">
             <button type="submit" name="form_review_update" value="1" class="button_action">Accept</button>
             <button type="submit" name="form_review_update" value="0" class="button_action">Refuse</button>

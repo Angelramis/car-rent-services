@@ -3,7 +3,7 @@
 
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
@@ -21,7 +21,7 @@
   $premise_status = "";
 
   // Incluir conexión
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Si se ha pulsado el botón de submit, iniciar consulta.
   if (isset($_POST['form_premise_update_call_id'])) {
@@ -75,7 +75,7 @@
     <h1 class="text-center text-2xl p-2">Update premise</h1>
     <p>Change the desired columns</p>
 
-    <form action="/student073/dwes/views/db/premises/db_premise_update.php" method="POST">
+    <form action="/car-rent-services/views/db/premises/db_premise_update.php" method="POST">
       <label>Premise category</label>
       <select name="premise_category" class="standard_input">
         <?php

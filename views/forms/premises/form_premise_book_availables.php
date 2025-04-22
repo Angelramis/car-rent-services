@@ -9,7 +9,7 @@
   <?php
 
     // include conexion a bbdd
-    include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
     // Si se ha pulsado el botón de submit, iniciar consulta.
     if (isset($_POST['form_premise_book'])) {
@@ -47,7 +47,7 @@
       while ($row = mysqli_fetch_assoc($result_query)) {
         ?>
         <div class="product_div">
-            <img src="/student073/dwes/assets/images/premises/001.jpg" class="photo_preview">
+            <img src="/car-rent-services/assets/images/premises/001.jpg" class="photo_preview">
             <div class="info_preview">
               <p>Category: <?php echo $row['premise_category_name']; ?> </p>
               <p><?php echo $row['beds_quantity']; ?> bed(s)</p>
@@ -55,7 +55,7 @@
               <p><?php echo $row['price_per_day']; ?>€/day</p>
             </div>
             <!-- Formulario para reservar premisa -->
-            <form method="POST" action="/student073/dwes/views/db/premises/db_premise_book.php">
+            <form method="POST" action="/car-rent-services/views/db/premises/db_premise_book.php">
               <input type="hidden" name="premise_id" value="<?php echo $row['premise_id']; ?>">
               <input type="hidden" name="date_in" value="<?php echo $date_in; ?>">
               <input type="hidden" name="date_out" value="<?php echo $date_out; ?>">

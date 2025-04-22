@@ -3,7 +3,7 @@
 ?>
 
 <head> <!-- Head extra -->
-  <link rel="stylesheet" href="/student073/dwes/css/manuals.css">
+  <link rel="stylesheet" href="/car-rent-services/css/manuals.css">
 </head>
 
 <main>

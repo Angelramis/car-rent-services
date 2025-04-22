@@ -3,7 +3,7 @@
 
   // Verificar si el usuario no tiene un rol permitido
   if (!strstr($session_user_roles, 'admin',)) { // Si no es admin
-    header("Location: /student073/dwes/index.php");
+    header("Location: /car-rent-services/index.php");
     exit();
   }
 ?>
@@ -21,7 +21,7 @@
   $reservation_extras_json = "";
 
   // Incluir conexión
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Si se ha pulsado el botón de submit, iniciar consulta.
   if (isset($_POST['form_reservation_update_call_id'])) {
@@ -64,7 +64,7 @@
     <h1 class="text-center text-2xl p-2">Update reservation</h1>
     <p>Change the reservation state</p>
 
-    <form action="/student073/dwes/views/db/reservations/db_reservation_update.php" method="POST">
+    <form action="/car-rent-services/views/db/reservations/db_reservation_update.php" method="POST">
       <input type="hidden" name="reservation_number" value="<?php echo $reservation_number; ?>"> <!-- Campo oculto para enviar a fichero db. -->
   
       <label>User Fullname</label>

@@ -6,7 +6,7 @@
     <div class="div_border">
       <h1 class="text-center text-2xl p-2">Book a premise</h1>
       
-      <form action="/student073/dwes/views/forms/premises/form_premise_book_availables.php" method="POST">
+      <form action="/car-rent-services/views/forms/premises/form_premise_book_availables.php" method="POST">
 
         <label>Date in</label>
         <input type="date" name="date_in" class="standard_input" 

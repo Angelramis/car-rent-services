@@ -1,6 +1,6 @@
 <?php
   // Incluir conexión a la base de datos
-  include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
   // Consultar las reviews aceptadas
   $sql_select_reviews = "SELECT user_firstname, user_lastname, review_date, review_comment, review_rate 

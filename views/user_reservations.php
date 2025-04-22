@@ -9,7 +9,7 @@
   <div class="div_content_available">
   <?php
     // include conexion a bbdd
-    include $_SERVER['DOCUMENT_ROOT'].'/student073/dwes/views/db/db_includes/db_connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
 
     if (!($session_user_id == 'guest')) {
       // Guardar consulta SQL
@@ -60,7 +60,7 @@
                 <?php
               }
               ?>
-              <form action="/student073/dwes/views/db/reservations/db_reservation_cancel.php" method="POST">
+              <form action="/car-rent-services/views/db/reservations/db_reservation_cancel.php" method="POST">
                 <input type="text" name="reservation_number" class="hidden" required value="<?php echo $row['reservation_number']?>">
                 <input type="submit" value="Cancel" name="form_reservation_cancel" class="button_action">
               </form>
@@ -78,7 +78,7 @@
 
     /* Si el usuario no ha iniciado sesión aún, redirigirlo al log in */
     } else if ($session_user_id == 'guest') {
-      header("Location: /student073/dwes/views/forms/users/form_user_login.php"); 
+      header("Location: /car-rent-services/views/forms/users/form_user_login.php"); 
     }
   ?>  
   </div>
