@@ -88,7 +88,7 @@ header {
   right: 0;
   top: 45px;
   left: 60vW;
-  background-color: #0e0e0e;
+  background-color: #1389e4;
   z-index: 3;
   padding: 5px;
   box-shadow: 0px 0px 3px 0px #0e0e0e;
@@ -130,17 +130,6 @@ main {
   width: 300px;
   border: 1px solid #0e0e0e;
   border-radius: 5px;
-}
-
-.title, .subtitle {
-  font-size: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 3px;
-  margin: 5px 0;
-}
-
-.subtitle {
-  font-size: 18px;
 }
 
 .button_action {
@@ -197,13 +186,7 @@ main {
   max-width: 1000px;
 }
 
-/*Form*/
 
-form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
 
 .standard_input {
   background-color: rgba(229, 231, 235);

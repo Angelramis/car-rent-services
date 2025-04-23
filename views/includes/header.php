@@ -25,9 +25,8 @@
       </div>
 
       <nav class="pages_nav_bar" id="pages_nav_bar">
-          <a href="/car-rent-services/index.php" class="text-white hover:text-yellow-200">Home</a> <!--Rutas absolutas dentro de documentos -->
+          <a href="/car-rent-services/index.php" class="text-white hover:text-yellow-200">Home</a>
           <a href="/car-rent-services/views/user_reservations.php" class="text-white hover:text-yellow-200">My reservations</a>
-          <a href="/car-rent-services/views/services.php" class="text-white hover:text-yellow-200">Services</a>
       </nav>
 
       <nav class="right_header">
