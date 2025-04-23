@@ -5,9 +5,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 
 
-<h1 class="title">Car Rent Services</h1>
-
-<form action="" method="post">
+<h1 class="text-2xl font-medium">Rent a car <span class="text-[#1389e4]">fast</span> and <span class="text-[#1389e4]">easy</span> </h1>
+<form action="" method="POST" class="flex flex-col flex-wrap gap-2 shadow p-2 rounded-md w-full md:flex-row ">
   <label for="pickup-date">Pickup date</label>
   <input type="date" name="pickup-date" id="">
 

@@ -13,7 +13,7 @@
     <title>Car Rent Services</title>
 
     <link rel="stylesheet" href="/car-rent-services/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="/car-rent-services/public/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="/car-rent-services/src/output.css" rel="stylesheet">
   </head>
 
   <body>
