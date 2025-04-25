@@ -5,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 <h1 class="text-2xl font-medium">Available cars</h1>
 
-<div class="div_content_available">
+<div class="grid grid-cols-1 m-2 gap-3">
   <?php
 
   // include conexion a bbdd
@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
     // Variables
     $pickup_date = htmlspecialchars($_POST['pickup-date']);
-    $pickup_date = htmlspecialchars($_POST['pickup-time']);
+    $pickup_time = htmlspecialchars($_POST['pickup-time']);
     $dropoff_date = htmlspecialchars($_POST['dropoff-date']);
     $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
 
@@ -32,20 +32,24 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     // Mostrar resultados, obteniendo e imprimiendo cada fila existente.
     while ($row = mysqli_fetch_assoc($result_query)) {
   ?>
-      <div class="product_div">
-        <img src="/car-rent-services/assets/images/cars/test.jpg" class="photo_preview">
-        <div class="info_preview">
-          <!-- <p>Category: <?php echo $row['premise_category_name']; ?> </p> -->
-          <p><?php echo $row['car_brand']; ?></p>
+      <div class="bg-white md:border md:border-gray-300 md:rounded-lg md:shadow-md md:p-4 md:mt-2 md:max-w md:grid md:grid-cols-4 md:gap-2">
+        <img src="/car-rent-services/assets/images/cars/test.webp" class="w-44">
+        <div class="p-2 bg-gray-100 shadow-md mb-3 mt-2 rounded-md border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
+          <p><?php echo $row['car_brand'] . " " . $row['car_model']; ?></p>
+          <p><?php echo $row['car_price_per_day']; ?>€/day</p>
+          <p><?php echo $row['car_seats']; ?> seats</p>
+          <p><?php echo $row['car_fuel']; ?></p>
+          <p>Mileage: <?php if ($row['car_unlimited_mileage'] == 1) {echo "Unlimited";}else{"Limited";}; ?></p>
         </div>
+
         <!-- Formulario para ver detalles coche -->
         <form method="POST" action="/car-rent-services/views/forms/cars/form-car-details.php">
-          <input type="hidden" name="premise_id" value="<?php echo $row['car_id']; ?>">
+          <input type="hidden" name="car-id" value="<?php echo $row['car_id']; ?>">
           <input type="hidden" name="pickup-date" value="<?php echo $pickup_date; ?>">
           <input type="hidden" name="pickup-time" value="<?php echo $pickup_time; ?>">
           <input type="hidden" name="dropoff-date" value="<?php echo $dropoff_date; ?>">
           <input type="hidden" name="dropoff-time" value="<?php echo $dropoff_time; ?>">
-          <input type="submit" value="Book" name="form-car-details" class="button_action">
+          <input type="submit" value="Book" name="form-car-details" class="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md w-full hover:bg-blue-600 transition text-center block">
         </form>
       </div>
   <?php
