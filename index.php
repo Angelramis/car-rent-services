@@ -4,16 +4,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 <h1 class="text-2xl font-medium">Rent a car <span class="text-[#1389e4]">fast</span> and <span class="text-[#1389e4]">easy</span> </h1>
 
-<form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" method="POST" 
-class="flex flex-col flex-wrap gap-2 shadow p-2 rounded-md w-full items-center justify-center md:flex-row lg:flex-row">
-  <div class="flex flex-col items-center justify-center border-2 rounded-md border-gray-500">
+<form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" method="POST"
+  class="bg-white shadow-md flex flex-col flex-wrap gap-2 !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:flex-row md:min-h-20 lg:flex-row lg:min-h-20">
+  <div class="flex flex-col items-center justify-center">
     <label for="pickup-date">Pickup date</label>
-    <input type="date" name="pickup-date">
+    <input type="date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
   </div>
 
-  <div class="flex flex-col items-center justify-center border-2 rounded-md border-gray-500">
+  <div class="flex flex-col items-center justify-center">
     <label for="pickup-time">Time</label>
-    <select name="pickup-time">
+    <select name="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -48,13 +48,13 @@ class="flex flex-col flex-wrap gap-2 shadow p-2 rounded-md w-full items-center j
     </select>
   </div>
 
-  <div class="flex flex-col items-center justify-center border-2 rounded-md border-gray-500">
+  <div class="flex flex-col items-center justify-center">
     <label for="pickup-date">Dropoff date</label>
-    <input type="date" name="dropoff-date" id="">
+    <input type="date" name="dropoff-date" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
   </div>
-  <div class="flex flex-col items-center justify-center border-2 rounded-md border-gray-500">
+  <div class="flex flex-col items-center justify-center">
     <label for="dropoff-time">Time</label>
-    <select name="dropoff-time" id="">
+    <select name="dropoff-time" id="" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -88,7 +88,7 @@ class="flex flex-col flex-wrap gap-2 shadow p-2 rounded-md w-full items-center j
       <option value="21:00">21:00</option>
     </select>
   </div>
-  <input type="submit" value="Search" name="form-car-search">
+  <input type="submit" value="Search" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
 </form>
 
 
