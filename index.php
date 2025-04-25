@@ -91,6 +91,22 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   <input type="submit" value="Search" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
 </form>
 
+<img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
+
+<section class="flex w-full flex-row gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
+  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+    <p class="font-bold text-2xl">Best prices</p>
+      <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+  </div>
+  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+    <p class="font-bold text-2xl">Large car fleet</p>
+    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+    </div>
+  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+    <p class="font-bold text-2xl">Transparency and security</p>
+    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+  </div>
+</section>
 
 
 <?php //Footer
