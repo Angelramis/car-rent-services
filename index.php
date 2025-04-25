@@ -5,15 +5,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 <h1 class="text-2xl font-medium">Rent a car <span class="text-[#1389e4]">fast</span> and <span class="text-[#1389e4]">easy</span> </h1>
 
 <form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" method="POST"
-  class="bg-white shadow-md flex flex-col flex-wrap gap-2 !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:flex-row md:min-h-20 lg:flex-row lg:min-h-20">
-  <div class="flex flex-col items-center justify-center">
-    <label for="pickup-date">Pickup date</label>
-    <input type="date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
+  class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
+  <div class="flex flex-col items-center justify-center w-full">
+    <label for="pickup-date" class="w-full mb-1">Pickup date</label>
+    <input type="date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
   </div>
 
-  <div class="flex flex-col items-center justify-center">
-    <label for="pickup-time">Time</label>
-    <select name="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36">
+  <div class="flex flex-col items-center justify-center w-full">
+    <label for="pickup-time" class="w-full mb-1">Time</label>
+    <select name="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -48,13 +48,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     </select>
   </div>
 
-  <div class="flex flex-col items-center justify-center">
-    <label for="pickup-date">Dropoff date</label>
-    <input type="date" name="dropoff-date" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
+  <div class="flex flex-col items-center justify-center w-full">
+    <label for="pickup-date" class="w-full mb-1">Dropoff date</label>
+    <input type="date" name="dropoff-date" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
   </div>
-  <div class="flex flex-col items-center justify-center">
-    <label for="dropoff-time">Time</label>
-    <select name="dropoff-time" id="" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36">
+  <div class="flex flex-col items-center justify-center w-full">
+    <label for="dropoff-time" class="w-full mb-1">Time</label>
+    <select name="dropoff-time" id="" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -93,18 +93,18 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 <img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
 
-<section class="flex w-full flex-row gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
+<section class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
   <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Best prices</p>
-      <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+      <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
   </div>
   <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Large car fleet</p>
-    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
     </div>
   <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Transparency and security</p>
-    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover"">
+    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
   </div>
 </section>
 

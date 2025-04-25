@@ -45,7 +45,7 @@ if (isset($_POST['form-car-details'])) {
 
     <div class="border border-gray-300 rounded-lg shadow-md !p-3 !mt-2 bg-white w-full">
       <div class="flex flex-col gap-2  md:flex-row md:justify-between ">
-        <h3 class="text-lg font-bold"><?php echo $car_details['car_model']; ?>
+        <h3 class="text-lg font-bold"><?php echo $car_details['car_brand'] . " " . $car_details['car_model']; ?>
           <small>or similar</small>
         </h3>
 
