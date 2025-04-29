@@ -22,7 +22,7 @@ if (isset($_POST['form-car-details'])) {
     FROM cars
     WHERE car_id = $car_id;";
 
-    $sql_query_extras =
+  $sql_query_extras =
     "SELECT *
     FROM extras;";
 
@@ -37,15 +37,22 @@ if (isset($_POST['form-car-details'])) {
 
   if ($execute_query_car && $extras && mysqli_num_rows($execute_query_car) > 0) {
 
+    $pickup = new DateTime($pickup_date);
+    $dropoff = new DateTime($dropoff_date);
+
+    $rent_days_interval = $pickup->diff($dropoff);
+
+    // Precio diario del coche * cantidad de dias de reserva
+    $rent_price = $car_details['car_price_per_day'] * ($rent_days_interval->days);
 ?>
 
     <section class="bg-white shadow-md -mt-12 rounded-md max-w-4xl mx-auto relative flex items-center w-full p-4 h-16">
 
-        <div class="text-left !p-3">
-          <p class="font-semibold text-gray-900">Car Rent Services (Menorca)</p>
-          <p class="text-gray-600 text-sm"><?php echo $pickup_date . " - " . $pickup_time . "h to " . $dropoff_date . " - " . $dropoff_time . "h"; ?>
-          </p>
-        </div>
+      <div class="text-left !p-3">
+        <p class="font-semibold text-gray-900">Car Rent Services (Menorca)</p>
+        <p class="text-gray-600 text-sm"><?php echo $pickup_date . " - " . $pickup_time . "h to " . $dropoff_date . " - " . $dropoff_time . "h"; ?>
+        </p>
+      </div>
 
       </div>
     </section>
@@ -134,15 +141,15 @@ if (isset($_POST['form-car-details'])) {
           <?php foreach ($extras as $extra) { ?>
 
             <div class="flex flex-col md:grid md:grid-cols-3 items-center md:justify-between border-b py-2">
-              <p class="text-sm font-medium"><?php echo $extra['extra_name'];?></p>
-              <p class="text-sm font-medium"><?php echo $extra['extra_unit_price'];?>€</p>
-                <div class="">
-                  <?php if($extra['extra_checkbox'] == 1) {?>
-                    <input type="checkbox" class="w-5 h-5" name="<?php echo $extra['extra_name'];?>">
+              <p class="text-sm font-medium"><?php echo $extra['extra_name']; ?></p>
+              <p class="text-sm font-medium"><?php echo $extra['extra_unit_price']; ?>€</p>
+              <div class="">
+                <?php if ($extra['extra_checkbox'] == 1) { ?>
+                  <input type="checkbox" class="extra-input w-5 h-5" data-type="checkbox" data-price="<?php echo $extra['extra_unit_price']; ?>">
 
-                  <?php } else {?>
-                    <input type="number" class="h-5" name="<?php echo $extra['extra_name'];?>">
-                  <?php } ?>
+                <?php } else { ?>
+                  <input type="number" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="6" value="0">
+                <?php } ?>
               </div>
             </div>
           <?php } ?>
@@ -153,12 +160,12 @@ if (isset($_POST['form-car-details'])) {
         <p class="text-center font-bold">Reservation</p>
         <div class="flex items-center justify-between border-b py-2">
           <span class="text-sm font-medium">Rent</span>
-          <span class="text-sm font-medium">108.22 €</span>
+          <span class="text-sm font-medium"><?php echo $rent_price; ?>€</span>
         </div>
 
         <div class="flex items-center justify-between  py-2">
           <span class="text-sm font-bold">Total</span>
-          <span class="text-sm font-bold">108.22 €</span>
+          <span class="text-sm font-bold" id="total-price"><?php echo $rent_price; ?>€</span>
         </div>
       </div>
       <div class="w-full flex flex-row-reverse">
@@ -167,6 +174,39 @@ if (isset($_POST['form-car-details'])) {
         </button>
       </div>
     </div>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const baseRentPrice = <?php echo $rent_price; ?>;
+        const totalPriceEl = document.getElementById('total-price');
+        const extraInputs = document.querySelectorAll('.extra-input');
+
+        function calculateTotal() {
+          let total = baseRentPrice;
+
+          extraInputs.forEach(input => {
+            const price = parseFloat(input.getAttribute('data-price'));
+
+            if (input.getAttribute('data-type') === 'checkbox') {
+              if (input.checked) {
+                total += price;
+              }
+            } else if (input.getAttribute('data-type') === 'number') {
+              const quantity = parseInt(input.value) || 0;
+              total += price * quantity;
+            }
+          });
+
+          totalPriceEl.textContent = total.toFixed(2) + ' €';
+        }
+
+        extraInputs.forEach(input => {
+          input.addEventListener('change', calculateTotal);
+        });
+      });
+    </script>
+
 
 <?php
 
