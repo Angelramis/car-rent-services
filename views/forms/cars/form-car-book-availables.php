@@ -38,7 +38,7 @@ if (isset($_POST['form-car-search'])) {
         <img src="/car-rent-services/assets/images/cars/test.webp" class="w-full shadow-md max-w-[500px]">
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="w-full">
-            <p class="text-xl font-bold"><?php echo $car['car_brand'] . " " . $car['car_model']; ?></p>
+            <p class="text-xl"><?php echo $car['car_brand'] . " " . $car['car_model']; ?></p>
             <p class="text-xl font-bold"><?php echo $car['car_price_per_day']; ?>€/day</p>
           </div>
         </div>

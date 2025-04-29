@@ -17,18 +17,25 @@ if (isset($_POST['form-car-details'])) {
   $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
 
   // consulta SQL
-  $sql_query =
+  $sql_query_car =
     "SELECT *
     FROM cars
     WHERE car_id = $car_id;";
 
-  // Ejecutar consulta SQL a la BBDD
-  $execute_query = mysqli_query($conn, $sql_query);
+    $sql_query_extras =
+    "SELECT *
+    FROM extras;";
+
+  // Ejecutar consultas SQL a la BBDD
+  $execute_query_car = mysqli_query($conn, $sql_query_car);
+  $execute_query_extras = mysqli_query($conn, $sql_query_extras);
+
 
   // Solo se espera un resultado, un coche
-  $car_details = mysqli_fetch_assoc($execute_query);
+  $car_details = mysqli_fetch_assoc($execute_query_car);
+  $extras = mysqli_fetch_all($execute_query_extras, MYSQLI_ASSOC);
 
-  if ($execute_query && mysqli_num_rows($execute_query) > 0) {
+  if ($execute_query_car && $extras && mysqli_num_rows($execute_query_car) > 0) {
 
 ?>
 
@@ -120,75 +127,25 @@ if (isset($_POST['form-car-details'])) {
 
       </div>
 
-      <div class="space-y-4" id="seguros">
-        <p class="text-lg font-semibold">Select an insurance: </p>
-        <div class="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,_minmax(0,_1fr))] gap-4">
-
-
-          <label class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md cursor-pointer border border-gray-300 hover:border-blue-500 transition relative">
-            <input type="radio" name="selected_service" value="561" class="w-5 h-5 text-blue-600" wire:click="toggleSeguroMultiple({&quot;id&quot;:561,&quot;name&quot;:&quot;ServicioSeguro&quot;,&quot;daily_price&quot;:&quot;0.00&quot;,&quot;min_price&quot;:&quot;0.00&quot;,&quot;max_price&quot;:&quot;0.00&quot;,&quot;max_units&quot;:1,&quot;select_type&quot;:&quot;multiple&quot;,&quot;created_at&quot;:&quot;2025-02-06T10:44:57.000000Z&quot;,&quot;updated_at&quot;:&quot;2025-02-06T10:44:57.000000Z&quot;,&quot;required&quot;:0,&quot;provider_ref&quot;:&quot;ServicioSeguro&quot;,&quot;calc_type&quot;:&quot;Fixed&quot;,&quot;ref_code&quot;:&quot;8&quot;,&quot;deposit&quot;:&quot;0.00&quot;,&quot;display_name&quot;:&quot;Ninguna Cobertura&quot;,&quot;franchise&quot;:&quot;800.00&quot;,&quot;related_data&quot;:null,&quot;active&quot;:1,&quot;labels&quot;:&quot;seguro am&quot;,&quot;units&quot;:0,&quot;service_price&quot;:0,&quot;pivot&quot;:{&quot;group_provider_id&quot;:1,&quot;group_provider_service_id&quot;:561}})">
-
-            <div>
-              <p class="text-gray-900 font-medium">No coverage
-              </p>
-              <p class="text-gray-500 text-sm">Price: <span class="font-semibold text-green-600">0.00€</span>
-              </p>
-
-              <p class="text-gray-500 text-sm">Deposit: <span class="font-semibold">0.00€</span>
-              </p>
-              <p class="text-gray-500 text-sm">Franchise: <span class="font-semibold">800.00€</span>
-              </p>
-            </div>
-
-          </label>
-          <label class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-md cursor-pointer border border-gray-300 hover:border-blue-500 transition relative">
-            <input type="radio" name="selected_service" value="556" class="w-5 h-5 text-blue-600" wire:click="toggleSeguroMultiple({&quot;id&quot;:556,&quot;name&quot;:&quot;ServicioSeguro&quot;,&quot;daily_price&quot;:&quot;18.15&quot;,&quot;min_price&quot;:&quot;18.15&quot;,&quot;max_price&quot;:&quot;99999.00&quot;,&quot;max_units&quot;:1,&quot;select_type&quot;:&quot;multiple&quot;,&quot;created_at&quot;:&quot;2025-02-04T06:24:54.000000Z&quot;,&quot;updated_at&quot;:&quot;2025-02-06T10:51:22.000000Z&quot;,&quot;required&quot;:0,&quot;provider_ref&quot;:&quot;ServicioSeguro&quot;,&quot;calc_type&quot;:&quot;Fixed&quot;,&quot;ref_code&quot;:&quot;10&quot;,&quot;deposit&quot;:&quot;0.00&quot;,&quot;display_name&quot;:null,&quot;franchise&quot;:&quot;0.00&quot;,&quot;related_data&quot;:null,&quot;active&quot;:1,&quot;labels&quot;:&quot;AutosMenorca Autos Menorca&quot;,&quot;units&quot;:0,&quot;service_price&quot;:127.04999999999998,&quot;pivot&quot;:{&quot;group_provider_id&quot;:1,&quot;group_provider_service_id&quot;:556}})">
-
-
-            <div>
-              <p class="text-gray-900 font-medium">Secure service
-              </p>
-
-              <p class="text-gray-500 text-sm">Price: <span class="font-semibold text-green-600">127.05€</span>
-              </p>
-
-              <p class="text-gray-500 text-sm">Deposit: <span class="font-semibold">0.00€</span>
-              </p>
-              <p class="text-gray-500 text-sm">Franchise: <span class="font-semibold">0.00€</span>
-              </p>
-            </div>
-
-          </label>
-
-        </div>
-      </div>
-
       <div class="mt-4 mb-4 p-4 border border-gray-300 rounded-md">
         <div class="pt-2 mt-2">
           <h3 class="font-semibold text-lg mb-2">Avaliable extras</h3>
 
+          <?php foreach ($extras as $extra) { ?>
 
-          <div class="flex items-center justify-between border-b py-2">
-            <p class="text-sm font-medium">Lift service 50€</p>
-            <div class="flex space-x-2">
-              <input type="checkbox" name="" id="">
+            <div class="flex flex-col md:grid md:grid-cols-3 items-center md:justify-between border-b py-2">
+              <p class="text-sm font-medium"><?php echo $extra['extra_name'];?></p>
+              <p class="text-sm font-medium"><?php echo $extra['extra_unit_price'];?>€</p>
+                <div class="">
+                  <?php if($extra['extra_checkbox'] == 1) {?>
+                    <input type="checkbox" class="w-5 h-5" name="<?php echo $extra['extra_name'];?>">
+
+                  <?php } else {?>
+                    <input type="number" class="h-5" name="<?php echo $extra['extra_name'];?>">
+                  <?php } ?>
+              </div>
             </div>
-          </div>
-
-
-          <div class="flex items-center justify-between border-b py-2">
-            <p class="text-sm font-medium">Child seat service 50€</p>
-
-            <div class="flex space-x-2">
-              <input type="number" name="" id="">
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between border-b py-2">
-            <p class="text-sm font-medium">Second driver 35€</p>
-            <input type="checkbox" name="" id="">
-
-          </div>
+          <?php } ?>
         </div>
       </div>
 
