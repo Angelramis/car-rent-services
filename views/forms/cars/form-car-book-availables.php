@@ -44,27 +44,27 @@ if (isset($_POST['form-car-search'])) {
         </div>
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="flex flex-row">
-            <img src="/car-rent-services/assets/icons/car-seats.png" alt="Car seats">
+            <img src="/car-rent-services/assets/icons/car-seats.png" class="w-6" alt="Car seats">
             <p><?php echo $car['car_seats']; ?> seats</p>
           </div>
 
           <div class="flex flex-row">
             <?php if ($car['car_fuel'] == "Diesel" || $car['car_fuel'] == "Gasoline") {
             ?>
-              <img src="/car-rent-services/assets/icons/gas-fuel.png" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Car seats">
             <?php } elseif ($car['car_fuel'] == "Hybrid") {
             ?>
-              <img src="/car-rent-services/assets/icons/hybrid-fuel.png" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/hybrid-fuel.png" class="w-6" alt="Car seats">
             <?php } else {
             ?>
-              <img src="/car-rent-services/assets/icons/electric-fuel.png" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/electric-fuel.png" class="w-6" alt="Car seats">
             <?php
             } ?>
             <p><?php echo $car['car_fuel']; ?></p>
           </div>
         
         <div class="flex flex-row">
-          <img src="/car-rent-services/assets/icons/car-mileage.png" alt="Car seats">
+          <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Car seats">
           <p>Mileage: <?php if ($car['car_unlimited_mileage'] == 1) {
                         echo "Unlimited";
                       } else {

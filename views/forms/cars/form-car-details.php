@@ -70,40 +70,17 @@ if (isset($_POST['form-car-details'])) {
         </div>
         <ul class="text-gray-800 space-y-2 text-sm basis-3/4 w-full">
           <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-manual-gearbox">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M5 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M12 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M19 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M5 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M5 8l0 8"></path>
-              <path d="M12 8l0 8"></path>
-              <path d="M19 8v2a2 2 0 0 1 -2 2h-12"></path>
-            </svg>
-
+            <img src="/car-rent-services/assets/icons/car-transmission.png" class="w-6" alt="Car seats">
             <span class="ml-1"><?php echo $car_details['car_fuel']; ?>
             </span>
           </li>
 
           <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-gas-station">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M14 11h1a2 2 0 0 1 2 2v3a1.5 1.5 0 0 0 3 0v-7l-3 -3"></path>
-              <path d="M4 20v-14a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v14"></path>
-              <path d="M3 20l12 0"></path>
-              <path d="M18 7v1a1 1 0 0 0 1 1h1"></path>
-              <path d="M4 11l10 0"></path>
-            </svg>
+            <img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Car seats">
             <span class="ml-1 first-letter-capitalize">Full To Full</span>
           </li>
           <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-route-square">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M3 17h4v4h-4z"></path>
-              <path d="M17 3h4v4h-4z"></path>
-              <path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5"></path>
-            </svg>
+            <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Car seats">
             <span class="ml-1 first-letter-capitalize">Mileage: <?php if ($car_details['car_unlimited_mileage'] == 1) {
                                                                   echo "Unlimited";
                                                                 } else {
@@ -111,21 +88,11 @@ if (isset($_POST['form-car-details'])) {
                                                                 }; ?></span>
           </li>
           <li class="flex items-center">
-            <span class="text-gray-800 weigth [&amp;>svg]:stroke-[1]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shield-half">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"></path>
-                <path d="M12 3v18"></path>
-              </svg></span>
+            <img src="/car-rent-services/assets/icons/basic-insurance.png" class="w-6" alt="Car seats">
             <span class="ml-1 first-letter-capitalize">Basic insurance with franchise</span>
           </li>
           <li class="flex items-center">
-            <span class="text-gray-800 weigth [&amp;>svg]:stroke-[1]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-credit-card">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"></path>
-                <path d="M3 10l18 0"></path>
-                <path d="M7 15l.01 0"></path>
-                <path d="M11 15l2 0"></path>
-              </svg></span>
+            <img src="/car-rent-services/assets/icons/credit-card.png" class="w-6" alt="Car seats">
             <span class="ml-1 first-letter-capitalize">Required deposit</span>
           </li>
 
