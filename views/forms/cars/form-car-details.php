@@ -160,9 +160,12 @@ if (isset($_POST['form-car-details'])) {
           <span class="text-sm font-bold">Total</span>
           <span class="text-sm font-bold">108.22 €</span>
         </div>
-
       </div>
-
+      <div class="w-full flex flex-row-reverse">
+        <button class="bg-green-500 text-white px-3 py-1 rounded text-sm mt-2">
+          Continue
+        </button>
+      </div>
     </div>
 
 <?php
