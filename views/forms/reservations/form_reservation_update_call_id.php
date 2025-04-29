@@ -16,7 +16,8 @@
     <form action="/car-rent-services/views/forms/reservations/form_reservation_update.php" method="POST">
       
       <label>Reservation number</label>
-      <input type="number" name="reservation_number" class="standard_input" required> 
+      <input type="number" name="reservation_number" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
       <input type="submit" value="Submit" name="form_reservation_update_call_id" class="button_action">
     </form>

@@ -16,10 +16,12 @@
     <h1 class="text-center text-2xl">Create review</h1>
     <form action="/car-rent-services/views/db/users/db_user_review_send.php" method="POST">
       <label>Review</label>
-      <textarea name="review-comment"  rows="4" cols="50" id="review-comment" class="standard_input"></textarea>
+      <textarea name="review-comment"  rows="4" cols="50" id="review-comment" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500"></textarea>
 
       <label>Rate</label>
-      <select name="review-rate" id="review-rate" class="standard_input">
+      <select name="review-rate" id="review-rate" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500">
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>

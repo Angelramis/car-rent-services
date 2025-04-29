@@ -77,7 +77,8 @@
 
     <form action="/car-rent-services/views/db/premises/db_premise_update.php" method="POST">
       <label>Premise category</label>
-      <select name="premise_category" class="standard_input">
+      <select name="premise_category" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500">
         <?php
          // Generar las opciones de manera dinámica con los datos de premise_categories
           foreach ($premise_categories as $premise_category_id_each => $premise_category_name) {
@@ -91,19 +92,24 @@
       <input type="hidden" name="premise_id" value="<?php echo $premise_id; ?>"> <!-- Campo oculto para enviar a fichero db update. -->
 
       <label>Premise number</label>
-      <input type="number" name="premise_number" class="standard_input" value="<?php echo $premise_number; ?>" required>
+      <input type="number" name="premise_number" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $premise_number; ?>" required>
 
       <label>Beds quantity</label>
-      <input type="number" name="beds_quantity" class="standard_input" value="<?php echo $beds_quantity; ?>" required>
+      <input type="number" name="beds_quantity" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $beds_quantity; ?>" required>
 
       <label>Rooms quantity</label>
-      <input type="number" name="rooms_quantity" class="standard_input" value="<?php echo $rooms_quantity; ?>" required>
+      <input type="number" name="rooms_quantity" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $rooms_quantity; ?>" required>
 
       <label>Price per day</label> <!-- valor number incluye los decimales -->
-      <input type="number" name="price_per_day" class="standard_input" step="0.01" value="<?php echo $price_per_day; ?>" required>
+      <input type="number" name="price_per_day" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" step="0.01" value="<?php echo $price_per_day; ?>" required>
 
       <label>Premise status</label>
-      <select name="premise_status" class="standard_input" required>
+      <select name="premise_status" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
         <option value="Good" <?php echo ($premise_status === 'Good') ? 'selected' : ''; ?>>Good</option> <!--  Pregunta boolean, si el valor formulario concide con valor en BBDD, poner como opcion seleccioanda en form -->
         <option value="Maintenance" <?php echo ($premise_status === 'Maintenance') ? 'selected' : ''; ?>>Maintenance</option> <!-- no hay ids al ser enum -->
       </select>

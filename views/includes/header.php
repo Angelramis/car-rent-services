@@ -65,8 +65,8 @@
           <?php if ($session_user_id == 'guest') {
             // Si el usuario no ha iniciado sesión, mostrar html de log in.
             ?>
-              <a href="/car-rent-services/views/forms/users/form_user_login.php" class="text-white">Log in</a>
-              <a href="/car-rent-services/views/forms/users/form_user_register.php" class="text-white">Register</a>
+              <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white">Log in</a>
+              <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white">Register</a>
           <?php
           } ?>
 

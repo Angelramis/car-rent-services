@@ -15,16 +15,20 @@
     <form action="/car-rent-services/views/db/reservations/db_reservation_insert.php" method="POST">
 
       <label>User ID</label>
-      <input type="number" name="user_id" class="standard_input" required>
+      <input type="number" name="user_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
 
       <label>Premise ID</label>
-      <input type="number" name="premise_id" class="standard_input" required>
+      <input type="number" name="premise_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
 
       <label>Date in</label>
-      <input type="date" name="date_in" class="standard_input" required>
+      <input type="date" name="date_in" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
 
       <label>Date out</label>
-      <input type="date" name="date_out" class="standard_input" required>
+      <input type="date" name="date_out" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
 
       <input type="submit" value="Submit" name="form_reservation_insert" class="button_action">
     </form>

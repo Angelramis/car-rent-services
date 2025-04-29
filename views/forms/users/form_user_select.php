@@ -15,7 +15,8 @@
     <h1 class="text-center text-2xl p-2">Users</h1>
     <form name="formData" action="" method="POST"> 
     <label>User NIF</label>
-    <input type="text" name="user_nif" class="standard_input" onkeyup="inputManagement()">
+    <input type="text" name="user_nif" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" onkeyup="inputManagement()">
     </form>
   </div>
 

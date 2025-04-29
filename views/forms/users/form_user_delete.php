@@ -16,7 +16,8 @@
     <form action="/car-rent-services/views/db/users/db_user_delete.php" method="POST">
       
       <label>User id</label>
-      <input type="number" name="user_id" class="standard_input" required> 
+      <input type="number" name="user_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
       <input type="submit" value="Submit" name="form_user_delete" class="button_action">
     </form>

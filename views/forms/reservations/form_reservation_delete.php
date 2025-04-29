@@ -15,7 +15,8 @@
     <form action="/car-rent-services/views/db/reservations/db_reservation_delete.php" method="POST">
       
       <label>Reservation number</label>
-      <input type="number" name="reservation_number" class="standard_input" required> 
+      <input type="number" name="reservation_number" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
       <input type="submit" value="Submit" name="form_reservation_delete" class="button_action">
     </form>

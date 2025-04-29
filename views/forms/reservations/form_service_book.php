@@ -42,25 +42,30 @@
       <form name="form_service" action="/car-rent-services/views/db/reservations/db_reservation_service_book.php" method="POST">
 
         <label>Service</label>
-        <select name="service_name" class="standard_input" required onchange='inputManagement()'>
+        <select name="service_name" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required onchange='inputManagement()'>
           <option value="Spa" selected>Spa - 30€/person</option>
           <option value="Gym">Gym - 20€/person</option>
           <option value="Restaurant">Restaurant - 25€/person</option>
         </select>
         
         <label>Reservation number</label>
-        <select name="reservation_number" class="standard_input" id="reservation_number" required onchange='inputManagement()'>
+        <select name="reservation_number" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" id="reservation_number" required onchange='inputManagement()'>
           <?php echo $reservation_number_options; ?>
         </select>
 
         <label>Quantity of guests</label>
-        <input type="number" name="guest_quantity" class="standard_input" required min="1" max="10" onkeyup="inputManagement()">   
+        <input type="number" name="guest_quantity" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required min="1" max="10" onkeyup="inputManagement()">   
 
         <label>Date</label>
-        <input type="date" id="date_input" name="date_input" class="standard_input" required onchange="inputManagement()"> 
+        <input type="date" id="date_input" name="date_input" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required onchange="inputManagement()"> 
 
         <label>Available hours</label>
-        <select id="hoursSelect" name="hours" class="standard_input" required>
+        <select id="hoursSelect" name="hours" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required>
         </select>
 
         <input type="submit" value="Submit" name="form_reservation_service_book" class="button_action">

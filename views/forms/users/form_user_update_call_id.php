@@ -15,7 +15,8 @@
   <form action="/car-rent-services/views/forms/users/form_user_update.php" method="POST">
     
     <label>User email</label>
-    <input type="text" name="user_email" class="standard_input" required> 
+    <input type="text" name="user_email" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
     <input type="submit" value="Submit" name="form_user_update_call_id" class="button_action">
   </form>

@@ -14,7 +14,8 @@
 
   <form action="/car-rent-services/views/db/premises/db_premise_delete.php" method="POST">
     <label>Premise id</label>
-    <input type="number" name="premise_id" class="standard_input" required> 
+    <input type="number" name="premise_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
     <input type="submit" value="Delete" name="form_premise_delete" class="button_action">
   </form>

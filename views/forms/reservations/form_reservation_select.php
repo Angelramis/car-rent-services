@@ -14,7 +14,8 @@
     <h1 class="text-center text-2xl p-2">Reservations</h1>
       <form action="" method="GET">
         <label for="user_nif">User NIF</label>
-        <input type="text" name="user_nif" class="standard_input" onkeyup="inputManagement(this.value)">
+        <input type="text" name="user_nif" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" onkeyup="inputManagement(this.value)">
       </form>
   </div>
 

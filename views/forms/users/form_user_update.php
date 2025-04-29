@@ -70,31 +70,40 @@
     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>"> <!-- Campo oculto para enviar a fichero db. -->
  
     <label>Email</label>
-    <input type="email" name="user_email" class="standard_input" value="<?php echo $user_email; ?>" required>
+    <input type="email" name="user_email" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_email; ?>" required>
 
     <label>Password</label>
-    <input type="text" name="user_pwd" class="standard_input" value="<?php echo $user_pwd; ?>" required>
+    <input type="text" name="user_pwd" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_pwd; ?>" required>
 
     <label>User roles</label>
-    <input type="text" name="user_roles" class="standard_input" value="<?php echo $user_roles; ?>" required>
+    <input type="text" name="user_roles" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_roles; ?>" required>
 
     <label>Firstname</label>
-    <input type="text" name="user_firstname" class="standard_input" value="<?php echo $user_firstname; ?>" required>
+    <input type="text" name="user_firstname" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_firstname; ?>" required>
 
     <label>Lastname</label>
-    <input type="text" name="user_lastname" class="standard_input" value="<?php echo $user_lastname; ?>" required>
+    <input type="text" name="user_lastname" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_lastname; ?>" required>
 
     <label>NIF</label>
-    <input type="text" name="user_nif" class="standard_input" value="<?php echo $user_nif; ?>" required>
+    <input type="text" name="user_nif" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_nif; ?>" required>
 
     <label>Phone</label>
-    <input type="text" name="user_phone" class="standard_input" value="<?php echo $user_phone; ?>" required>
+    <input type="text" name="user_phone" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_phone; ?>" required>
 
     <label>Address</label>
-    <input type="text" name="user_address" class="standard_input" value="<?php echo $user_address; ?>" required>
+    <input type="text" name="user_address" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_address; ?>" required>
 
     <label>Country</label>
-    <input type="text" name="user_country" class="standard_input" value="<?php echo $user_country; ?>" required>
+    <input type="text" name="user_country" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" value="<?php echo $user_country; ?>" required>
 
     <input type="submit" value="Submit" name="form_user_update" class="button_action">
   </form>

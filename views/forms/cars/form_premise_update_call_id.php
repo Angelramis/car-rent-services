@@ -14,7 +14,8 @@
     <form action="/car-rent-services/views/forms/premises/form_premise_update.php" method="POST">
       
       <label>Premise id</label>
-      <input type="number" name="premise_id" class="standard_input" required> 
+      <input type="number" name="premise_id" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500" required> 
 
       <input type="submit" value="Submit" name="form_premise_update_call_id" class="button_action">
     </form>

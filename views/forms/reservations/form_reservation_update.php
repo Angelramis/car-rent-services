@@ -87,13 +87,15 @@
       <?php // Si está cancelada, no permitir cambiar la opción
       if ($reservation_state == 'Cancelled') {
         ?>
-          <select name="reservation_state" class="standard_input">
+          <select name="reservation_state" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500">
             <option value="Cancelled" selected>Cancelled</option>
           </select>
         <?php
       } else {
         ?>
-         <select name="reservation_state" class="standard_input">
+         <select name="reservation_state" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
+        focus:ring-blue-500 focus:border-blue-500">
           <option value="Booked" <?php if ($reservation_state == 'Booked') {echo 'selected';} ?>>Booked</option>
           <option value="Check-in" <?php if ($reservation_state == 'Check-in') {echo 'selected';} ?>>Check-in</option>
           <option value="Check-out" <?php if ($reservation_state == 'Check-out') {echo 'selected';} ?>>Check-out</option>

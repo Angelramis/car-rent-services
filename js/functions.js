@@ -1,4 +1,3 @@
-// Funciones generales de JavaScript //
 
 // Mostrar/ocultar elemento de menú
 function displayPagesMenu(id) {
