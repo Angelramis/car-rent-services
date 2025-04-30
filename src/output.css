@@ -225,6 +225,9 @@
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
   }
+  .mt-12 {
+    margin-top: calc(var(--spacing) * 12);
+  }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
@@ -272,6 +275,9 @@
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
+  }
+  .h-auto {
+    height: auto;
   }
   .min-h-12 {
     min-height: calc(var(--spacing) * 12);
@@ -707,6 +713,11 @@
   .md\:bg-white {
     @media (width >= 48rem) {
       background-color: var(--color-white);
+    }
+  }
+  .md\:text-left {
+    @media (width >= 48rem) {
+      text-align: left;
     }
   }
   .lg\:min-h-20 {
