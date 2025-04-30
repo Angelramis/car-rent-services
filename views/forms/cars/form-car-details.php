@@ -106,19 +106,18 @@ if (isset($_POST['form-car-details'])) {
           <h3 class="font-semibold text-lg mb-2">Avaliable extras</h3>
 
           <?php foreach ($extras as $extra) { ?>
+              <div class="extra-div flex flex-col mb-4 md:flex-row md:justify-between">
+                <p class="text-sm font-medium extra-name"><?php echo $extra['extra_name']; ?></p>
+                <div class="flex flex-row gap-2 md:flex-row-reverse">
+                  <p class="text-sm font-medium"><?php echo $extra['extra_unit_price']; ?>€</p>
+                  <?php if ($extra['extra_checkbox'] == 1) { ?>
+                    <input type="checkbox" class="extra-input w-5 h-5" data-type="checkbox" data-price="<?php echo $extra['extra_unit_price']; ?>">
 
-            <div class="flex flex-col md:grid md:grid-cols-3 items-center md:justify-between border-b py-2">
-              <p class="text-sm font-medium"><?php echo $extra['extra_name']; ?></p>
-              <p class="text-sm font-medium"><?php echo $extra['extra_unit_price']; ?>€</p>
-              <div class="">
-                <?php if ($extra['extra_checkbox'] == 1) { ?>
-                  <input type="checkbox" class="extra-input w-5 h-5" data-type="checkbox" data-price="<?php echo $extra['extra_unit_price']; ?>">
-
-                <?php } else { ?>
-                  <input type="number" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="6" value="0">
-                <?php } ?>
+                  <?php } else { ?>
+                    <input type="number" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="5" value="0">
+                  <?php } ?>
+                </div>
               </div>
-            </div>
           <?php } ?>
         </div>
       </div>
@@ -130,49 +129,131 @@ if (isset($_POST['form-car-details'])) {
           <span class="text-sm font-medium"><?php echo $rent_price; ?>€</span>
         </div>
 
+        <div id="selected-extras-list" class="text-sm text-gray-700 space-y-1 mt-2">
+        </div>
+        
         <div class="flex items-center justify-between  py-2">
           <span class="text-sm font-bold">Total</span>
           <span class="text-sm font-bold" id="total-price"><?php echo $rent_price; ?>€</span>
         </div>
       </div>
       <div class="w-full flex flex-row-reverse">
-        <button class="bg-green-500 text-white px-3 py-1 rounded text-sm mt-2">
+        <button id="continue-button" class="bg-green-500 text-white px-3 py-1 rounded text-sm mt-2">
           Continue
         </button>
       </div>
+      <div id="user-form-container" class="hidden mt-4">
+  <h2 class="text-xl font-bold mb-2">Complete your reservation</h2>
+  
+  <div class="mb-4 mt-4 text-gray-600 text-left">
+    <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-blue-600">Already have an account? Login here</a>
+  </div>
+  <form id="user-reservation-form" class="space-y-2">
+    <?php //Register form
+      include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/register-form.php';
+    ?>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit Reservation</button>
+  </form>
+
+</div>
+
     </div>
-
-
+    
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const baseRentPrice = <?php echo $rent_price; ?>;
-        const totalPriceEl = document.getElementById('total-price');
-        const extraInputs = document.querySelectorAll('.extra-input');
+      let userLogged = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
 
-        function calculateTotal() {
-          let total = baseRentPrice;
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const baseRentPrice = <?php echo $rent_price; ?>;
+    const totalPriceEl = document.getElementById('total-price');
+    const extrasListContainer = document.getElementById('selected-extras-list');
 
-          extraInputs.forEach(input => {
-            const price = parseFloat(input.getAttribute('data-price'));
+    function calculateTotal() {
+      let total = baseRentPrice;
+      extrasListContainer.innerHTML = ''; // Limpiar lista previa
 
-            if (input.getAttribute('data-type') === 'checkbox') {
-              if (input.checked) {
-                total += price;
-              }
-            } else if (input.getAttribute('data-type') === 'number') {
-              const quantity = parseInt(input.value) || 0;
-              total += price * quantity;
-            }
-          });
+      document.querySelectorAll('.extra-div').forEach(div => {
+        const input = div.querySelector('.extra-input');
+        if (!input) return;
 
-          totalPriceEl.textContent = total.toFixed(2) + ' €';
+        const price = parseFloat(input.getAttribute('data-price'));
+        const type = input.getAttribute('data-type');
+        const label = div.closest('.flex').querySelector('.extra-name')?.textContent.trim();
+
+        if (type === 'checkbox' && input.checked) {
+          total += price;
+          extrasListContainer.innerHTML += `
+            <div class="flex justify-between">
+              <span class="text-sm font-medium">${label}</span>
+              <span class="text-sm font-medium">${price.toFixed(2)}€</span>
+            </div>
+          `;
         }
 
-        extraInputs.forEach(input => {
-          input.addEventListener('change', calculateTotal);
-        });
+        if (type === 'number') {
+          const qty = parseInt(input.value) || 0;
+          if (qty > 0) {
+            const subtotal = qty * price;
+            total += subtotal;
+            extrasListContainer.innerHTML += `
+              <div class="flex justify-between">
+                <span class="text-sm font-medium">${label} x${qty}</span>
+                <span class="text-sm font-medium">${subtotal.toFixed(2)}€</span>
+              </div>
+            `;
+          }
+        }
       });
-    </script>
+
+      totalPriceEl.textContent = total.toFixed(2) + ' €';
+    }
+
+    // Añadir listeners a todos los inputs extra
+    document.querySelectorAll('.extra-input').forEach(input => {
+      input.addEventListener('change', calculateTotal);
+    });
+
+    calculateTotal(); // Inicializa con valores actuales
+  });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const continueBtn = document.getElementById('continue-button');
+  const userFormContainer = document.getElementById('user-form-container');
+
+  continueBtn.addEventListener('click', function () {
+    // Aquí puedes añadir validaciones si quieres asegurarte de que se han rellenado fechas, extras, etc.
+    
+    if (!userLogged) {
+      userFormContainer.classList.remove('hidden');
+      userFormContainer.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert('User is already logged in. You can proceed with booking logic here.');
+      // Aquí puedes redirigir o mostrar el siguiente paso si lo deseas
+    }
+  });
+
+  document.getElementById('user-reservation-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('user-name').value.trim();
+    const email = document.getElementById('user-email').value.trim();
+    const phone = document.getElementById('user-phone').value.trim();
+
+    if (!name || !email || !phone) {
+      alert('Please fill out all fields');
+      return;
+    }
+
+    // Aquí iría una llamada fetch() o redirección a PHP para guardar la reserva o registrarse
+    console.log('Submitting reservation with:', { name, email, phone });
+
+    alert('Reservation submitted (you can now handle the backend)');
+  });
+});
+</script>
 
 
 <?php

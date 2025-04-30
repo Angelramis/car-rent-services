@@ -19,8 +19,8 @@
   <body>
     <header>
       <div class="logo_contanier_header">
-        <a href="/car-rent-services/index.php" class="a-logo flex-shrink-0">
-          <img src="/car-rent-services/assets/images/general/logo.png" alt="logo" class="h-8 w-auto">
+        <a href="/car-rent-services/index.php" class="flex text-white font-bold">
+          CarRent<p class="hidden text-white font-bold  sm:flex">Services</p>
         </a>
       </div>
 
