@@ -78,7 +78,7 @@
 
     /* Si el usuario no ha iniciado sesión aún, redirigirlo al log in */
     } else if ($session_user_id == 'guest') {
-      header("Location: /car-rent-services/views/forms/users/form_user_login.php"); 
+      header("Location: /car-rent-services/views/forms/users/form-user-login.php"); 
     }
   ?>  
   </div>

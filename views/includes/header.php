@@ -26,7 +26,7 @@
 
       <nav class="pages_nav_bar" id="pages_nav_bar">
           <a href="/car-rent-services/index.php" class="text-white hover:text-yellow-200">Home</a>
-          <a href="/car-rent-services/views/user_reservations.php" class="text-white hover:text-yellow-200">My reservations</a>
+          <a href="/car-rent-services/views/user-reservations.php" class="text-white hover:text-yellow-200">My reservations</a>
       </nav>
 
       <nav class="right_header">

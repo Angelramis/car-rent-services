@@ -141,8 +141,10 @@ if (isset($_POST['form-car-details'])) {
         <div class="mb-4 mt-4 text-gray-600 text-left">
           <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-blue-600">Already have an account? Login here</a>
         </div>
-        
-
+        <a href="/car-rent-services/views/forms/users/form-user-register.php">
+        <button name="form-user-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6
+                                   rounded-lg shadow-md transition duration-300">Register</button>
+        </a>
 
       </div>
 
@@ -226,27 +228,6 @@ if (isset($_POST['form-car-details'])) {
           }
         });
 
-        document.getElementById('user-reservation-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-
-          const name = document.getElementById('user-name').value.trim();
-          const email = document.getElementById('user-email').value.trim();
-          const phone = document.getElementById('user-phone').value.trim();
-
-          if (!name || !email || !phone) {
-            alert('Please fill out all fields');
-            return;
-          }
-
-          // Aquí iría una llamada fetch() o redirección a PHP para guardar la reserva o registrarse
-          console.log('Submitting reservation with:', {
-            name,
-            email,
-            phone
-          });
-
-          alert('Reservation submitted (you can now handle the backend)');
-        });
       });
     </script>
 
