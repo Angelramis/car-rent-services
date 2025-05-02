@@ -4,7 +4,7 @@
 
   <h1 class="title">My reservations</h1>
 
-  <div class="flex flex-row flex-wrap">
+  <div class="flex flex-col w-full min-h-screen bg-white rounded-xl shadow-lg p-6">
   <?php
     // include conexion a bbdd
     include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
@@ -24,18 +24,18 @@
         /* Mostrar sus reservas activas*/
         foreach ($reservations as $reservation) {
           ?>
-            <div>
-              <p> Reservation number: <?php echo $reservation['reservation_number'];?></p>
-              <p> User fullname: <?php echo $reservation['full_name'];?></p>
-              <p> User NIF: <?php echo $reservation['user_nif'];?></p>
-              <p> Pickup Date: <?php echo $reservation['pickup_date'];?> </p>
-              <p> Pickup Time: <?php echo $reservation['pickup_time'];?> </p>
-              <p> Dropoff Date: <?php echo $reservation['dropoff_date'];?> </p>
-              <p> Dropoff Time: <?php echo $reservation['dropoff_time'];?> </p>
-              <p> Car plate: <?php echo $reservation['car_plate'];?></p>
-              <p> Total price: <?php echo $reservation['total_price'];?> </p>
-              <p> Status: <?php echo $reservation['status'];?> </p>
-              <p> Creation date: <?php echo $reservation['created_at'];?> </p>
+            <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
+              <p>Reservation number: <?php echo $reservation['rs_number'];?></p>
+              <p>User fullname: <?php echo $reservation['user_fullname'];?></p>
+              <p>User NIF: <?php echo $reservation['user_nif'];?></p>
+              <p>Pickup Date: <?php echo $reservation['rs_pickup_date'];?></p>
+              <p>Pickup Time: <?php echo $reservation['rs_pickup_time'];?></p>
+              <p>Dropoff Date: <?php echo $reservation['rs_dropoff_date'];?></p>
+              <p>Dropoff Time: <?php echo $reservation['rs_dropoff_time'];?></p>
+              <p>Car plate: <?php echo $reservation['car_plate'];?></p>
+              <p>Total price: <?php echo $reservation['rs_total_price'];?>€</p>
+              <p>Status: <?php echo $reservation['rs_status'];?></p>
+              <p>Creation date: <?php echo $reservation['rs_created_at'];?></p>
             </div>
           <?php
         }
