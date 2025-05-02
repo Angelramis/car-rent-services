@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
   if (isset($_POST['form-reservation-admin'])) {
     $sql_reservations = "SELECT * 
-                  FROM reservations;";
+                        FROM reservations_view;";
 
 
     $execute_query = mysqli_query($conn, $sql_reservations);
@@ -32,27 +32,29 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         </form>
       </nav>
 
-      <div class="w-full grid grid-cols-8 bg-gray-300 rounded-md items-center p-1">
-        <p>Roles</p>
-        <p>NIF</p>
-        <p>Firstname</p>
-        <p>Lastname</p>
-        <p>Phone</p>
-        <p>Birthdate</p>
-        <p>License</p>
+      <div class="w-full grid grid-cols-9 bg-gray-300 rounded-md items-center p-1">
+        <p>Number</p>
+        <p>User NIF</p>
+        <p>Car Plate</p>
+        <p>Pickup</p>
+        <p>Dropoff</p>
+        <p>Status</p>
+        <p>Creation</p>
+        <p>Total price</p>
       </div>
       <?php
-      foreach ($users as $user) {
+      foreach ($reservations as $rs) {
       ?>
-        <form action="/car-rent-services/views/forms/users/form-user-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-8 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
-          <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
-          <p><?php echo $user['user_roles']; ?></p>
-          <p><?php echo $user['user_nif']; ?></p>
-          <p><?php echo $user['user_firstname']; ?></p>
-          <p><?php echo $user['user_lastname']; ?></p>
-          <p><?php echo $user['user_phone']; ?></p>
-          <p><?php echo $user['user_birthdate']; ?></p>
-          <p><?php echo $user['user_license_number']; ?></p>
+        <form action="/car-rent-services/views/forms/reservations/form-reservation-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-9 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
+          <input type="hidden" name="rs_number" value="<?php echo $rs['rs_number']; ?>">
+          <p><?php echo $rs['rs_number']; ?></p>
+          <p><?php echo $rs['user_nif']; ?></p>
+          <p><?php echo $rs['car_plate']; ?></p>
+          <p><?php echo $rs['rs_pickup_date'] . " - " . $rs['rs_pickup_time']; ?>h</p>
+          <p><?php echo $rs['rs_dropoff_date'] . " - " . $rs['rs_dropoff_time']; ?>h</p>
+          <p><?php echo $rs['rs_status']; ?></p>
+          <p><?php echo $rs['rs_created_at']; ?></p>
+          <p><?php echo $rs['rs_total_price']; ?></p>
           <img src="/car-rent-services/assets/icons/edit.png" alt="Edit" class="w-7">
 
         </form>
