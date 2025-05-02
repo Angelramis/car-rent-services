@@ -33,7 +33,7 @@
         <?php if (strstr($session_user_roles, 'admin')) {
           // Si dentro de los roles del usuario contiene admin, mostrar html.
           ?>
-            <a href="/car-rent-services/views/admin_page.php" class ="a-admin-icon flex p-1">
+            <a href="/car-rent-services/views/admin-page.php" class ="a-admin-icon flex p-1">
               <img src="/car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
               <p class="text-white hover:text-yellow-200 cursor-pointer">Admin</p>
             </a>
