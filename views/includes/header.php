@@ -44,7 +44,6 @@
             </a>
 
             <nav class="nav-bar-manuals" id="nav_bar_manuals">
-              <a href="/car-rent-services/views/manuals/manual_technical.php" class="text-white">Technical manual</a>
               <a href="/car-rent-services/views/manuals/manual_installation.php" class="text-white">Installation manual</a>
               <a href="/car-rent-services/views/manuals/manual_user.php" class="text-white">User manual</a>
             </nav>
@@ -81,5 +80,3 @@
       </nav>
     </header>
     <main class="gap-2 min-h-screen">
-
-

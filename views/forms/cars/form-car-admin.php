@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
   include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
   // Mostrar coches en bbdd
 
-  if (isset($_POST['form-car-admin']) || isset($_GET['search'])) {
+  if (isset($_POST['form-car-admin']) || isset($_GET['car-search'])) {
     // Obtener término de búsqueda si existe
     $search = isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
 
@@ -25,14 +25,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
                         OR car_model LIKE '%$search%';";
     } else {
         $sql_cars = "SELECT * 
-                    FROM cars;";
+                      FROM cars;";
     }
 
     $execute_query = mysqli_query($conn, $sql_cars);
     $cars = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
   ?>
       <nav class="w-full mb-2">
-        <form action="" method="GET">
+        <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="GET">
           <nav class="flex flex-row gap-2 items-center">
             <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
             <input type="text" id="searchInput" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
@@ -86,6 +86,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
   ?>
 
 </div>
+
+
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
