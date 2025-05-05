@@ -31,13 +31,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     $execute_query = mysqli_query($conn, $sql_cars);
     $cars = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
   ?>
-      <nav class="w-full mb-2">
+      <nav class="w-full mb-2 flex flex-row justify-between items-center">
         <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="GET">
           <nav class="flex flex-row gap-2 items-center">
             <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
             <input type="text" id="searchInput" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
           focus:ring-blue-500 focus:border-blue-500">
           </nav>
+        </form>
+        <form action="/car-rent-services/views/forms/cars/form-car-create.php" method="POST">
+          <input type="submit" value="Create car" name="form-car-create" class="bg-blue-500 text-white font-semibold min-h-12 py-1 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
         </form>
       </nav>
 

@@ -20,7 +20,13 @@ if (isset($_POST['form-car-search'])) {
   $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
 
   $sql_query = "SELECT *
-                  FROM cars;";
+                FROM cars
+                WHERE car_id NOT IN (
+                                      SELECT car_id
+                                      FROM reservations
+                                      WHERE rs_pickup_date < $pickup_date
+                                      AND rs_dropoff_date > $dropoff_date
+                                      );";
 
   // Ejecutar consulta SQL con BBDD
   $execute_query = mysqli_query($conn, $sql_query);
@@ -35,7 +41,7 @@ if (isset($_POST['form-car-search'])) {
     foreach ($cars as $car) {
     ?>
       <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
-        <img src="/car-rent-services/assets/images/cars/test.webp" class="w-full shadow-md max-w-[500px]">
+        <img src="<?php echo $car['car_image']; ?>" class="w-full shadow-md max-w-[500px]">
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="w-full">
             <p class="text-xl"><?php echo $car['car_brand'] . " " . $car['car_model']; ?></p>
