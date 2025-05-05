@@ -20,7 +20,7 @@
     <header>
       <div class="logo_contanier_header">
         <a href="/car-rent-services/index.php" class="flex text-white font-bold">
-          CarRent<p class="hidden text-white font-bold  sm:flex">Services</p>
+          CarRent<p class="hidden text-white font-bold sm:flex">Services</p>
         </a>
       </div>
 

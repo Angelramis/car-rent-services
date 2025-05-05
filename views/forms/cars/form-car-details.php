@@ -32,7 +32,8 @@ if (isset($_POST['form-car-details'])) {
     $rent_price = $car_details['car_price_per_day'] * ($rent_days_interval->days);
 ?>
 
-<form id="extras-form" method="POST" action="/car-rent-services/views/db/reservations/db-reservation-confirm.php">
+<form id="extras-form" method="POST" action="/car-rent-services/views/forms/cars/form-car-book-pay.php">
+<!-- <form id="extras-form" method="POST" action="/car-rent-services/views/db/reservations/db-reservation-confirm.php"> -->
   <input type="hidden" name="car-id" value="<?php echo $car_id; ?>">
   <input type="hidden" name="pickup-date" value="<?php echo $pickup_date; ?>">
   <input type="hidden" name="pickup-time" value="<?php echo $pickup_time; ?>">
