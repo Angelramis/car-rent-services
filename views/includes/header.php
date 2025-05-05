@@ -24,39 +24,39 @@
         </a>
       </div>
 
-      <nav class="pages_nav_bar" id="pages_nav_bar">
-          <a href="/car-rent-services/index.php" class="text-white hover:text-yellow-200">Home</a>
-          <a href="/car-rent-services/views/user-reservations.php" class="text-white hover:text-yellow-200">My reservations</a>
-      </nav>
-
       <nav class="right_header">
+        <a href="/car-rent-services/views/user-reservations.php" class ="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
+          <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
+          <p class="text-white">Reservations</p>
+        </a>
+
         <?php if (strstr($session_user_roles, 'admin')) {
           // Si dentro de los roles del usuario contiene admin, mostrar html.
           ?>
-            <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1">
+            <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer"">
               <img src="/car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
-              <input type="submit" class="text-white hover:text-yellow-200 cursor-pointer" value="Admin" name="form-car-admin">
+              <input type="submit" class="text-white" value="Admin" name="form-car-admin">
             </form>
           
-            <a class ="a-manuals-display-icon flex p-1" onclick="displayPagesMenu('nav_bar_manuals')">
+            <a class ="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_manuals')">
               <img src="/car-rent-services/assets/icons/manual.png" alt="display-icon">
-              <p class="text-white hover:text-yellow-200 cursor-pointer">Manuals</p>
+              <p class="text-white">Manuals</p>
             </a>
 
             <nav class="nav-bar-manuals" id="nav_bar_manuals">
-              <a href="/car-rent-services/views/manuals/manual_installation.php" class="text-white">Installation manual</a>
-              <a href="/car-rent-services/views/manuals/manual_user.php" class="text-white">User manual</a>
+              <a href="/car-rent-services/views/manuals/manual_installation.php" class="text-white transition rounded-lg hover:bg-yellow-400 cursor-pointer"">Installation manual</a>
+              <a href="/car-rent-services/views/manuals/manual_user.php" class="text-white transition rounded-lg hover:bg-yellow-400 cursor-pointer"">User manual</a>
             </nav>
           <?php
           } ?>
 
-      <a class="a-menu-icon" onclick="displayPagesMenu('pages_nav_bar')">
+      <a class="a-menu-icon transition rounded-lg hover:bg-yellow-400 cursor-pointer"" onclick="displayPagesMenu('pages_nav_bar')">
         <img src="/car-rent-services/assets/icons/menu.png" alt="menu-icon">
       </a>
 
-        <a class ="a-account-icon flex p-1" onclick="displayPagesMenu('nav_bar_account')">
+        <a class ="a-account-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_account')">
           <img src="/car-rent-services/assets/icons/account.png" alt="account-icon">
-          <p class="text-white hover:text-yellow-200 cursor-pointer"><?php echo $_SESSION['user_firstname'] ?? 'Account'; ?></p>
+          <p class="text-white"><?php echo $_SESSION['user_firstname'] ?? 'Account'; ?></p>
         </a>
 
         <nav class="nav_bar_account" id="nav_bar_account">

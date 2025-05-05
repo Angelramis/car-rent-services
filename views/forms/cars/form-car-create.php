@@ -96,6 +96,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
 </div>
 
+<script>
+  function checkInputs() {
+    
+  }
+</script>
+
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
 ?>
