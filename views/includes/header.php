@@ -33,10 +33,10 @@
         <?php if (strstr($session_user_roles, 'admin')) {
           // Si dentro de los roles del usuario contiene admin, mostrar html.
           ?>
-            <a href="/car-rent-services/views/admin-page.php" class ="a-admin-icon flex p-1">
+            <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1">
               <img src="/car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
-              <p class="text-white hover:text-yellow-200 cursor-pointer">Admin</p>
-            </a>
+              <input type="submit" class="text-white hover:text-yellow-200 cursor-pointer" value="Admin" name="form-car-admin">
+            </form>
           
             <a class ="a-manuals-display-icon flex p-1" onclick="displayPagesMenu('nav_bar_manuals')">
               <img src="/car-rent-services/assets/icons/manual.png" alt="display-icon">

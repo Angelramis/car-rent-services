@@ -281,6 +281,9 @@
   .aspect-video {
     aspect-ratio: var(--aspect-video);
   }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
@@ -299,8 +302,14 @@
   .h-26 {
     height: calc(var(--spacing) * 26);
   }
+  .h-28 {
+    height: calc(var(--spacing) * 28);
+  }
   .h-32 {
     height: calc(var(--spacing) * 32);
+  }
+  .h-34 {
+    height: calc(var(--spacing) * 34);
   }
   .h-36 {
     height: calc(var(--spacing) * 36);
@@ -311,11 +320,17 @@
   .h-44 {
     height: calc(var(--spacing) * 44);
   }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
+  }
   .h-64 {
     height: calc(var(--spacing) * 64);
   }
   .h-auto {
     height: auto;
+  }
+  .h-full {
+    height: 100%;
   }
   .max-h-64 {
     max-height: calc(var(--spacing) * 64);
@@ -534,6 +549,9 @@
   }
   .object-cover {
     object-fit: cover;
+  }
+  .object-fill {
+    object-fit: fill;
   }
   .\!p-3 {
     padding: calc(var(--spacing) * 3) !important;

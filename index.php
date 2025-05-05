@@ -94,17 +94,17 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 <img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
 
 <section class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
-  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Best prices</p>
-      <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
+      <img src="/car-rent-services/assets/images/general/car-keys.jpeg" alt="Car keys" class="w-full h-36 rounded-md object-cover">
   </div>
-  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Large car fleet</p>
-    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
+    <img src="/car-rent-services/assets/images/general/cars.webp" alt="Car fleet" class="w-full h-36 object-cover">
     </div>
-  <div class="flex flex-col h-40 w-full shadow-md rounded-md bg-white text-left p-3 ">
+  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Transparency and security</p>
-    <img src="/car-rent-services/assets/images/cars/test.webp" alt=""class="w-full h-26 object-cover">
+    <img src="/car-rent-services/assets/images/general/security.png" alt="Transparency and security" class="w-full h-28 object-cover">
   </div>
 </section>
 

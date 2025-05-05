@@ -182,7 +182,8 @@ footer > p {
     gap: 5px;
   }
 
-  .a-admin-icon > p, .a-manuals-display-icon > p {
+  .a-admin-icon > p, .a-manuals-display-icon > p,
+  .a-admin-icon > input, .a-manuals-display-icon > input {
     display: none;
   }
 
