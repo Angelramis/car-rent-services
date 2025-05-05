@@ -56,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
             <label for="car-fuel">Fuel</label>
             <select name="car-fuel" id="car-fuel" class="bg-gray-200 rounded-md border-[1px] p-1">
               <option value="Diesel">Diesel</option>
-              <option value="Petrol">Petrol</option>
+              <option value="Gasoline">Gasoline</option>
               <option value="Electric">Electric</option>
               <option value="Hybrid">Hybrid</option>
             </select>

@@ -77,7 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
             <label for="car-fuel">Fuel</label>
             <select name="car-fuel" id="car-fuel" class="bg-gray-200 rounded-md border-[1px] p-1">
               <option value="Diesel" <?php if ($car['car_fuel'] === 'Diesel') echo 'selected'; ?>>Diesel</option>
-              <option value="Petrol" <?php if ($car['car_fuel'] === 'Petrol') echo 'selected'; ?>>Petrol</option>
+              <option value="Gasoline" <?php if ($car['car_fuel'] === 'Gasoline') echo 'selected'; ?>>Gasoline</option>
               <option value="Electric" <?php if ($car['car_fuel'] === 'Electric') echo 'selected'; ?>>Electric</option>
               <option value="Hybrid" <?php if ($car['car_fuel'] === 'Hybrid') echo 'selected'; ?>>Hybrid</option>
             </select>
@@ -102,7 +102,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
             <img src="<?php echo $car['car_image'] ?? ''; ?>" alt="car-image" class="w-36 h-36">
 
             <label for="car-image">Image</label>
-            <input type="file" id="car-image" name="car-image" class="bg-gray-200 rounded-md border-[1px] p-1" required>
+            <input type="file" id="car-image" name="car-image" class="bg-gray-200 rounded-md border-[1px] p-1">
           </nav>
 
           <nav class="flex flex-row items-center gap-2 p-2">

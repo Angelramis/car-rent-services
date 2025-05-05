@@ -2,9 +2,9 @@
   include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
 ?>
 
-  <h1 class="title">My reservations</h1>
+  <h1 class='text-center text-2xl p-3'>My reservations</h1>
 
-  <div class="flex flex-col w-full min-h-screen bg-white rounded-xl shadow-lg p-6">
+  <div class="flex flex-col w-full gap-2 min-h-screen bg-white rounded-xl shadow-lg p-6">
   <?php
     // include conexion a bbdd
     include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
@@ -24,7 +24,7 @@
         /* Mostrar sus reservas activas*/
         foreach ($reservations as $reservation) {
           ?>
-            <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
+            <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow-md p-2 md:grid md:grid-cols-4  md:gap-2">
               <p>Reservation number: <?php echo $reservation['rs_number'];?></p>
               <p>User fullname: <?php echo $reservation['user_fullname'];?></p>
               <p>User NIF: <?php echo $reservation['user_nif'];?></p>

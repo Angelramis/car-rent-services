@@ -41,7 +41,7 @@ if (isset($_POST['form-car-search'])) {
     foreach ($cars as $car) {
     ?>
       <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
-        <img src="<?php echo $car['car_image']; ?>" class="w-full max-w-[400px] h-64 shadow-md md:h-40">
+        <img src="<?php echo $car['car_image']; ?>" class="w-full max-w-[400px] h-64 shadow md:h-40">
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="w-full">
             <p class="text-xl"><?php echo $car['car_brand'] . " " . $car['car_model']; ?></p>
