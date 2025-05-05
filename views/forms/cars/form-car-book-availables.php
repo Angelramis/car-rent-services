@@ -24,8 +24,8 @@ if (isset($_POST['form-car-search'])) {
                 WHERE car_id NOT IN (
                                       SELECT car_id
                                       FROM reservations
-                                      WHERE rs_pickup_date < $pickup_date
-                                      AND rs_dropoff_date > $dropoff_date
+                                      WHERE ('$pickup_date' < rs_dropoff_date 
+                                      AND '$dropoff_date' > rs_pickup_date)
                                       );";
 
   // Ejecutar consulta SQL con BBDD
@@ -93,6 +93,9 @@ if (isset($_POST['form-car-search'])) {
       </form>
   </div>
 <?php
+    }
+    if (count($cars) == 0) {
+      echo "There are no cars available";
     }
   }
   mysqli_close($conn);
