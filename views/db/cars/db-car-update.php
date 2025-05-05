@@ -6,10 +6,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
 
+
 // Verificar si los datos del formulario se han enviado
 if (isset($_POST['form-car-update'])) {
 
-    // Obtener los valores del formulario y sanitizarlos
+    // Obtener los valores del formulario
     $car_id = htmlspecialchars($_POST['car-id']);
     $car_brand = htmlspecialchars($_POST['car-brand']);
     $car_model = htmlspecialchars($_POST['car-model']);
@@ -22,7 +23,37 @@ if (isset($_POST['form-car-update'])) {
     $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 1 : 0; // 1 si está marcado, 0 si no
     $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 1 : 0;
     $car_min_age = htmlspecialchars($_POST['car-min-age']);
+    
     $car_active = isset($_POST['car-active']) ? 1 : 0; // 1 si está marcado, 0 si no
+    
+
+    // -- Gestión imagen --
+
+    // Si se ha subido una imagen, iniciar gestión
+    $car_image_sql = ""; // si no hay imagen en la consulta no hacer update
+    if (!empty($_FILES['car-image']['name'])) {
+      $ruta_absoluta = '/car-rent-services/assets/images/cars/';
+      $nombre_img = basename($_FILES['car-image']['name']);
+      $hoy = date('Ymd_His');
+  
+      // Limpiar espacios, caracteres especiales y concatenar fecha de hoy al nombre imagen
+      $nombre_img = preg_replace('/[^A-Za-z0-9\-_\.]/', '_', $nombre_img);
+      $extension = pathinfo($nombre_img, PATHINFO_EXTENSION);
+      $nombre_img = pathinfo($nombre_img, PATHINFO_FILENAME) . '_' . $hoy . '.' . $extension;
+  
+      // Ruta para subir a la BBDD
+      $ruta_final_subir = $ruta_absoluta . $nombre_img;
+  
+      // Copiar imagen subida al proyecto
+      if (!move_uploaded_file($_FILES['car-image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $ruta_absoluta . $nombre_img)) {
+        echo "<p style='color:red'>Error uploading image</p>";
+        exit;
+      }
+      $car_image_sql = " car_image = '$ruta_final_subir',";
+    }
+      // FIN gestión imagen --
+
+
 
     // Preparar la consulta de actualización
     $sql_update = "UPDATE cars SET
@@ -37,6 +68,7 @@ if (isset($_POST['form-car-update'])) {
                     car_unlimited_mileage = '$car_unlimited_mileage',
                     car_free_cancellation = '$car_free_cancellation',
                     car_min_age = '$car_min_age',
+                    $car_image_sql
                     car_active = '$car_active'
                     WHERE car_id = '$car_id'";
 

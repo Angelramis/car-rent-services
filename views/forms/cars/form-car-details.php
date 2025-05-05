@@ -52,7 +52,7 @@ if (isset($_POST['form-car-details'])) {
   </div>
   <div class="flex flex-col items-center relative mt-2 md:flex-row-reverse gap-2">
     <div>
-      <img src="https://strato.ownerscars.net/img/grupo/A500_.jpg" alt="A - Fiat 500" class="max-w-full lg:max-w-none w-full rounded-lg">
+      <img src="<?php echo $car_details['car_image']; ?>" alt="Car image" class="max-w-full lg:max-w-none w-full rounded-lg">
     </div>
     <ul class="text-gray-800 space-y-2 text-sm basis-3/4 w-full">
       <li class="flex items-center"><img src="/car-rent-services/assets/icons/car-transmission.png" class="w-6" alt="Transmission"><span class="ml-1"><?php echo $car_details['car_fuel']; ?></span></li>

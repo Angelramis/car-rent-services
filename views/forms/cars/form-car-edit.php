@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         </form>
       </nav>
 
-      <form action="/car-rent-services/views/db/cars/db-car-update.php" name="form-car-update" method="POST" class="w-full">
+      <form action="/car-rent-services/views/db/cars/db-car-update.php" name="form-car-update" method="POST" class="w-full" enctype="multipart/form-data">
         <input type="hidden" name="car-id" value="<?php echo $car['car_id']; ?>">
         <div class="w-full grid grid-cols-2 gap-2">
           <nav class="flex flex-col gap-1 p-2">
@@ -96,6 +96,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
           <nav class="flex flex-col gap-1 p-2">
             <label for="car-min-age">Minimum age</label>
             <input type="number" id="car-min-age" name="car-min-age" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_min_age']; ?>" required>
+          </nav> 
+
+          <nav class="flex flex-col gap-1 p-2">
+            <img src="<?php echo $car['car_image'] ?? ''; ?>" alt="car-image" class="w-36 h-36">
+
+            <label for="car-image">Image</label>
+            <input type="file" id="car-image" name="car-image" class="bg-gray-200 rounded-md border-[1px] p-1" required>
           </nav>
 
           <nav class="flex flex-row items-center gap-2 p-2">
