@@ -10,11 +10,6 @@
   box-sizing: border-box;
 }
 
-header > nav > nav > a:hover {
-  color: rgba(252, 211, 77);
-}
-
-
 /* Header */
 header {
   display: flex;
@@ -122,18 +117,6 @@ main {
   max-width: 850px;
   margin-top: 50px;
 }
-
-
-
-.button_action:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-
-
-
-
 
 /*Footer*/
 

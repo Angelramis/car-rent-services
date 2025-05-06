@@ -44,13 +44,13 @@
             </a>
 
             <nav class="nav-bar-manuals" id="nav_bar_manuals">
-              <a href="/car-rent-services/views/manuals/manual_installation.php" class="text-white transition rounded-lg hover:bg-yellow-400 cursor-pointer"">Installation manual</a>
-              <a href="/car-rent-services/views/manuals/manual_user.php" class="text-white transition rounded-lg hover:bg-yellow-400 cursor-pointer"">User manual</a>
+              <a href="/car-rent-services/views/manuals/manual-installation.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Installation manual</a>
+              <a href="/car-rent-services/views/manuals/manual-user.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">User manual</a>
             </nav>
           <?php
           } ?>
 
-      <a class="a-menu-icon transition rounded-lg hover:bg-yellow-400 cursor-pointer"" onclick="displayPagesMenu('pages_nav_bar')">
+      <a class="a-menu-icon transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('pages_nav_bar')">
         <img src="/car-rent-services/assets/icons/menu.png" alt="menu-icon">
       </a>
 
@@ -72,7 +72,7 @@
           <?php if ($session_user_id != 'guest') {
             // Si el usuario ha iniciado sesión, mostrar html de log out.
             ?>
-              <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white">Log out</a>
+              <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log out</a>
           <?php
           } ?>
 
