@@ -13,18 +13,54 @@ $dropoff_date = $_POST['dropoff-date'];
 $dropoff_time = $_POST['dropoff-time'];
 $extras_data = $_POST['extras-data'];
 
-$query = "SELECT car_price_per_day FROM cars WHERE car_id = $car_id";
+// Consultar el precio del coche
+$query = "SELECT * FROM cars WHERE car_id = $car_id";
 $result = mysqli_query($conn, $query);
 $car_price_per_day = 0;
 if ($row = mysqli_fetch_assoc($result)) {
     $car_price_per_day = $row['car_price_per_day'];
 }
 
+// Calcular el número de días de alquiler
+$date1 = new DateTime($pickup_date);
+$date2 = new DateTime($dropoff_date);
+$interval = $date1->diff($date2);
+$days = max(1, $interval->days);  // Asegurar que no sea menos de 1 día
+
+// Calcular el precio total del alquiler
+$rentPrice = $days * $car_price_per_day;
+
+$total = $rentPrice;
+$extras = json_decode($extras_data, true);
+foreach ($extras as $extra) {
+    $total += $extra['qty'] * $extra['price'];
+}
+
 ?>
 
-<form id="payment-form" class="flex flex-col justify-between w-full">
-  <div id="card-element" class="flex flex-col justify-between w-full"></div>
-  <button id="submit">Pagar</button>
+
+<form id="payment-form" class="flex flex-col justify-between w-full bg-white p-2 rounded-md shadow">
+<div class="reservation-details mt-6 mb-4">
+    <h2 class="text-2xl font-semibold">Reservation Details</h2>
+    <ul class="mt-4">
+      <li><strong>Car:</strong> <?php echo $row['car_model'];?></li>
+      <li><strong>Pickup Date:</strong> <?php echo $pickup_date . " at " . $pickup_time; ?></li>
+      <li><strong>Dropoff Date:</strong> <?php echo $dropoff_date . " at " . $dropoff_time; ?></li>
+      <li><strong>Price per Day:</strong> <?php echo number_format($car_price_per_day, 2); ?>€</li>
+      <li><strong>Total Rental Days:</strong> <?php echo $days; ?></li>
+      <li><strong>Extras:</strong></li>
+      <ul>
+        <?php
+          foreach ($extras as $extra) {
+            echo "<li>" . htmlspecialchars($extra['name']) . " x" . $extra['qty'] . " (" . number_format($extra['price'], 2) . "€/unit)</li>";
+          }
+        ?>
+      </ul>
+      <li><strong>Total:</strong> <?php echo number_format($total, 2); ?>€</li>
+    </ul>
+</div>
+<div id="card-element" class="flex flex-col justify-between w-full rounded shadow p-3"></div>
+  <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
   <div id="error-message"></div>
 </form>
 
