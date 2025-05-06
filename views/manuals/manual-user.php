@@ -43,6 +43,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
   <p>Los administradores pueden alquilar coches como un usuario normal.</p>
 
+  <p>En la página oficial de Stripe puede ver toda la información relacionada con los pagos.
+    Teniendo una cuenta con acceso.</p>
+
 </div>
 
 <?php //Footer
