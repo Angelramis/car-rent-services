@@ -2,7 +2,9 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
+
 <?php
+
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
@@ -87,8 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
 
   // Redirige tras guardar para evitar reinserción al recargar
   header("Location: " . $_SERVER['PHP_SELF'] . "?id=$reservation_id");
-  exit;
-}
+
+exit;
+}  // Cierre del bloque POST
+
+
 
 // Mostrar datos si viene por GET con ?id
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -129,8 +134,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
       foreach ($extras_arr as $ex) {
         echo "<li>"
           . htmlspecialchars($ex['name'])
-          . " x{$ex['quantity']} @ "
-          . number_format($ex['unit_price'], 2) . "€ = "
+          . " x{$ex['quantity']} ("
+          . number_format($ex['unit_price'], 2) . "€/unit) = "
           . number_format($ex['unit_price'] * $ex['quantity'], 2) . "€"
           . "</li>";
       }

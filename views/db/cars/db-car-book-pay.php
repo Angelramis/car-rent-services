@@ -1,17 +1,28 @@
-
-
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/vendor/autoload.php';
 
-// Clave secreta
-\Stripe\Stripe::setApiKey();
+require_once($_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/vendor/autoload.php');
+
 
 header('Content-Type: application/json');
 
-// Información del pago
-$intent = \Stripe\PaymentIntent::create([
-  'amount' => 1000,
-  'currency' => 'eur',
-]);
+try {
+    $amount = floatval($_POST['total-amount']); // en euros
+    $amount_cents = intval($amount * 100); // convertir a centavos
 
-echo json_encode(['clientSecret' => $intent->client_secret]);
+    $paymentIntent = \Stripe\PaymentIntent::create([
+        'amount' => $amount_cents,
+        'currency' => 'eur',
+        'metadata' => [
+            'car_id' => $_POST['car-id'],
+            'pickup' => $_POST['pickup-date'] . ' ' . $_POST['pickup-time'],
+            'dropoff' => $_POST['dropoff-date'] . ' ' . $_POST['dropoff-time'],
+            'extras' => $_POST['extras-data'],
+        ],
+    ]);
+
+    echo json_encode(['clientSecret' => $paymentIntent->client_secret]);
+
+} catch (\Stripe\Exception\ApiErrorException $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+}
