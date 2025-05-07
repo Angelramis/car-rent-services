@@ -2,9 +2,9 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
-<h1 class="text-center text-2xl p-3">User Manual</h1>
 
 <div class="flex flex-col h-auto gap-3 bg-white shadow-md rounded-md max-w-4xl mx-auto w-full p-4">
+  <h1 class="text-center text-2xl p-2 font-bold">Manual de usuario</h1>
 
   <h2 class="font-bold text-xl">Usuario</h2>
   <p>Para iniciar sesión, se debe hacer click en el botón de

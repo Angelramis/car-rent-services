@@ -7,10 +7,9 @@ if (!strstr($session_user_roles, 'admin',) && !strstr($session_user_roles, 'empl
   exit();
 }
 ?>
-<h1 class="text-center text-2xl p-3">Installation Manual</h1>
-
 
 <div class="flex flex-col h-auto gap-3 bg-white shadow-md rounded-md max-w-4xl mx-auto w-full p-4">
+  <h1 class="text-center text-2xl p-2 font-bold">Manual de instalación</h1>
 
   <h2 class="font-bold text-xl">Hardware</h2>
   <p>Ordenador con sistema operativo Windows o Linux</p>

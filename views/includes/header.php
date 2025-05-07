@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/car-rent-services/src/output.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="bg-[#f7f7f7] flex flex-col items-center">
     <header>
       <div class="logo_contanier_header">
         <a href="/car-rent-services/index.php" class="flex text-white font-bold">
@@ -50,10 +50,6 @@
           <?php
           } ?>
 
-      <a class="a-menu-icon transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('pages_nav_bar')">
-        <img src="/car-rent-services/assets/icons/menu.png" alt="menu-icon">
-      </a>
-
         <a class ="a-account-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_account')">
           <img src="/car-rent-services/assets/icons/account.png" alt="account-icon">
           <p class="text-white"><?php echo $_SESSION['user_firstname'] ?? 'Account'; ?></p>
@@ -64,8 +60,8 @@
           <?php if ($session_user_id == 'guest') {
             // Si el usuario no ha iniciado sesión, mostrar html de log in.
             ?>
-              <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white">Log in</a>
-              <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white">Register</a>
+              <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log in</a>
+              <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Register</a>
           <?php
           } ?>
 
@@ -79,4 +75,4 @@
         </nav>
       </nav>
     </header>
-    <main class="gap-2 min-h-screen">
+    <main class="flex flex-col items-center w-full p-[15px] max-w-[850px] mt-[52px] gap-2 min-h-screen">

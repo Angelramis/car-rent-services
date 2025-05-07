@@ -1,10 +1,6 @@
 <?php //Header
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
-
-
-<h1 class="text-2xl font-medium">Available cars</h1>
-
 <?php
 
 // include conexion a bbdd
@@ -37,7 +33,6 @@ if (isset($_POST['form-car-search'])) {
   <div class="grid grid-cols-1 w-full m-2 gap-3">
 
     <?php
-    // Mostrar resultados, obteniendo e imprimiendo cada fila existente.
     foreach ($cars as $car) {
     ?>
       <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
@@ -79,7 +74,7 @@ if (isset($_POST['form-car-search'])) {
           </p>
         </div>
         </div>
-      
+
 
 
       <!-- Formulario para ver detalles coche -->

@@ -2,8 +2,6 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
-<h1 class="text-center text-2xl p-3">Offer details</h1>
-
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
 

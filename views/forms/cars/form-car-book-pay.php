@@ -59,7 +59,7 @@ foreach ($extras as $extra) {
       <li><strong>Total:</strong> <?php echo number_format($total, 2); ?>€</li>
     </ul>
 </div>
-<div id="card-element" class="flex flex-col justify-between w-full rounded shadow p-3"></div>
+<div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3"></div>
   <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
   <div id="error-message"></div>
 </form>
