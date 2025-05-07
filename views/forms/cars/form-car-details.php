@@ -15,6 +15,7 @@ if (isset($_POST['form-car-details'])) {
   $sql_query_car = "SELECT * 
                     FROM cars 
                     WHERE car_id = $car_id;";
+
   $sql_query_extras = "SELECT * 
                         FROM extras;";
 

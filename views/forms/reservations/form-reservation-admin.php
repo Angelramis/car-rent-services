@@ -12,12 +12,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
   <?php
   include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
-  // Mostrar coches en bbdd
 
   if (isset($_POST['form-reservation-admin'])) {
     $sql_reservations = "SELECT * 
                         FROM reservations_view;";
-
 
     $execute_query = mysqli_query($conn, $sql_reservations);
     $reservations = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
