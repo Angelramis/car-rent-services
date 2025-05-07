@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1">Pickup date</label>
-    <input type="date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
+    <input type="date" min="<?php echo date('Y-m-d'); ?>" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1">Dropoff date</label>
-    <input type="date" name="dropoff-date" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
+    <input type="date" name="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days'));?>" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
   </div>
   <div class="flex flex-col items-center justify-center w-full">
     <label for="dropoff-time" class="w-full mb-1">Time</label>

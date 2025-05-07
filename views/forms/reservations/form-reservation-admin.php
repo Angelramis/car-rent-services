@@ -35,6 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     <div class="w-full grid grid-cols-9 bg-gray-300 rounded-md items-center p-1">
       <p>Number</p>
       <p>User NIF</p>
+      <p>User Fullname</p>
       <p>Car Plate</p>
       <p>Pickup</p>
       <p>Dropoff</p>
