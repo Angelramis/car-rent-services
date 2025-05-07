@@ -12,8 +12,11 @@ if (isset($_POST['form-car-details'])) {
   $dropoff_date = htmlspecialchars($_POST['dropoff-date']);
   $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
 
-  $sql_query_car = "SELECT * FROM cars WHERE car_id = $car_id;";
-  $sql_query_extras = "SELECT * FROM extras;";
+  $sql_query_car = "SELECT * 
+                    FROM cars 
+                    WHERE car_id = $car_id;";
+  $sql_query_extras = "SELECT * 
+                        FROM extras;";
 
   $execute_query_car = mysqli_query($conn, $sql_query_car);
   $execute_query_extras = mysqli_query($conn, $sql_query_extras);
@@ -31,7 +34,6 @@ if (isset($_POST['form-car-details'])) {
 ?>
 
 <form id="extras-form" method="POST" action="/car-rent-services/views/forms/cars/form-car-book-pay.php">
-<!-- <form id="extras-form" method="POST" action="/car-rent-services/views/db/reservations/db-reservation-confirm.php"> -->
   <input type="hidden" name="car-id" value="<?php echo $car_id; ?>">
   <input type="hidden" name="pickup-date" value="<?php echo $pickup_date; ?>">
   <input type="hidden" name="pickup-time" value="<?php echo $pickup_time; ?>">

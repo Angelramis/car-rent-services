@@ -229,6 +229,9 @@
   .z-\[15\] {
     z-index: 15;
   }
+  .col-span-12 {
+    grid-column: span 12 / span 12;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -672,6 +675,9 @@
   }
   .text-blue-600 {
     color: var(--color-blue-600);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-gray-600 {
     color: var(--color-gray-600);

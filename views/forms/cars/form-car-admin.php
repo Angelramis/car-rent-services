@@ -35,8 +35,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="GET">
           <nav class="flex flex-row gap-2 items-center">
             <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
-            <input type="text" id="searchInput" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
-          focus:ring-blue-500 focus:border-blue-500">
+            <input type="text" id="buscador" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
+          focus:ring-blue-500 focus:border-blue-500" placeholder="Model or brand...">
           </nav>
         </form>
         <form action="/car-rent-services/views/forms/cars/form-car-create.php" method="POST">
@@ -57,10 +57,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         <p>Min age</p>
         <p>Active</p>
       </div>
+      <div id="resultados" class="w-full flex flex-col">
       <?php
       foreach ($cars as $car) {
       ?>
-        <form action="/car-rent-services/views/forms/cars/form-car-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-12 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
+        <form id="resultados" action="/car-rent-services/views/forms/cars/form-car-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-12 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
           <input type="hidden" name="car_id" value="<?php echo $car['car_id']; ?>">
 
           <p><?php echo $car['car_brand']; ?></p>
@@ -82,14 +83,44 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
   <?php
       }
+      ?>
+       </div>
+       <?php
     }
-  
+   
 
   mysqli_close($conn);
   ?>
 
 </div>
 
+<script>
+  // Gestión AJAX buscador
+  document.addEventListener("DOMContentLoaded", function () {
+    const buscador = document.getElementById("buscador");
+    const resultadosContainer = document.getElementById("resultados");
+
+    buscador.addEventListener("input", function () {
+      const search = buscador.value;
+
+      resultadosContainer.innerHTML = "";
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/car-rent-services/views/db/cars/db-car-search-ajax.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          resultadosContainer.innerHTML = xhr.responseText;
+        } else {
+          console.error("Error en la solicitud AJAX");
+        }
+      };
+
+      xhr.send("search=" + encodeURIComponent(search));
+    });
+  });
+</script>
 
 
 <?php

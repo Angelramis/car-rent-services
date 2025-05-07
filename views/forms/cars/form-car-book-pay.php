@@ -17,8 +17,8 @@ $extras_data = $_POST['extras-data'];
 $query = "SELECT * FROM cars WHERE car_id = $car_id";
 $result = mysqli_query($conn, $query);
 $car_price_per_day = 0;
-if ($row = mysqli_fetch_assoc($result)) {
-    $car_price_per_day = $row['car_price_per_day'];
+if ($car = mysqli_fetch_assoc($result)) {
+    $car_price_per_day = $car['car_price_per_day'];
 }
 
 // Calcular el número de días de alquiler
@@ -43,16 +43,20 @@ foreach ($extras as $extra) {
 <div class="reservation-details mt-6 mb-4">
     <h2 class="text-2xl font-semibold">Reservation Details</h2>
     <ul class="mt-4">
-      <li><strong>Car:</strong> <?php echo $row['car_model'];?></li>
-      <li><strong>Pickup Date:</strong> <?php echo $pickup_date . " at " . $pickup_time; ?></li>
-      <li><strong>Dropoff Date:</strong> <?php echo $dropoff_date . " at " . $dropoff_time; ?></li>
+      <li><strong>Car:</strong> <?php echo $car['car_brand'] . " " . $car['car_model'];?> or similar</li>
+      <li><strong>Pickup Date:</strong> <?php echo $pickup_date . " - " . $pickup_time; ?>h</li>
+      <li><strong>Dropoff Date:</strong> <?php echo $dropoff_date . " - " . $dropoff_time; ?>h</li>
       <li><strong>Price per Day:</strong> <?php echo number_format($car_price_per_day, 2); ?>€</li>
       <li><strong>Total Rental Days:</strong> <?php echo $days; ?></li>
       <li><strong>Extras:</strong></li>
       <ul>
         <?php
-          foreach ($extras as $extra) {
-            echo "<li>" . htmlspecialchars($extra['name']) . " x" . $extra['qty'] . " (" . number_format($extra['price'], 2) . "€/unit)</li>";
+          if (count($extras) == 0) {
+            echo "None";
+          } else {
+            foreach ($extras as $extra) {
+              echo "<li>" . htmlspecialchars($extra['name']) . " x" . $extra['qty'] . " (" . number_format($extra['price'], 2) . "€/unit)</li>";
+            }
           }
         ?>
       </ul>
@@ -75,8 +79,8 @@ foreach ($extras as $extra) {
   const dropoffTime = "<?php echo $dropoff_time; ?>";
   const extras = <?php echo $extras_data; ?>;
 
-   // Calcular número de días
-   const date1 = new Date(pickupDate);
+  // Calcular número de días
+  const date1 = new Date(pickupDate);
   const date2 = new Date(dropoffDate);
   const days = Math.max(1, Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24)));
 

@@ -22,26 +22,27 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     $execute_query = mysqli_query($conn, $sql_reservations);
     $reservations = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
   ?>
-      <nav class="w-full mb-2">
-        <form action="" method="GET">
-          <nav class="flex flex-row gap-2 items-center">
-            <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
-            <input type="text" id="searchInput" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
+    <nav class="w-full mb-2">
+      <form action="" method="GET">
+        <nav class="flex flex-row gap-2 items-center">
+          <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
+          <input type="text" id="buscador" name="buscador" placeholder="Number, NIF or fullname..." class="w-48 h-8 p-2 rounded-md shadow
           focus:ring-blue-500 focus:border-blue-500">
-          </nav>
-        </form>
-      </nav>
+        </nav>
+      </form>
+    </nav>
 
-      <div class="w-full grid grid-cols-9 bg-gray-300 rounded-md items-center p-1">
-        <p>Number</p>
-        <p>User NIF</p>
-        <p>Car Plate</p>
-        <p>Pickup</p>
-        <p>Dropoff</p>
-        <p>Status</p>
-        <p>Creation</p>
-        <p>Total price</p>
-      </div>
+    <div class="w-full grid grid-cols-9 bg-gray-300 rounded-md items-center p-1">
+      <p>Number</p>
+      <p>User NIF</p>
+      <p>Car Plate</p>
+      <p>Pickup</p>
+      <p>Dropoff</p>
+      <p>Status</p>
+      <p>Creation</p>
+      <p>Total price</p>
+    </div>
+    <div id="resultados" class="w-full flex flex-col">
       <?php
       foreach ($reservations as $rs) {
       ?>
@@ -49,6 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
           <input type="hidden" name="rs_number" value="<?php echo $rs['rs_number']; ?>">
           <p><?php echo $rs['rs_number']; ?></p>
           <p><?php echo $rs['user_nif']; ?></p>
+          <p><?php echo $rs['user_fullname']; ?></p>
           <p><?php echo $rs['car_plate']; ?></p>
           <p><?php echo $rs['rs_pickup_date'] . " - " . $rs['rs_pickup_time']; ?>h</p>
           <p><?php echo $rs['rs_dropoff_date'] . " - " . $rs['rs_dropoff_time']; ?>h</p>
@@ -56,19 +58,46 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
           <p><?php echo $rs['rs_created_at']; ?></p>
           <p><?php echo $rs['rs_total_price']; ?></p>
           <img src="/car-rent-services/assets/icons/edit.png" alt="Edit" class="w-7">
-
         </form>
-
-  <?php
+      <?php
       }
-    }
-  
+      ?>
+    </div>
+  <?php
+  }
+
 
   mysqli_close($conn);
   ?>
 
 </div>
+<script>
+  // Gestión AJAX buscador
+  document.addEventListener("DOMContentLoaded", function() {
+    const buscador = document.getElementById("buscador");
+    const resultadosContainer = document.getElementById("resultados");
 
+    buscador.addEventListener("input", function() {
+      const search = buscador.value;
+
+      resultadosContainer.innerHTML = "";
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/car-rent-services/views/db/reservations/db-reservation-search-ajax.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          resultadosContainer.innerHTML = xhr.responseText;
+        } else {
+          console.error("Error en la solicitud AJAX");
+        }
+      };
+
+      xhr.send("search=" + encodeURIComponent(search));
+    });
+  });
+</script>
 
 
 <?php
