@@ -55,7 +55,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
           <nav class="flex flex-col gap-1 p-2">
             <label for="car-price-per-day">Price per day (€)</label>
-            <input type="number" id="car-price-per-day" placeholder="XX,XX" name="car-price-per-day" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_price_per_day']; ?>" required>
+            <input type="number" step="0.01" id="car-price-per-day" placeholder="XX,XX" name="car-price-per-day" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_price_per_day']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">

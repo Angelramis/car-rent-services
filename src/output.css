@@ -590,6 +590,9 @@
   .object-cover {
     object-fit: cover;
   }
+  .object-scale-down {
+    object-fit: scale-down;
+  }
   .\!p-3 {
     padding: calc(var(--spacing) * 3) !important;
   }
@@ -908,6 +911,16 @@
   .md\:bg-white {
     @media (width >= 48rem) {
       background-color: var(--color-white);
+    }
+  }
+  .md\:object-contain {
+    @media (width >= 48rem) {
+      object-fit: contain;
+    }
+  }
+  .md\:object-scale-down {
+    @media (width >= 48rem) {
+      object-fit: scale-down;
     }
   }
   .lg\:min-h-20 {

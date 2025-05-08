@@ -1,41 +1,44 @@
 <?php // Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
 <?php
+  require $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
 
-require $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+  $car_id = $_POST['car-id'];
+  $pickup_date = $_POST['pickup-date'];
+  $pickup_time = $_POST['pickup-time'];
+  $dropoff_date = $_POST['dropoff-date'];
+  $dropoff_time = $_POST['dropoff-time'];
+  $extras_data = $_POST['extras-data'];
 
-$car_id = $_POST['car-id'];
-$pickup_date = $_POST['pickup-date'];
-$pickup_time = $_POST['pickup-time'];
-$dropoff_date = $_POST['dropoff-date'];
-$dropoff_time = $_POST['dropoff-time'];
-$extras_data = $_POST['extras-data'];
+  // Consultar el precio del coche
+  $query = "SELECT * 
+            FROM cars 
+            WHERE car_id = $car_id";
 
-// Consultar el precio del coche
-$query = "SELECT * FROM cars WHERE car_id = $car_id";
-$result = mysqli_query($conn, $query);
-$car_price_per_day = 0;
-if ($car = mysqli_fetch_assoc($result)) {
-  $car_price_per_day = $car['car_price_per_day'];
-}
+  $result = mysqli_query($conn, $query);
 
-// Calcular el número de días de alquiler
-$date1 = new DateTime($pickup_date);
-$date2 = new DateTime($dropoff_date);
-$interval = $date1->diff($date2);
-$days = max(1, $interval->days);  // Asegurar que no sea menos de 1 día
+  $car_price_per_day = 0;
 
-// Calcular el precio total del alquiler
-$rentPrice = $days * $car_price_per_day;
+  if ($car = mysqli_fetch_assoc($result)) {
+    $car_price_per_day = $car['car_price_per_day'];
+  }
 
-$total = $rentPrice;
-$extras = json_decode($extras_data, true);
-foreach ($extras as $extra) {
-  $total += $extra['qty'] * $extra['price'];
-}
+  // Calcular el número de días de alquiler
+  $date1 = new DateTime($pickup_date);
+  $date2 = new DateTime($dropoff_date);
+  $interval = $date1->diff($date2);
+  $days = max(1, $interval->days);  // Asegurar que no sea menos de 1 día
 
+  // Calcular el precio total del alquiler
+  $rentPrice = $days * $car_price_per_day;
+
+  $total = $rentPrice;
+  $extras = json_decode($extras_data, true);
+  foreach ($extras as $extra) {
+    $total += $extra['qty'] * $extra['price'];
+  }
 ?>
 
 
@@ -156,7 +159,7 @@ foreach ($extras as $extra) {
 
       }
     } else {
-      document.getElementById('error-message').textContent = 'Hubo un error al crear el pago. Intenta nuevamente.';
+      document.getElementById('error-message').textContent = 'An error ocurred during the payment. Try again.';
     }
   });
 </script>
