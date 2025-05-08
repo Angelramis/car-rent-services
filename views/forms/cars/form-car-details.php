@@ -101,10 +101,9 @@ if (isset($_POST['form-car-details'])) {
           <span class="text-sm font-bold" id="total-price"><?php echo $rent_price; ?>€</span>
         </div>
       </div>
-
-      <div class="w-full flex flex-row-reverse">
-        <button id="continue-button" class="bg-green-500 text-white px-3 py-1 rounded text-sm mt-2">Continue</button>
-      </div>
+      <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3"></div>
+      <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
+      <div id="error-message"></div>
 
       <div id="user-form-container" class="hidden mt-4">
         <h2 class="text-xl font-bold mb-2">Not logged in</h2>
@@ -117,110 +116,143 @@ if (isset($_POST['form-car-details'])) {
       </div>
     </div>
 
+    <script src="https://js.stripe.com/v3/"></script>
+
     <script>
-      let childSeatInput = document.getElementById('child-seat-input');
+       const carId = "<?php echo $car_id; ?>";
+  const pickupDate = "<?php echo $pickup_date; ?>";
+  const pickupTime = "<?php echo $pickup_time; ?>";
+  const dropoffDate = "<?php echo $dropoff_date; ?>";
+  const dropoffTime = "<?php echo $dropoff_time; ?>";
+  const baseRentPrice = <?php echo $rent_price; ?>;
 
-      // Validar cantidad de child seat
-      childSeatInput.addEventListener('change', function(e) {
-        if (childSeatInput.value > 5) {
-          showError("You can't select more than 5 child seats.")
-          childSeatInput.value = 5;
-          return;
-        }
-      });
+  let selectedExtras = [];
+  let totalAmount = baseRentPrice;
 
-      let userLogged = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
-      
-      document.addEventListener('DOMContentLoaded', function() {
-        const baseRentPrice = <?php echo $rent_price; ?>;
-        const totalPriceEl = document.getElementById('total-price');
-        const extrasListContainer = document.getElementById('selected-extras-list');
+  const extrasInputs = document.querySelectorAll('.extra-input');
+  const selectedExtrasList = document.getElementById('selected-extras-list');
+  const totalPriceEl = document.getElementById('total-price');
+  const extrasDataInput = document.getElementById('extras-data');
 
-        function calculateTotal() {
-          let total = baseRentPrice;
-          extrasListContainer.innerHTML = '';
+  function updateTotal() {
+    selectedExtras = [];
+    let extraTotal = 0;
 
-          document.querySelectorAll('.extra-div').forEach(div => {
-            const input = div.querySelector('.extra-input');
-            if (!input) return;
+    extrasInputs.forEach(input => {
+      const price = parseFloat(input.dataset.price);
+      const type = input.dataset.type;
 
-            const price = parseFloat(input.getAttribute('data-price'));
-            const type = input.getAttribute('data-type');
-            const label = div.querySelector('.extra-name')?.textContent.trim();
+      if (type === 'checkbox' && input.checked) {
+        selectedExtras.push({ name: input.closest('.extra-div').querySelector('.extra-name').textContent, quantity: 1, price });
+        extraTotal += price;
+      }
 
-            if (type === 'checkbox' && input.checked) {
-              total += price;
-              extrasListContainer.innerHTML += `<div class="flex justify-between"><span>${label}</span><span>${price.toFixed(2)}€</span></div>`;
-            }
+      if (type === 'number' && parseInt(input.value) > 0) {
+        const qty = parseInt(input.value);
+        selectedExtras.push({ name: input.closest('.extra-div').querySelector('.extra-name').textContent, quantity: qty, price });
+        extraTotal += price * qty;
+      }
+    });
 
-            if (type === 'number') {
-              const qty = parseInt(input.value) || 0;
-              if (qty > 0) {
-                const subtotal = qty * price;
-                total += subtotal;
-                extrasListContainer.innerHTML += `<div class="flex justify-between"><span>${label} x${qty}</span><span>${subtotal.toFixed(2)}€</span></div>`;
-              }
-            }
+    totalAmount = baseRentPrice + extraTotal;
+    totalPriceEl.textContent = `${totalAmount.toFixed(2)}€`;
+
+    // Actualizar lista de extras seleccionados
+    selectedExtrasList.innerHTML = selectedExtras.map(e => 
+      `<div class="flex justify-between"><span>${e.name} x${e.quantity}</span><span>${(e.price * e.quantity).toFixed(2)}€</span></div>`
+    ).join("");
+
+    // Actualizar campo hidden del form
+    extrasDataInput.value = JSON.stringify(selectedExtras);
+  }
+
+  extrasInputs.forEach(input => {
+    input.addEventListener('change', updateTotal);
+  });
+
+  // Inicializar cálculo por si hay valores precargados
+  updateTotal();
+
+
+      const stripe = Stripe('pk_test_51RLMoJPbBgCevtAVM56KGc8qoSIFFNFmcvm0Hw3Nzz1XaVI5Ezr1NU1S5mc9UFXudEULLN917pKDVDUMic4yt5DN00sY6PLas9');
+      const elements = stripe.elements();
+      const card = elements.create('card');
+      card.mount('#card-element');
+
+      const form = document.getElementById('extras-form');
+      const errorDiv = document.getElementById('error-message');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('car-id', carId);
+        formData.append('pickup-date', pickupDate);
+        formData.append('pickup-time', pickupTime);
+        formData.append('dropoff-date', dropoffDate);
+        formData.append('dropoff-time', dropoffTime);
+        formData.append('extras-data', JSON.stringify(selectedExtras));
+        formData.append('total-amount', totalAmount.toFixed(2));
+
+        try {
+          const response = await fetch('/car-rent-services/views/db/cars/db-car-book-pay.php', {
+            method: 'POST',
+            body: formData
           });
 
-          totalPriceEl.textContent = total.toFixed(2) + '€';
-        }
+          const data = await response.json();
 
-        document.querySelectorAll('.extra-input').forEach(input => {
-          input.addEventListener('change', calculateTotal);
-        });
-
-        calculateTotal();
-
-        const continueBtn = document.getElementById('continue-button');
-        const userFormContainer = document.getElementById('user-form-container');
-
-        continueBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-
-          if (!userLogged) {
-            userFormContainer.classList.remove('hidden');
-            userFormContainer.scrollIntoView({
-              behavior: 'smooth'
-            });
+          if (!data.clientSecret) {
+            errorDiv.textContent = "No se pudo generar el pago. Inténtalo de nuevo.";
             return;
           }
 
-          const extras = [];
-          document.querySelectorAll('.extra-div').forEach(div => {
-            const input = div.querySelector('.extra-input');
-            if (!input) return;
-
-            const type = input.getAttribute('data-type');
-            const price = parseFloat(input.getAttribute('data-price'));
-            const label = div.querySelector('.extra-name')?.textContent.trim();
-
-            if (type === 'checkbox' && input.checked) {
-              extras.push({
-                name: label,
-                qty: 1,
-                price
-              });
-            }
-
-            if (type === 'number') {
-              const qty = parseInt(input.value) || 0;
-              if (qty > 0) {
-                extras.push({
-                  name: label,
-                  qty,
-                  price
-                });
-              }
+          const result = await stripe.confirmCardPayment(data.clientSecret, {
+            payment_method: {
+              card: card
             }
           });
 
-          document.getElementById('extras-data').value = JSON.stringify(extras);
-          document.getElementById('extras-form').submit();
-        });
+          if (result.error) {
+            errorDiv.textContent = result.error.message;
+          } else if (result.paymentIntent.status === 'succeeded') {
+            // Redireccionar o enviar datos para guardar la reserva
+            const confirmForm = document.createElement('form');
+            confirmForm.method = 'POST';
+            confirmForm.action = '/car-rent-services/views/db/reservations/db-reservation-confirm.php';
+
+            const addHiddenInput = (name, value) => {
+              const input = document.createElement('input');
+              input.type = 'hidden';
+              input.name = name;
+              input.value = value;
+              confirmForm.appendChild(input);
+            };
+
+            addHiddenInput('car-id', carId);
+            addHiddenInput('pickup-date', pickupDate);
+            addHiddenInput('pickup-time', pickupTime);
+            addHiddenInput('dropoff-date', dropoffDate);
+            addHiddenInput('dropoff-time', dropoffTime);
+            addHiddenInput('extras-data', JSON.stringify(selectedExtras));
+            addHiddenInput('total-amount', totalAmount.toFixed(2));
+
+            document.body.appendChild(confirmForm);
+            confirmForm.submit();
+          }
+        } catch (error) {
+          errorDiv.textContent = "Ha ocurrido un error al procesar el pago.";
+          console.error(error);
+        }
       });
     </script>
 
+<script>
+   document.getElementById('submit').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('extras-form').dispatchEvent(new Event('submit'));
+  });
+</script>
 
 
 <?php

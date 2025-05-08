@@ -14,7 +14,9 @@ if (isset($_POST['form-car-search'])) {
   $pickup_time = htmlspecialchars($_POST['pickup-time']);
   $dropoff_date = htmlspecialchars($_POST['dropoff-date']);
   $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
-
+  
+  // Filtrar coches que no estén dentro de fechas reservadas
+  // confirmadas o por confirmar
   $sql_query = "SELECT *
                 FROM cars
                 WHERE car_id NOT IN (
@@ -22,6 +24,7 @@ if (isset($_POST['form-car-search'])) {
                                       FROM reservations
                                       WHERE ('$pickup_date' < rs_dropoff_date 
                                       AND '$dropoff_date' > rs_pickup_date)
+                                      AND (rs_status = 'Confirmed' OR rs_status = 'Pending')
                                       );";
 
   // Ejecutar consulta SQL con BBDD

@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   if (is_array($raw_extras)) {
     foreach ($raw_extras as $extra) {
       $name     = $extra['name'];
-      $qty      = $extra['qty'];
+      $qty      = $extra['quantity'];
       $unit     = $extra['price'];
       $subtotal = $qty * $unit;
       $total_extras += $subtotal;
@@ -124,22 +124,23 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     echo "<p><strong>Status:</strong> {$row['rs_status']}</p>";
     echo "<p><strong>Days:</strong> $days</p>";
     echo "<p><strong>Base Rent:</strong> " . number_format($base_rent, 2) . "€</p>";
-    echo "<p><strong>Total Price:</strong> " . number_format($row['rs_total_price'], 2) . "€</p>";
     echo "<p class='mt-2'><strong>Car:</strong> {$row['car_brand']} {$row['car_model']}</p>";
     echo "<p><strong>Price per day:</strong> " . number_format($row['car_price_per_day'], 2) . "€</p>";
-
+    
     echo "<h3 class='mt-4 font-semibold'>Extras:</h3>";
     if (!empty($extras_arr)) {
       echo "<ul class='list-disc pl-5'>";
       foreach ($extras_arr as $ex) {
         echo "<li>"
-          . htmlspecialchars($ex['name'])
-          . " x{$ex['quantity']} ("
-          . number_format($ex['unit_price'], 2) . "€/unit) = "
-          . number_format($ex['unit_price'] * $ex['quantity'], 2) . "€"
-          . "</li>";
+        . htmlspecialchars($ex['name'])
+        . " x{$ex['quantity']} ("
+        . number_format($ex['unit_price'], 2) . "€/unit) = "
+        . number_format($ex['unit_price'] * $ex['quantity'], 2) . "€"
+        . "</li>";
       }
       echo "</ul>";
+      
+      echo "<p class='text-xl'><strong>Total Price:</strong> " . number_format($row['rs_total_price'], 2) . "€</p>";
     } else {
       echo "<p>No extras selected.</p>";
     }
