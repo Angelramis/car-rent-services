@@ -104,6 +104,13 @@ if (isset($_POST['form-car-details'])) {
       <?php if ($session_user_id != 'guest'): ?>
         <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3 mt-4"></div>
         <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
+        <div id="loading-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+          <div class="bg-white rounded-lg shadow-lg p-6 flex items-center space-x-3">
+            <img src="/car-rent-services/assets/icons/loading.png" alt="Loading" class="w-6 h-6 animate-spin">
+            <span class="text-gray-800 font-semibold">Processing transaction, please wait...</span>
+          </div>
+        </div>
+
         <div id="error-message"></div>
       <?php else: ?>
         <div id="user-form-container" class="mt-4">
@@ -121,59 +128,67 @@ if (isset($_POST['form-car-details'])) {
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-       const carId = "<?php echo $car_id; ?>";
-  const pickupDate = "<?php echo $pickup_date; ?>";
-  const pickupTime = "<?php echo $pickup_time; ?>";
-  const dropoffDate = "<?php echo $dropoff_date; ?>";
-  const dropoffTime = "<?php echo $dropoff_time; ?>";
-  const baseRentPrice = <?php echo $rent_price; ?>;
+      const carId = "<?php echo $car_id; ?>";
+      const pickupDate = "<?php echo $pickup_date; ?>";
+      const pickupTime = "<?php echo $pickup_time; ?>";
+      const dropoffDate = "<?php echo $dropoff_date; ?>";
+      const dropoffTime = "<?php echo $dropoff_time; ?>";
+      const baseRentPrice = <?php echo $rent_price; ?>;
 
-  let selectedExtras = [];
-  let totalAmount = baseRentPrice;
+      let selectedExtras = [];
+      let totalAmount = baseRentPrice;
 
-  const extrasInputs = document.querySelectorAll('.extra-input');
-  const selectedExtrasList = document.getElementById('selected-extras-list');
-  const totalPriceEl = document.getElementById('total-price');
-  const extrasDataInput = document.getElementById('extras-data');
+      const extrasInputs = document.querySelectorAll('.extra-input');
+      const selectedExtrasList = document.getElementById('selected-extras-list');
+      const totalPriceEl = document.getElementById('total-price');
+      const extrasDataInput = document.getElementById('extras-data');
 
-  function updateTotal() {
-    selectedExtras = [];
-    let extraTotal = 0;
+      function updateTotal() {
+        selectedExtras = [];
+        let extraTotal = 0;
 
-    extrasInputs.forEach(input => {
-      const price = parseFloat(input.dataset.price);
-      const type = input.dataset.type;
+        extrasInputs.forEach(input => {
+          const price = parseFloat(input.dataset.price);
+          const type = input.dataset.type;
 
-      if (type === 'checkbox' && input.checked) {
-        selectedExtras.push({ name: input.closest('.extra-div').querySelector('.extra-name').textContent, quantity: 1, price });
-        extraTotal += price;
+          if (type === 'checkbox' && input.checked) {
+            selectedExtras.push({
+              name: input.closest('.extra-div').querySelector('.extra-name').textContent,
+              quantity: 1,
+              price
+            });
+            extraTotal += price;
+          }
+
+          if (type === 'number' && parseInt(input.value) > 0) {
+            const qty = parseInt(input.value);
+            selectedExtras.push({
+              name: input.closest('.extra-div').querySelector('.extra-name').textContent,
+              quantity: qty,
+              price
+            });
+            extraTotal += price * qty;
+          }
+        });
+
+        totalAmount = baseRentPrice + extraTotal;
+        totalPriceEl.textContent = `${totalAmount.toFixed(2)}€`;
+
+        // Actualizar lista de extras seleccionados
+        selectedExtrasList.innerHTML = selectedExtras.map(e =>
+          `<div class="flex justify-between"><span>${e.name} x${e.quantity}</span><span>${(e.price * e.quantity).toFixed(2)}€</span></div>`
+        ).join("");
+
+        // Actualizar campo hidden del form
+        extrasDataInput.value = JSON.stringify(selectedExtras);
       }
 
-      if (type === 'number' && parseInt(input.value) > 0) {
-        const qty = parseInt(input.value);
-        selectedExtras.push({ name: input.closest('.extra-div').querySelector('.extra-name').textContent, quantity: qty, price });
-        extraTotal += price * qty;
-      }
-    });
+      extrasInputs.forEach(input => {
+        input.addEventListener('change', updateTotal);
+      });
 
-    totalAmount = baseRentPrice + extraTotal;
-    totalPriceEl.textContent = `${totalAmount.toFixed(2)}€`;
-
-    // Actualizar lista de extras seleccionados
-    selectedExtrasList.innerHTML = selectedExtras.map(e => 
-      `<div class="flex justify-between"><span>${e.name} x${e.quantity}</span><span>${(e.price * e.quantity).toFixed(2)}€</span></div>`
-    ).join("");
-
-    // Actualizar campo hidden del form
-    extrasDataInput.value = JSON.stringify(selectedExtras);
-  }
-
-  extrasInputs.forEach(input => {
-    input.addEventListener('change', updateTotal);
-  });
-
-  // Inicializar cálculo por si hay valores precargados
-  updateTotal();
+      // Inicializar cálculo por si hay valores precargados
+      updateTotal();
 
 
       const stripe = Stripe('pk_test_51RLMoJPbBgCevtAVM56KGc8qoSIFFNFmcvm0Hw3Nzz1XaVI5Ezr1NU1S5mc9UFXudEULLN917pKDVDUMic4yt5DN00sY6PLas9');
@@ -186,6 +201,9 @@ if (isset($_POST['form-car-details'])) {
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        document.getElementById('loading-popup').classList.remove('hidden');
+        document.getElementById('submit').disabled = true;
+        document.getElementById('submit').classList.add('opacity-50', 'cursor-not-allowed');
 
         const formData = new FormData();
         formData.append('car-id', carId);
@@ -205,6 +223,7 @@ if (isset($_POST['form-car-details'])) {
           const data = await response.json();
 
           if (!data.clientSecret) {
+            hideLoadingPopup();
             errorDiv.textContent = "The payment could not be generated. Please try again.";
             return;
           }
@@ -216,6 +235,8 @@ if (isset($_POST['form-car-details'])) {
           });
 
           if (result.error) {
+            hideLoadingPopup();
+
             errorDiv.textContent = result.error.message;
           } else if (result.paymentIntent.status === 'succeeded') {
             // Redireccionar o enviar datos para guardar la reserva
@@ -243,19 +264,27 @@ if (isset($_POST['form-car-details'])) {
             confirmForm.submit();
           }
         } catch (error) {
+
           errorDiv.textContent = "An error ocurred processing the payment.";
           console.error(error);
         }
       });
     </script>
 
-<script>
-   document.getElementById('submit').addEventListener('click', function (e) {
-    e.preventDefault();
-    document.getElementById('extras-form').dispatchEvent(new Event('submit'));
-  });
-</script>
-
+    <script>
+      document.getElementById('submit').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('extras-form').dispatchEvent(new Event('submit'));
+      });
+    </script>
+    
+    <script>
+      function hideLoadingPopup() {
+        document.getElementById('loading-popup').classList.add('hidden');
+        document.getElementById('submit').disabled = false;
+        document.getElementById('submit').classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+    </script>
 
 <?php
   } else {
