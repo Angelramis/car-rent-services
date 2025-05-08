@@ -84,7 +84,7 @@ if (isset($_POST['form-car-details'])) {
         </div>
       </div>
 
-      <div id="error-div" class="w-full shadow-md bg-red-500 p-2 mt-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
+      <div id="error-div" class="w-full shadow-md bg-red-500 p-2 my-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
         <img class="w-6" src="/car-rent-services/assets/icons/error.png" alt="Error icon">
         <p id="error-text"></p>
       </div>
@@ -118,8 +118,19 @@ if (isset($_POST['form-car-details'])) {
     </div>
 
     <script>
-      let userLogged = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+      let childSeatInput = document.getElementById('child-seat-input');
 
+      // Validar cantidad de child seat
+      childSeatInput.addEventListener('change', function(e) {
+        if (childSeatInput.value > 5) {
+          showError("You can't select more than 5 child seats.")
+          childSeatInput.value = 5;
+          return;
+        }
+      });
+
+      let userLogged = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+      
       document.addEventListener('DOMContentLoaded', function() {
         const baseRentPrice = <?php echo $rent_price; ?>;
         const totalPriceEl = document.getElementById('total-price');

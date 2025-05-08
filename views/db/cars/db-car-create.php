@@ -31,7 +31,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     
     // -- FIN gestión imagen --
 
-    
     // Obtener los valores del formulario y sanitizarlos
     $car_brand = htmlspecialchars($_POST['car-brand']);
     $car_model = htmlspecialchars($_POST['car-model']);
