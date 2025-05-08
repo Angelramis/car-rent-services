@@ -101,19 +101,21 @@ if (isset($_POST['form-car-details'])) {
           <span class="text-sm font-bold" id="total-price"><?php echo $rent_price; ?>€</span>
         </div>
       </div>
-      <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3"></div>
-      <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
-      <div id="error-message"></div>
-
-      <div id="user-form-container" class="hidden mt-4">
-        <h2 class="text-xl font-bold mb-2">Not logged in</h2>
-        <div class="mb-4 mt-4 text-gray-600 text-left">
-          <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-blue-600">Already have an account? Login here</a>
+      <?php if ($session_user_id != 'guest'): ?>
+        <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3 mt-4"></div>
+        <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
+        <div id="error-message"></div>
+      <?php else: ?>
+        <div id="user-form-container" class="mt-4">
+          <h2 class="text-xl font-bold mb-2">Register to rent a car</h2>
+          <div class="mb-4 mt-2 text-gray-600 text-left">
+            <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-blue-600">Already have an account? Login here</a>
+          </div>
+          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+            <button name="form-user-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300">Register</button>
+          </a>
         </div>
-        <a href="/car-rent-services/views/forms/users/form-user-register.php">
-          <button name="form-user-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300">Register</button>
-        </a>
-      </div>
+      <?php endif; ?>
     </div>
 
     <script src="https://js.stripe.com/v3/"></script>
@@ -203,7 +205,7 @@ if (isset($_POST['form-car-details'])) {
           const data = await response.json();
 
           if (!data.clientSecret) {
-            errorDiv.textContent = "No se pudo generar el pago. Inténtalo de nuevo.";
+            errorDiv.textContent = "The payment could not be generated. Please try again.";
             return;
           }
 
@@ -241,7 +243,7 @@ if (isset($_POST['form-car-details'])) {
             confirmForm.submit();
           }
         } catch (error) {
-          errorDiv.textContent = "Ha ocurrido un error al procesar el pago.";
+          errorDiv.textContent = "An error ocurred processing the payment.";
           console.error(error);
         }
       });
