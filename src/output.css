@@ -217,18 +217,6 @@
   .static {
     position: static;
   }
-  .z-1 {
-    z-index: 1;
-  }
-  .z-10 {
-    z-index: 10;
-  }
-  .z-\[1\] {
-    z-index: 1;
-  }
-  .z-\[15\] {
-    z-index: 15;
-  }
   .col-span-12 {
     grid-column: span 12 / span 12;
   }
@@ -334,9 +322,6 @@
   .h-48 {
     height: calc(var(--spacing) * 48);
   }
-  .h-\[50px\] {
-    height: 50px;
-  }
   .h-\[52px\] {
     height: 52px;
   }
@@ -345,6 +330,9 @@
   }
   .h-full {
     height: 100%;
+  }
+  .min-h-10 {
+    min-height: calc(var(--spacing) * 10);
   }
   .min-h-12 {
     min-height: calc(var(--spacing) * 12);
@@ -357,6 +345,9 @@
   }
   .min-h-screen {
     min-height: 100vh;
+  }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
@@ -435,9 +426,6 @@
   }
   .grid-cols-9 {
     grid-template-columns: repeat(9, minmax(0, 1fr));
-  }
-  .grid-cols-10 {
-    grid-template-columns: repeat(10, minmax(0, 1fr));
   }
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -578,9 +566,6 @@
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
-  }
-  .p-2\.5 {
-    padding: calc(var(--spacing) * 2.5);
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);

@@ -4,16 +4,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 <h1 class="text-2xl font-medium">Rent a car <span class="text-[#1389e4]">fast</span> and <span class="text-[#1389e4]">easy</span> </h1>
 
-<form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" method="POST"
+<form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" id="form-cars-search" method="POST"
   class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1">Pickup date</label>
-    <input type="date" min="<?php echo date('Y-m-d'); ?>" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days'));?>">
+    <input type="date" min="<?php echo date('Y-m-d'); ?>" id="pickup-date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days')); ?>">
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-time" class="w-full mb-1">Time</label>
-    <select name="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
+    <select name="pickup-time" id="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -50,11 +50,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1">Dropoff date</label>
-    <input type="date" name="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days'));?>" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days'));?>">
+    <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
   </div>
   <div class="flex flex-col items-center justify-center w-full">
     <label for="dropoff-time" class="w-full mb-1">Time</label>
-    <select name="dropoff-time" id="" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
+    <select name="dropoff-time" id="dropoff-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00</option>
       <option value="06:30">06:30</option>
       <option value="07:00">07:00</option>
@@ -90,18 +90,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   </div>
   <input type="submit" value="Search" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
 </form>
-
+<div id="error-div" class="w-full shadow-md bg-red-500 p-2 mt-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
+  <img class="w-6" src="/car-rent-services/assets/icons/error.png" alt="Error icon">
+  <p id="error-text"></p>
+</div>
 <img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
 
 <section class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
   <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Best prices</p>
-      <img src="/car-rent-services/assets/images/general/car-keys.jpeg" alt="Car keys" class="w-full h-36 rounded-md object-cover">
+    <img src="/car-rent-services/assets/images/general/car-keys.jpeg" alt="Car keys" class="w-full h-36 rounded-md object-cover">
   </div>
   <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Large car fleet</p>
     <img src="/car-rent-services/assets/images/general/cars.webp" alt="Car fleet" class="w-full h-36 object-cover">
-    </div>
+  </div>
   <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
     <p class="font-bold text-2xl">Transparency and security</p>
     <img src="/car-rent-services/assets/images/general/security.png" alt="Transparency and security" class="w-full h-28 object-cover">
@@ -112,3 +115,51 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 <?php //Footer
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
 ?>
+
+<script>
+  // Validaciones
+  let formCars = document.getElementById('form-cars-search');
+  let errorDiv = document.getElementById('error-div');
+
+  // Al darle a submit al formulario
+  formCars.addEventListener("submit", function(e) {
+    let pickupDateInput = document.getElementById('pickup-date');
+    let pickupTimeInput = document.getElementById('pickup-time');
+    let dropoffDateInput = document.getElementById('dropoff-date');
+    let dropoffTimeInput = document.getElementById('dropoff-time');
+
+    // Obtener valores
+    let pickupDateValue = pickupDateInput.value; 
+    let pickupTimeValue = pickupTimeInput.value;
+    let dropoffDateValue = dropoffDateInput.value; 
+    let dropoffTimeValue = dropoffTimeInput.value;
+
+    // Combinar fecha y hora en formato ISO compatible
+    let pickupDateTimeString = `${pickupDateValue}T${pickupTimeValue}`; // "2025-05-08T10:00"
+    let dropoffDateTimeString = `${dropoffDateValue}T${dropoffTimeValue}`;
+
+    // Crear el objeto Date completo
+    let pickupDateTime = new Date(pickupDateTimeString);
+    let dropoffDateTime = new Date(dropoffDateTimeString);
+
+    // Obtener la fecha actual
+    let nowDate = new Date();
+  
+    // Comparación
+    if (pickupDateTime < nowDate) {
+      e.preventDefault();
+      showError("The pick-up date and time can't be less than the current date and time.");
+    }
+
+    if (dropoffDateTime < nowDate) {
+      e.preventDefault();
+      showError("The drop-off date and time can't be less than the current date and time.");
+    }
+
+    // Comprobar campos vacíos
+    if (!pickupDateValue || !pickupTimeValue || !dropoffDateValue || !dropoffTimeValue) {
+      e.preventDefault();
+      showError("All the fields needs to be filled.");
+    }
+});
+</script>
