@@ -18,7 +18,7 @@ $query = "SELECT * FROM cars WHERE car_id = $car_id";
 $result = mysqli_query($conn, $query);
 $car_price_per_day = 0;
 if ($car = mysqli_fetch_assoc($result)) {
-    $car_price_per_day = $car['car_price_per_day'];
+  $car_price_per_day = $car['car_price_per_day'];
 }
 
 // Calcular el número de días de alquiler
@@ -33,43 +33,41 @@ $rentPrice = $days * $car_price_per_day;
 $total = $rentPrice;
 $extras = json_decode($extras_data, true);
 foreach ($extras as $extra) {
-    $total += $extra['qty'] * $extra['price'];
+  $total += $extra['qty'] * $extra['price'];
 }
 
 ?>
 
 
 <form id="payment-form" class="flex flex-col justify-between w-full bg-white p-2 rounded-md shadow">
-<div class="reservation-details mt-6 mb-4">
-    <h2 class="text-2xl font-semibold">Reservation Details</h2>
+  <div class="reservation-details mt-6 mb-4">
+    <h2 class="text-2xl font-semibold text-center">Checkout</h2>
     <ul class="mt-4">
-      <li><strong>Car:</strong> <?php echo $car['car_brand'] . " " . $car['car_model'];?> or similar</li>
+      <li><strong>Car:</strong> <?php echo $car['car_brand'] . " " . $car['car_model']; ?> or similar</li>
       <li><strong>Pickup Date:</strong> <?php echo $pickup_date . " - " . $pickup_time; ?>h</li>
       <li><strong>Dropoff Date:</strong> <?php echo $dropoff_date . " - " . $dropoff_time; ?>h</li>
-      <li><strong>Price per Day:</strong> <?php echo number_format($car_price_per_day, 2); ?>€</li>
+      <li><strong>Car price per Day:</strong> <?php echo number_format($car_price_per_day, 2); ?>€</li>
       <li><strong>Total Rental Days:</strong> <?php echo $days; ?></li>
-      <li><strong>Extras:</strong></li>
+      <li><strong>Extras:</strong> <?php if (count($extras) == 0) echo "None"; ?></li>
       <ul>
         <?php
-          if (count($extras) == 0) {
-            echo "None";
-          } else {
-            foreach ($extras as $extra) {
-              echo "<li>" . htmlspecialchars($extra['name']) . " x" . $extra['qty'] . " (" . number_format($extra['price'], 2) . "€/unit)</li>";
-            }
-          }
+        foreach ($extras as $extra) {
+          echo "<li>" . htmlspecialchars($extra['name']) . " x" . $extra['qty'] . " (" . number_format($extra['price'], 2) . "€/unit)</li>";
+        }
         ?>
       </ul>
-      <li><strong>Total:</strong> <?php echo number_format($total, 2); ?>€</li>
+      <li class="border-t-2 border-t-gray-300 py-2 my-2 border-dotted text-xl"><strong>Total:</strong> <?php echo number_format($total, 2); ?>€</li>
     </ul>
-</div>
-<div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3"></div>
+  </div>
+  <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3"></div>
   <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
   <div id="error-message"></div>
 </form>
 
 <script src="https://js.stripe.com/v3/"></script>
-<script>const carPricePerDay = <?php echo $car_price_per_day; ?>;</script>
+<script>
+  const carPricePerDay = <?php echo $car_price_per_day; ?>;
+</script>
 
 <script>
   const carId = "<?php echo $car_id; ?>";
