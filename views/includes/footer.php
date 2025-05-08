@@ -1,6 +1,8 @@
     </main>
     <footer class="flex flex-row flex-nowrap items-center bg-[#1389e4] w-full h-[52px] p-[10px]">
       <p class="text-white">Car Rent Services</p>
+      <p class="text-white">Privacy policy</p>
+
     </footer>
     
     <script src="/car-rent-services/js/functions.js"></script>

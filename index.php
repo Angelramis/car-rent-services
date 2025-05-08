@@ -1,4 +1,4 @@
-<?php //Header
+justify<?php //Header
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
@@ -49,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
-    <label for="pickup-date" class="w-full mb-1">Dropoff date</label>
+    <label for="dropoff-date" class="w-full mb-1">Dropoff date</label>
     <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
   </div>
   <div class="flex flex-col items-center justify-center w-full">
@@ -96,18 +96,27 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 </div>
 <img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
 
-<section class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md md:grid md:grid-cols-2 lg:grid-cols-3">
-  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
-    <p class="font-bold text-2xl">Best prices</p>
-    <img src="/car-rent-services/assets/images/general/car-keys.jpeg" alt="Car keys" class="w-full h-36 rounded-md object-cover">
+<section class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md">
+  <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
+    <img src="/car-rent-services/assets/images/general/best-prices.webp" alt="Car keys" class="w-full max-w-64 p-2 rounded-md object-contain md:h-full md:w-96">
+    <div>
+      <p class="font-bold text-xl">Best prices</p>
+      <p>Enjoy competitive rates with no hidden fees, quality car rentals that fit your budget.</p>
+    </div>
   </div>
-  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
-    <p class="font-bold text-2xl">Large car fleet</p>
-    <img src="/car-rent-services/assets/images/general/cars.webp" alt="Car fleet" class="w-full h-36 object-cover">
+  <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
+    <img src="/car-rent-services/assets/images/general/car-fleet.png" alt="Car keys" class="w-full max-w-64 p-2 rounded-md object-contain md:h-full md:w-96">
+    <div>
+      <p class="font-bold text-xl">Large car fleet</p>
+      <p>Choose from a wide variety of well-maintained vehicles to suit every need and preference.</p>
+    </div>
   </div>
-  <div class="flex flex-col h-48 w-full shadow-md rounded-md bg-white text-left p-3 ">
-    <p class="font-bold text-2xl">Transparency and security</p>
-    <img src="/car-rent-services/assets/images/general/security.png" alt="Transparency and security" class="w-full h-28 object-cover">
+  <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
+    <img src="/car-rent-services/assets/images/general/security.png" alt="Car keys" class="w-full max-w-64 p-2 rounded-md object-contain md:h-full md:w-96">
+    <div>
+      <p class="font-bold text-xl">Transparency and security</p>
+      <p>Clear rental terms, secure payments, and full customer support for a worry-free experience.</p>
+    </div>
   </div>
 </section>
 
