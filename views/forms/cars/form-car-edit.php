@@ -39,42 +39,42 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         <input type="hidden" name="car-id" value="<?php echo $car['car_id']; ?>">
         <div class="w-full grid grid-cols-2 gap-2">
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-brand">Brand</label>
+            <label for="car-brand">Brand<span class="text-red-500">*</span></label>
             <input type="text" id="car-brand" class="bg-gray-200 rounded-md border-[1px] p-1" name="car-brand" value="<?php echo $car['car_brand']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-model">Model</label>
+            <label for="car-model">Model<span class="text-red-500">*</span></label>
             <input type="text" id="car-model" name="car-model" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_model']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-plate">Plate</label>
+            <label for="car-plate">Plate<span class="text-red-500">*</span></label>
             <input type="text" id="car-plate" name="car-plate" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_plate']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-price-per-day">Price per day (€)</label>
+            <label for="car-price-per-day">Price per day (€)<span class="text-red-500">*</span></label>
             <input type="number" step="0.01" id="car-price-per-day" placeholder="XX,XX" name="car-price-per-day" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_price_per_day']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-doors">Doors</label>
+            <label for="car-doors">Doors<span class="text-red-500">*</span></label>
             <input type="number" id="car-doors" name="car-doors" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_doors']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-seats">Seats</label>
+            <label for="car-seats">Seats<span class="text-red-500">*</span></label>
             <input type="number" id="car-seats" name="car-seats" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_seats']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-space-bags">Bags space</label>
+            <label for="car-space-bags">Bags space<span class="text-red-500">*</span></label>
             <input type="number" id="car-space-bags" name="car-space-bags" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_space_bags']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-fuel">Fuel</label>
+            <label for="car-fuel">Fuel<span class="text-red-500">*</span></label>
             <select name="car-fuel" id="car-fuel" class="bg-gray-200 rounded-md border-[1px] p-1">
               <option value="Diesel" <?php if ($car['car_fuel'] === 'Diesel') echo 'selected'; ?>>Diesel</option>
               <option value="Gasoline" <?php if ($car['car_fuel'] === 'Gasoline') echo 'selected'; ?>>Gasoline</option>
@@ -94,14 +94,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <label for="car-min-age">Minimum age</label>
+            <label for="car-min-age">Minimum age<span class="text-red-500">*</span></label>
             <input type="number" id="car-min-age" name="car-min-age" class="bg-gray-200 rounded-md border-[1px] p-1" value="<?php echo $car['car_min_age']; ?>" required>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
-            <img src="<?php echo $car['car_image'] ?? ''; ?>" alt="car-image" class="w-36 h-36">
+            <img src="<?php echo $car['car_image'] ?? ''; ?>" alt="car-image" class="w-64 h-36">
 
-            <label for="car-image">Image</label>
+            <label for="car-image">Image<span class="text-red-500">*</span></label>
             <input type="file" id="car-image" name="car-image" class="bg-gray-200 rounded-md border-[1px] p-1">
           </nav>
 

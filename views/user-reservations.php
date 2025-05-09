@@ -17,7 +17,6 @@
 
       // Ejecutar consulta SQL
       $execute_query = mysqli_query($conn, $sql_query);
-
       $reservations = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
 
       if ($execute_query && mysqli_num_rows($execute_query) > 0) {
@@ -45,7 +44,6 @@
         <?php
       }
 
-      // Cerrar conexión con BBD una vez acabada la consulta
       mysqli_close($conn);
 
     /* Si el usuario no ha iniciado sesión aún, redirigirlo al log in */

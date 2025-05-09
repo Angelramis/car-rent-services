@@ -6,11 +6,11 @@
     <h1 class="text-center text-2xl">Log in</h1>
     <form class="flex flex-col text-center p-5" action="/car-rent-services/views/db/users/db-user-login.php" method="POST">
       
-      <label>Email</label>
+      <label>Email<span class="text-red-500">*</span></label>
       <input type="text" name="user_email" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
         focus:ring-blue-500 focus:border-blue-500">
 
-      <label>Password</label>
+      <label>Password<span class="text-red-500">*</span></label>
       <input type="password" name="user_pwd" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
         focus:ring-blue-500 focus:border-blue-500">
 

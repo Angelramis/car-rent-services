@@ -132,6 +132,11 @@
         setcookie('user_phone', "", time() - 3600, "/");
         setcookie('user_address', "", time() - 3600, "/");
         setcookie('user_country', "", time() - 3600, "/");
+        setcookie('user_birthdate', "", time() - 3600, "/");
+        setcookie('user_license_number', "", time() - 3600, "/");
+        setcookie('user_license_expedition', "", time() - 3600, "/");
+        setcookie('user_license_expiration', "", time() - 3600, "/");
+        
     } else {
       ?>
         <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">

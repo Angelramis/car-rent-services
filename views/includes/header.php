@@ -1,8 +1,8 @@
 <?php
-session_start();
-$session_user_id = $_SESSION['user_id'] ?? 'guest';
-$session_user_firstname = $_SESSION['user_firstname'] ?? 'User';
-$session_user_roles = $_SESSION['user_roles'] ?? 'None';
+  session_start();
+  $session_user_id = $_SESSION['user_id'] ?? 'guest';
+  $session_user_firstname = $_SESSION['user_firstname'] ?? 'User';
+  $session_user_roles = $_SESSION['user_roles'] ?? 'None';
 ?>
 
 <!DOCTYPE html>
