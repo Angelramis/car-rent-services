@@ -24,7 +24,7 @@ if (isset($_POST['form-car-details'])) {
 
   $car_details = mysqli_fetch_assoc($execute_query_car);
   $extras = mysqli_fetch_all($execute_query_extras, MYSQLI_ASSOC);
-
+  
   if ($execute_query_car && $extras && mysqli_num_rows($execute_query_car) > 0) {
 
     $pickup = new DateTime($pickup_date);
@@ -33,7 +33,7 @@ if (isset($_POST['form-car-details'])) {
 
     $rent_price = $car_details['car_price_per_day'] * ($rent_days_interval->days);
 ?>
-
+    
     <form id="extras-form" method="POST" action="">
       <input type="hidden" name="car-id" value="<?php echo $car_id; ?>">
       <input type="hidden" name="pickup-date" value="<?php echo $pickup_date; ?>">
@@ -93,7 +93,7 @@ if (isset($_POST['form-car-details'])) {
         <p class="text-center font-bold">Reservation</p>
         <div class="flex items-center justify-between border-b py-2">
           <span class="text-sm font-medium">Rent</span>
-          <span class="text-sm font-medium"><?php echo $rent_price; ?>€</span>
+          <span class="text-sm font-medium"><?php echo number_format($rent_price,2); ?>€</span>
         </div>
         <div id="selected-extras-list" class="text-sm text-gray-700 space-y-1 mt-2"></div>
         <div class="flex items-center justify-between py-2">

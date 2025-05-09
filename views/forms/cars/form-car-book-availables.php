@@ -5,6 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 // include conexion a bbdd
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/functions.php';
 
 // Si se ha pulsado el botón de submit, iniciar consulta.
 if (isset($_POST['form-car-search'])) {
@@ -87,7 +88,7 @@ if (isset($_POST['form-car-search'])) {
         <input type="hidden" name="pickup-time" value="<?php echo $pickup_time; ?>">
         <input type="hidden" name="dropoff-date" value="<?php echo $dropoff_date; ?>">
         <input type="hidden" name="dropoff-time" value="<?php echo $dropoff_time; ?>">
-        <input type="submit" value="Book" name="form-car-details" class="bg-blue-500 text-white font-semibold min-h-12 py-2 px-4 rounded-md w-full hover:bg-blue-600 transition text-center block">
+        <input type="submit" value="<?php echo number_format($car['car_price_per_day'] * dateDiff($pickup_date, $dropoff_date), 2) . '€'; ?>" name="form-car-details" class="bg-blue-500 text-white font-semibold min-h-12 py-2 px-4 rounded-md w-full hover:bg-blue-600 transition text-center block">
       </form>
   </div>
 <?php

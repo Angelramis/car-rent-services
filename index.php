@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     <label for="pickup-date" class="w-full mb-1">Pickup date</label>
     <input type="date" min="<?php echo date('Y-m-d'); ?>" id="pickup-date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days')); ?>">
   </div>
-
+  
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-time" class="w-full mb-1">Time</label>
     <select name="pickup-time" id="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="dropoff-date" class="w-full mb-1">Dropoff date</label>
-    <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" id="" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
+    <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
@@ -168,6 +168,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.ph
     if (dropoffDateTime < nowDate) {
       e.preventDefault();
       showError("The drop-off date and time can't be less than the current date and time.");
+    }
+
+    if (pickupDateValue > dropoffDateValue) {
+      e.preventDefault();
+      showError("The drop-off date can't be less than de pickup date.");
     }
 
     // Comprobar campos vacíos
