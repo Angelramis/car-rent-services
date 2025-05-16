@@ -39,15 +39,21 @@ print_r($lang);
         <a href="#">
           <img src="/car-rent-services/assets/images/flags/flag-<?= $lang === 'es' ? 'spain' : 'uk' ?>.png" alt="Lang flag" class="w-14">
         </a>
-        <div class="lang-dropdown">
+        <div class="lang-dropdown shadow-md rounded-md">
           <a href="#" onclick="setLang('en')">
             <img src="/car-rent-services/assets/images/flags/flag-uk.png" alt="English"> English
           </a>
           <a href="#" onclick="setLang('es')">
             <img src="/car-rent-services/assets/images/flags/flag-spain.png" alt="Español"> Español
           </a>
+          <a href="#" onclick="setLang('fr')">
+            <img src="/car-rent-services/assets/images/flags/flag-france.png" alt="Français"> Français
+          </a>
+          <a href="#" onclick="setLang('de')">
+            <img src="/car-rent-services/assets/images/flags/flag-germany.svg" alt="Deutsch"> Deutsch
+          </a>
         </div>
-</div>
+      </div>  
         <?php if (strstr($session_user_roles, 'admin')) {
           // Si dentro de los roles del usuario contiene admin, mostrar html.
         ?>

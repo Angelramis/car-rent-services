@@ -104,7 +104,6 @@ header {
     display: none;
     position: absolute;
     background: white;
-    border: 1px solid #ccc;
     width: 150px;
     z-index: 10;
   }
