@@ -7,7 +7,13 @@
       <a href="/car-rent-services/views/manuals/manual-installation.php" class="text-white">Installation manual</a>
       <a href="/car-rent-services/views/manuals/manual-user.php" class="text-white">User manual</a>
     </footer>
-    
+
     <script src="/car-rent-services/js/functions.js"></script>
-  </body>
-</html>
+    <script>
+      function setLang(lang) {
+        window.location.href = `/car-rent-services/index.php?lang=${lang}`;
+      }
+    </script>
+    </body>
+
+    </html>

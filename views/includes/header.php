@@ -40,48 +40,51 @@ print_r($lang);
           <img src="/car-rent-services/assets/images/flags/flag-<?= $lang === 'es' ? 'spain' : 'uk' ?>.png" alt="Lang flag" class="w-14">
         </a>
         <div class="lang-dropdown">
-          <a href="?lang=en"><img src="/car-rent-services/assets/images/flags/flag-uk.png" alt="English"> English</a>
-          <a href="?lang=es"><img src="/car-rent-services/assets/images/flags/flag-spain.png" alt="Español"> Español</a>
-        </div>
-      </div>
-
-      <?php if (strstr($session_user_roles, 'admin')) {
-        // Si dentro de los roles del usuario contiene admin, mostrar html.
-      ?>
-        <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer"">
-              <img src=" /car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
-          <input type="submit" class="text-white" value="Admin" name="form-car-admin">
-        </form>
-      <?php
-      } ?>
-
-      <a class="a-account-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_account')">
-        <img src="/car-rent-services/assets/icons/account.png" alt="account-icon">
-        <p class="text-white"><?php echo $_SESSION['user_firstname'] ?? 'Account'; ?></p>
-      </a>
-
-      <nav class="nav_bar_account" id="nav_bar_account">
-
-        <?php if ($session_user_id == 'guest') {
-          // Si el usuario no ha iniciado sesión, mostrar html de log in.
-        ?>
-          <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log in</a>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Register</a>
-        <?php
-        } ?>
-
-        <?php if ($session_user_id != 'guest') {
-          // Si el usuario ha iniciado sesión, mostrar html de log out.
-        ?>
-          <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
-            <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
-            <p class="text-white">Reservations</p>
+          <a href="#" onclick="setLang('en')">
+            <img src="/car-rent-services/assets/images/flags/flag-uk.png" alt="English"> English
           </a>
-          <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log out</a>
+          <a href="#" onclick="setLang('es')">
+            <img src="/car-rent-services/assets/images/flags/flag-spain.png" alt="Español"> Español
+          </a>
+        </div>
+</div>
+        <?php if (strstr($session_user_roles, 'admin')) {
+          // Si dentro de los roles del usuario contiene admin, mostrar html.
+        ?>
+          <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer"">
+              <img src=" /car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
+            <input type="submit" class="text-white" value="Admin" name="form-car-admin">
+          </form>
         <?php
         } ?>
 
-      </nav>
+        <a class="a-account-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_account')">
+          <img src="/car-rent-services/assets/icons/account.png" alt="account-icon">
+          <p class="text-white"><?php echo $_SESSION['user_firstname'] ?? 'Account'; ?></p>
+        </a>
+
+        <nav class="nav_bar_account" id="nav_bar_account">
+
+          <?php if ($session_user_id == 'guest') {
+            // Si el usuario no ha iniciado sesión, mostrar html de log in.
+          ?>
+            <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log in</a>
+            <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Register</a>
+          <?php
+          } ?>
+
+          <?php if ($session_user_id != 'guest') {
+            // Si el usuario ha iniciado sesión, mostrar html de log out.
+          ?>
+            <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
+              <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
+              <p class="text-white">Reservations</p>
+            </a>
+            <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log out</a>
+          <?php
+          } ?>
+
+        </nav>
     </nav>
   </header>
   <main class="flex flex-col items-center w-full p-[15px] max-w-[850px] mt-[52px] gap-2 min-h-screen">
