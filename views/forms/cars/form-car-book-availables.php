@@ -43,13 +43,13 @@ if (isset($_POST['form-car-search'])) {
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="w-full">
             <p class="text-xl"><?php echo $car['car_brand'] . " " . $car['car_model']; ?></p>
-            <p class="text-xl font-bold"><?php echo $car['car_price_per_day']; ?>€/day</p>
+            <p class="text-xl font-bold"><?php echo $car['car_price_per_day']; ?>€/<?= __('day', $lang);?></p>
           </div>
         </div>
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="flex flex-row">
             <img src="/car-rent-services/assets/icons/car-seats.png" class="w-6" alt="Car seats">
-            <p><?php echo $car['car_seats']; ?> seats</p>
+            <p><?php echo $car['car_seats']; ?> <?= __('seats', $lang);?></p>
           </div>
 
           <div class="flex flex-row">
@@ -69,10 +69,10 @@ if (isset($_POST['form-car-search'])) {
         
         <div class="flex flex-row">
           <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Car seats">
-          <p>Mileage: <?php if ($car['car_unlimited_mileage'] == 1) {
+          <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] == 1) {
                         echo "Unlimited";
                       } else {
-                        "Limited";
+                        echo "Limited";
                       }; ?>
           </p>
         </div>

@@ -70,7 +70,7 @@ if (isset($_POST['form-car-details'])) {
           <h3 class="font-semibold text-lg mb-2"><?= __('Available extras', $lang);?></h3>
           <?php foreach ($extras as $extra) { ?>
             <div class="extra-div flex flex-col mb-4 md:flex-row md:justify-between">
-              <p class="text-sm font-medium extra-name"><?php echo $extra['extra_name']; ?></p>
+              <p class="text-sm font-medium extra-name"><?= __($extra['extra_name'], $lang) ?></p>
               <div class="flex flex-row gap-2 md:flex-row-reverse">
                 <p class="text-sm font-medium"><?php echo $extra['extra_unit_price']; ?>€</p>
                 <?php if ($extra['extra_checkbox'] == 1) { ?>

@@ -45,12 +45,6 @@ print_r($lang);
         </div>
       </div>
 
-
-      <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
-        <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
-        <p class="text-white">Reservations</p>
-      </a>
-
       <?php if (strstr($session_user_roles, 'admin')) {
         // Si dentro de los roles del usuario contiene admin, mostrar html.
       ?>
@@ -58,16 +52,6 @@ print_r($lang);
               <img src=" /car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
           <input type="submit" class="text-white" value="Admin" name="form-car-admin">
         </form>
-
-        <a class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer" onclick="displayPagesMenu('nav_bar_manuals')">
-          <img src="/car-rent-services/assets/icons/manual.png" alt="display-icon">
-          <p class="text-white">Manuals</p>
-        </a>
-
-        <nav class="nav-bar-manuals" id="nav_bar_manuals">
-          <a href="/car-rent-services/views/manuals/manual-installation.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Installation manual</a>
-          <a href="/car-rent-services/views/manuals/manual-user.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">User manual</a>
-        </nav>
       <?php
       } ?>
 
@@ -89,6 +73,10 @@ print_r($lang);
         <?php if ($session_user_id != 'guest') {
           // Si el usuario ha iniciado sesión, mostrar html de log out.
         ?>
+          <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
+            <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
+            <p class="text-white">Reservations</p>
+          </a>
           <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log out</a>
         <?php
         } ?>

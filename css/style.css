@@ -32,12 +32,12 @@ header {
   align-items: center;
 }
 
-.a-admin-icon > img, .a-manuals-display-icon > img {
+.a-admin-icon > img {
   width: 30px;
   height: 30px;
 }
 
-.a-admin-icon, .a-manuals-display-icon {
+.a-admin-icon {
   align-items: center;
   gap: 5px;
 }
@@ -71,17 +71,7 @@ header {
   color: #f0f0f0; 
 }
 
-.nav-bar-manuals, .nav_bar_account {
-  position: absolute;
-  display: none;
-  right: 0;
-  top: 50px;
-  left: 60vW;
-  background-color: #1389e4;
-  z-index: 3;
-  padding: 5px;
-  border-radius: 5px;
-}
+
 
 .nav_bar_account {
   z-index: 4;
@@ -160,8 +150,5 @@ header {
     gap: 5px;
   }
 
-  .a-admin-icon > p, .a-manuals-display-icon > p,
-  .a-admin-icon > input, .a-manuals-display-icon > input {
-    display: none;
-  }
+
 }
