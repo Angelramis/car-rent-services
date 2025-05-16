@@ -57,7 +57,7 @@ print_r($lang);
         <?php if (strstr($session_user_roles, 'admin')) {
           // Si dentro de los roles del usuario contiene admin, mostrar html.
         ?>
-          <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer"">
+          <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
               <img src=" /car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
             <input type="submit" class="text-white" value="Admin" name="form-car-admin">
           </form>
@@ -74,19 +74,19 @@ print_r($lang);
           <?php if ($session_user_id == 'guest') {
             // Si el usuario no ha iniciado sesión, mostrar html de log in.
           ?>
-            <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log in</a>
-            <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Register</a>
+            <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer"><?= __('Log in', $lang);?></a>
+            <a href="/car-rent-services/views/forms/users/form-user-register.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer"><?= __('Register', $lang);?></a>
           <?php
           } ?>
 
           <?php if ($session_user_id != 'guest') {
             // Si el usuario ha iniciado sesión, mostrar html de log out.
           ?>
-            <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
+            <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg items-center hover:bg-yellow-400 cursor-pointer">
               <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
-              <p class="text-white">Reservations</p>
+              <p class="text-white"><?= __('Reservations', $lang);?></p>
             </a>
-            <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer">Log out</a>
+            <a href="/car-rent-services/views/db/users/db_user_logout.php" class="text-white transition rounded-lg p-1 hover:bg-yellow-400 cursor-pointer"><?= __('Log out', $lang);?></a>
           <?php
           } ?>
 

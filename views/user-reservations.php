@@ -2,8 +2,6 @@
   include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
 ?>
 
-  <h1 class='text-center text-2xl p-3'>My reservations</h1>
-
   <div class="flex flex-col w-full gap-2 min-h-screen bg-white rounded-xl shadow-lg p-6">
   <?php
     // include conexion a bbdd
@@ -23,18 +21,16 @@
         /* Mostrar sus reservas activas*/
         foreach ($reservations as $reservation) {
           ?>
-            <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow-md p-2 md:grid md:grid-cols-4  md:gap-2">
-              <p>Reservation number: <?php echo $reservation['rs_number'];?></p>
-              <p>User fullname: <?php echo $reservation['user_fullname'];?></p>
-              <p>User NIF: <?php echo $reservation['user_nif'];?></p>
-              <p>Pickup Date: <?php echo $reservation['rs_pickup_date'];?></p>
-              <p>Pickup Time: <?php echo $reservation['rs_pickup_time'];?></p>
-              <p>Dropoff Date: <?php echo $reservation['rs_dropoff_date'];?></p>
-              <p>Dropoff Time: <?php echo $reservation['rs_dropoff_time'];?></p>
-              <p>Car plate: <?php echo $reservation['car_plate'];?></p>
-              <p>Total price: <?php echo $reservation['rs_total_price'];?>€</p>
-              <p>Status: <?php echo $reservation['rs_status'];?></p>
-              <p>Creation date: <?php echo $reservation['rs_created_at'];?></p>
+            <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow-md p-2 md:grid md:grid-cols-3  md:gap-2">
+              <p><?= __('Reservation number', $lang);?>: <?php echo $reservation['rs_number'];?></p>
+              <p><?= __('Fullname', $lang);?>: <?php echo $reservation['user_fullname'];?></p>
+              <p><?= __('NIF', $lang);?>: <?php echo $reservation['user_nif'];?></p>
+              <p><?= __('Pick up date', $lang);?>: <?php echo $reservation['rs_pickup_date'] . " - " . $reservation['rs_pickup_time']; ?>h</p>
+              <p><?= __('Drop off date', $lang);?>: <?php echo $reservation['rs_dropoff_date']. " - " . $reservation['rs_dropoff_time']; ?>h</p>
+              <p><?= __('Car plate', $lang);?>: <?php echo $reservation['car_plate'];?></p>
+              <p><?= __('Total price', $lang);?>: <?php echo $reservation['rs_total_price'];?>€</p>
+              <p><?= __('Status', $lang);?>: <?= __($reservation['rs_status'], $lang); ?></p>
+              <p><?= __('Creation date', $lang);?>: <?php echo $reservation['rs_created_at'];?></p>
             </div>
           <?php
         }

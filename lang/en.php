@@ -66,5 +66,12 @@ return [
     'Menorca' => 'Menorca',
     'An error ocurred processing the payment.' => 'An error ocurred processing the payment.',
     'The payment could not be generated. Please try again.' => 'The payment could not be generated. Please try again.',
-    
+    'Reservation number' => 'Reservation number',
+    'Fullname' => 'Fullname',
+    'Car plate' => 'Car plate',
+    'Creation date' => 'Creation date',
+    'Total price' => 'Total price',
+    'Confirmed' => 'Confirmed',
+    'Pending' => 'Pending',
+    'Cancelled' => 'Cancelled'
 ]; 
