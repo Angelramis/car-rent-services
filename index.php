@@ -2,17 +2,17 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
-<h1 class="text-2xl font-medium">Rent a car <span class="text-[#1389e4]">fast</span> and <span class="text-[#1389e4]">easy</span> </h1>
+<h1 class="text-2xl font-medium"><?= __('Rent a car', $lang);?> <span class="text-[#1389e4]"> <?= __('fast', $lang);?></span> <?= __('and', $lang);?> <span class="text-[#1389e4]"><?= __('easy', $lang);?></span> </h1>
 
 <form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" id="form-cars-search" method="POST"
   class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
   <div class="flex flex-col items-center justify-center w-full">
-    <label for="pickup-date" class="w-full mb-1">Pickup date</label>
+    <label for="pickup-date" class="w-full mb-1"><?= __('Pick up date', $lang);?></label>
     <input type="date" min="<?php echo date('Y-m-d'); ?>" id="pickup-date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days')); ?>">
   </div>
   
   <div class="flex flex-col items-center justify-center w-full">
-    <label for="pickup-time" class="w-full mb-1">Time</label>
+    <label for="pickup-time" class="w-full mb-1"><?= __('Hour', $lang);?></label>
     <select name="pickup-time" id="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00h</option>
       <option value="06:30">06:30h</option>
@@ -49,12 +49,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
-    <label for="dropoff-date" class="w-full mb-1">Dropoff date</label>
+    <label for="dropoff-date" class="w-full mb-1"><?= __('Drop off date', $lang);?></label>
     <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
-    <label for="dropoff-time" class="w-full mb-1">Time</label>
+    <label for="dropoff-time" class="w-full mb-1"><?= __('Hour', $lang);?></label>
     <select name="dropoff-time" id="dropoff-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
       <option value="06:00">06:00h</option>
       <option value="06:30">06:30h</option>
@@ -90,7 +90,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     </select>
   </div>
 
-  <input type="submit" value="Search" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
+  <input type="submit" value="<?= __('Search', $lang);?>" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
 
 </form>
 
@@ -105,22 +105,22 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
     <img src="/car-rent-services/assets/images/general/best-prices.webp" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
-      <p class="font-bold text-xl">Best prices</p>
-      <p>Enjoy competitive rates with no hidden fees, quality car rentals that fit your budget.</p>
+      <p class="font-bold text-xl"><?= __('Best prices', $lang);?></p>
+      <p><?= __('Enjoy competitive rates with no hidden fees, quality car rentals that fit your budget.', $lang);?></p>
     </div>
   </div>
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
     <img src="/car-rent-services/assets/images/general/car-fleet.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
-      <p class="font-bold text-xl">Large car fleet</p>
-      <p>Choose from a wide variety of well-maintained vehicles to suit every need and preference.</p>
+      <p class="font-bold text-xl"><?= __('Large car fleet', $lang);?></p>
+      <p><?= __('Choose from a wide variety of well-maintained vehicles to suit every need and preference.', $lang);?></p>
     </div>
   </div>
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
     <img src="/car-rent-services/assets/images/general/security.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
-      <p class="font-bold text-xl">Transparency and security</p>
-      <p>Clear rental terms, secure payments, and full customer support for a worry-free experience.</p>
+      <p class="font-bold text-xl"><?= __('Transparency and security', $lang);?></p>
+      <p><?= __('Clear rental terms, secure payments, and full customer support for a worry-free experience.', $lang);?></p>
     </div>
   </div>
 </section>

@@ -1,8 +1,17 @@
 <?php
-  session_start();
-  $session_user_id = $_SESSION['user_id'] ?? 'guest';
-  $session_user_firstname = $_SESSION['user_firstname'] ?? 'User';
-  $session_user_roles = $_SESSION['user_roles'] ?? 'None';
+session_start();
+$session_user_id = $_SESSION['user_id'] ?? 'guest';
+$session_user_firstname = $_SESSION['user_firstname'] ?? 'User';
+$session_user_roles = $_SESSION['user_roles'] ?? 'None';
+
+include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/functions.php';
+
+if (isset($_GET['lang'])) {
+  $_SESSION['lang'] = $_GET['lang'];
+}
+$lang = $_SESSION['lang'] ?? 'en';
+
+print_r($lang);
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +30,22 @@
   <header>
     <div class="logo_contanier_header">
       <a href="/car-rent-services/index.php" class="flex text-white font-bold">
-        CarRent<p class="hidden text-white font-bold sm:flex">Services</p>
+        <img src="/car-rent-services/assets/images/general/logo-car-rent-services.png" class="w-12" alt="Logo car rent services">
       </a>
     </div>
 
     <nav class="right_header">
+      <div class="lang-selector">
+        <a href="#">
+          <img src="/car-rent-services/assets/images/flags/flag-<?= $lang === 'es' ? 'spain' : 'uk' ?>.png" alt="Lang flag" class="w-14">
+        </a>
+        <div class="lang-dropdown">
+          <a href="?lang=en"><img src="/car-rent-services/assets/images/flags/flag-uk.png" alt="English"> English</a>
+          <a href="?lang=es"><img src="/car-rent-services/assets/images/flags/flag-spain.png" alt="Español"> Español</a>
+        </div>
+      </div>
+
+
       <a href="/car-rent-services/views/user-reservations.php" class="a-manuals-display-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
         <img src="/car-rent-services/assets/icons/reservation-white.png" alt="display-icon">
         <p class="text-white">Reservations</p>

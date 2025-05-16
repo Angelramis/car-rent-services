@@ -5,7 +5,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
 // include conexion a bbdd
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/functions.php';
 
 // Si se ha pulsado el botón de submit, iniciar consulta.
 if (isset($_POST['form-car-search'])) {

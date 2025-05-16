@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
                             WHERE car_id = $car_id");
 
   if (!($r && mysqli_num_rows($r))) {
-    echo "<p class='text-red-600 text-center mt-4'>Car not found.</p>";
+?>
+    <p class='text-red-600 text-center mt-4'><?= __('Car not found.', $lang); ?></p>
+  <?php
     exit;
   }
 
@@ -90,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   // Redirige tras guardar para evitar reinserción al recargar
   header("Location: " . $_SERVER['PHP_SELF'] . "?id=$reservation_id");
 
-exit;
+  exit;
 }  // Cierre del bloque POST
 
 
@@ -106,6 +108,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   LIMIT 1
   ");
 
+
   if ($res && mysqli_num_rows($res)) {
     $row = mysqli_fetch_assoc($res);
     $extras_arr = json_decode($row['rs_extras'], true);
@@ -114,46 +117,53 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $dropoff = new DateTime($row['rs_dropoff_date']);
     $days = max($pickup->diff($dropoff)->days, 1);
     $base_rent = $days * (float)$row['car_price_per_day'];
+  ?>
+    <h1 class="text-center text-2xl p-3"><?= __('Reservation Confirmed', $lang); ?></h1>
 
-    echo "<h1 class='text-center text-2xl p-3'>Reservation Confirmed</h1>";
-    echo "<div class='max-w-2xl mx-auto bg-white p-4 rounded shadow'>";
-    echo "<p><strong>Reservation #:</strong> {$row['rs_number']}</p>";
-    echo "<p><strong>Customer:</strong> {$row['user_fullname']} ({$row['user_nif']})</p>";
-    echo "<p><strong>Pickup:</strong> {$row['rs_pickup_date']} at {$row['rs_pickup_time']}</p>";
-    echo "<p><strong>Dropoff:</strong> {$row['rs_dropoff_date']} at {$row['rs_dropoff_time']}</p>";
-    echo "<p><strong>Status:</strong> {$row['rs_status']}</p>";
-    echo "<p><strong>Days:</strong> $days</p>";
-    echo "<p><strong>Base Rent:</strong> " . number_format($base_rent, 2) . "€</p>";
-    echo "<p class='mt-2'><strong>Car:</strong> {$row['car_brand']} {$row['car_model']}</p>";
-    echo "<p><strong>Price per day:</strong> " . number_format($row['car_price_per_day'], 2) . "€</p>";
-    
-    echo "<h3 class='mt-4 font-semibold'>Extras:</h3>";
-    if (!empty($extras_arr)) {
-      echo "<ul class='list-disc pl-5'>";
-      foreach ($extras_arr as $ex) {
-        echo "<li>"
-        . htmlspecialchars($ex['name'])
-        . " x{$ex['quantity']} ("
-        . number_format($ex['unit_price'], 2) . "€/unit) = "
-        . number_format($ex['unit_price'] * $ex['quantity'], 2) . "€"
-        . "</li>";
-      }
-      echo "</ul>";
-      
-      echo "<p class='text-xl'><strong>Total Price:</strong> " . number_format($row['rs_total_price'], 2) . "€</p>";
-    } else {
-      echo "<p>No extras selected.</p>";
-    }
+    <div class="max-w-2xl mx-auto bg-white p-4 rounded shadow">
+      <p><strong><?= __('Reservation') ?> #:</strong> <?= $row['rs_number'] ?></p>
+      <p><strong><?= __('Customer', $lang) ?>:</strong> <?= $row['user_fullname'] ?> (<?= $row['user_nif'] ?>)</p>
+      <p><strong><?= __('Pick up date', $lang) ?>:</strong> <?= $row['rs_pickup_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_pickup_time'] ?></p>
+      <p><strong><?= __('Drop off date', $lang) ?>:</strong> <?= $row['rs_dropoff_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_dropoff_time'] ?></p>
+      <p><strong><?= __('Status', $lang) ?>:</strong> <?= $row['rs_status'] ?></p>
+      <p><strong><?= __('Days', $lang) ?>:</strong> <?= $days ?></p>
+      <p><strong><?= __('Rent', $lang) ?>:</strong> <?= number_format($base_rent, 2) ?>€</p>
 
-    echo "</div>";
+      <p class="mt-2"><strong><?= __('Car', $lang) ?>:</strong> <?= $row['car_brand'] ?> <?= $row['car_model'] ?></p>
+      <p><strong><?= __('Price per day', $lang) ?>:</strong> <?= number_format($row['car_price_per_day'], 2) ?>€</p>
+
+      <h3 class="mt-4 font-semibold"><?= __('Extras', $lang) ?>:</h3>
+
+      <?php if (!empty($extras_arr)): ?>
+        <ul class="list-disc pl-5">
+          <?php foreach ($extras_arr as $ex): ?>
+            <li>
+              <?= htmlspecialchars($ex['name']) ?> x<?= $ex['quantity'] ?> (
+              <?= number_format($ex['unit_price'], 2) ?>€/unit) =
+              <?= number_format($ex['unit_price'] * $ex['quantity'], 2) ?>€
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      <?php else: ?>
+        <p><?= __('No extras selected', $lang) ?></p>
+      <?php endif; ?>
+
+      <p class="text-xl mt-4"><strong><?= __('Total Price', $lang) ?>:</strong> <?= number_format($row['rs_total_price'], 2) ?>€</p>
+    </div>
+  <?php
+  } elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+  ?>
+    <p class="text-red-600 text-center mt-4"><?= __('Missing reservation data or user not logged in.', $lang) ?></p>
+  <?php
   } else {
-    echo "<p class='text-red-600 text-center mt-4'>Reservation not available</p>";
+  ?>
+    <p class="text-red-600 text-center mt-4"><?= __('Reservation not available', $lang) ?></p>
+<?php
   }
-} else if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  echo "<p class='text-red-600 text-center mt-4'>Missing reservation data or user not logged in.</p>";
+
+
+
+  mysqli_close($conn);
 }
-
-mysqli_close($conn);
-
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
 ?>
