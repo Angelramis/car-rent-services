@@ -72,5 +72,8 @@ return [
     'Total price' => 'Precio total',
     'Confirmed' => 'Confirmada',
     'Pending' => 'Pendiente',
-    'Cancelled' => 'Cancelada'
+    'Cancelled' => 'Cancelada',
+    'Privacy policy' => 'Política de privacidad',
+    'Legal Notice' => 'Aviso legal',
+    'Cookies Policy' => 'Política de cookies'
 ];

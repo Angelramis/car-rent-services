@@ -73,5 +73,8 @@ return [
     'Total price' => 'Total price',
     'Confirmed' => 'Confirmed',
     'Pending' => 'Pending',
-    'Cancelled' => 'Cancelled'
+    'Cancelled' => 'Cancelled',
+    'Privacy policy' => 'Privacy policy',
+    'Legal Notice' => 'Legal Notice',
+    'Cookies Policy' => 'Cookies Policy'
 ]; 

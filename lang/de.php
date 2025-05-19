@@ -72,5 +72,8 @@ return [
     'Total price' => 'Gesamtpreis',
     'Confirmed' => 'Bestätigt',
     'Pending' => 'Ausstehend',
-    'Cancelled' => 'Storniert'
+    'Cancelled' => 'Storniert',
+    'Privacy policy' => 'Datenschutzrichtlinie',
+    'Legal Notice' => 'Impressum',
+    'Cookies Policy' => 'Cookie-Richtlinie',
 ];

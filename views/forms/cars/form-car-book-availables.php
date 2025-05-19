@@ -64,15 +64,15 @@ if (isset($_POST['form-car-search'])) {
               <img src="/car-rent-services/assets/icons/electric-fuel.png" class="w-6" alt="Car seats">
             <?php
             } ?>
-            <p><?php echo $car['car_fuel']; ?></p>
+            <p><?= __($car['car_fuel'], $lang); ?></p>
           </div>
         
         <div class="flex flex-row">
           <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Car seats">
           <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] == 1) {
-                        echo "Unlimited";
+                         echo __('Unlimited', $lang);
                       } else {
-                        echo "Limited";
+                         echo __('Limited', $lang);
                       }; ?>
           </p>
         </div>

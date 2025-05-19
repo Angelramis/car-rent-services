@@ -123,8 +123,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <div class="max-w-2xl mx-auto bg-white p-4 rounded shadow">
       <p><strong><?= __('Reservation') ?> #:</strong> <?= $row['rs_number'] ?></p>
       <p><strong><?= __('Customer', $lang) ?>:</strong> <?= $row['user_fullname'] ?> (<?= $row['user_nif'] ?>)</p>
-      <p><strong><?= __('Pick up date', $lang) ?>:</strong> <?= $row['rs_pickup_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_pickup_time'] ?></p>
-      <p><strong><?= __('Drop off date', $lang) ?>:</strong> <?= $row['rs_dropoff_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_dropoff_time'] ?></p>
+      <p><strong><?= __('Pick up date', $lang) ?>:</strong> <?= $row['rs_pickup_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_pickup_time'] ?>h</p>
+      <p><strong><?= __('Drop off date', $lang) ?>:</strong> <?= $row['rs_dropoff_date'] ?> <?= __('at', $lang) ?> <?= $row['rs_dropoff_time'] ?>h</p>
       <p><strong><?= __('Status', $lang) ?>:</strong> <?= $row['rs_status'] ?></p>
       <p><strong><?= __('Days', $lang) ?>:</strong> <?= $days ?></p>
       <p><strong><?= __('Rent', $lang) ?>:</strong> <?= number_format($base_rent, 2) ?>€</p>

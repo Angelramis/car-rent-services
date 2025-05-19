@@ -19,8 +19,6 @@ if (isset($_GET['lang'])) {
 $lang = $_SESSION['lang'] ?? 'en';
 
 $currentFlag = $flagMap[$lang] ?? 'uk';
-
-print_r($lang);
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +31,7 @@ print_r($lang);
 
   <link rel="stylesheet" href="/car-rent-services/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="/car-rent-services/src/output.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/car-rent-services/assets/images/general/logo-car-rent-services.png">
 </head>
 
 <body class="bg-[#f7f7f7] flex flex-col items-center">
