@@ -6,10 +6,19 @@ $session_user_roles = $_SESSION['user_roles'] ?? 'None';
 
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/functions.php';
 
+$flagMap = [
+  'en' => 'uk',
+  'es' => 'spain',
+  'fr' => 'france',
+  'de' => 'germany'
+];
+
 if (isset($_GET['lang'])) {
   $_SESSION['lang'] = $_GET['lang'];
 }
 $lang = $_SESSION['lang'] ?? 'en';
+
+$currentFlag = $flagMap[$lang] ?? 'uk';
 
 print_r($lang);
 ?>
@@ -37,7 +46,7 @@ print_r($lang);
     <nav class="right_header">
       <div class="lang-selector">
         <a href="#">
-          <img src="/car-rent-services/assets/images/flags/flag-<?= $lang === 'es' ? 'spain' : 'uk' ?>.png" alt="Lang flag" class="w-14">
+          <img src="/car-rent-services/assets/images/flags/flag-<?= $currentFlag ?>.png" alt="Lang flag" class="w-14">
         </a>
         <div class="lang-dropdown shadow-md rounded-md">
           <a href="#" onclick="setLang('en')">
@@ -50,7 +59,7 @@ print_r($lang);
             <img src="/car-rent-services/assets/images/flags/flag-france.png" alt="Français"> Français
           </a>
           <a href="#" onclick="setLang('de')">
-            <img src="/car-rent-services/assets/images/flags/flag-germany.svg" alt="Deutsch"> Deutsch
+            <img src="/car-rent-services/assets/images/flags/flag-germany.png" alt="Deutsch"> Deutsch
           </a>
         </div>
       </div>  

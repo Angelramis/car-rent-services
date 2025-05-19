@@ -102,7 +102,7 @@ if (isset($_POST['form-car-details'])) {
         </div>
       </div>
       <?php if ($session_user_id != 'guest'): ?>
-        <div id="card-element" class="flex flex-col justify-between flex-wrap w-full rounded shadow p-3 mt-4"></div>
+        <div id="card-element" class="w-full rounded shadow p-3 mt-4"></div>
         <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">Pay</button>
         <div id="loading-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
           <div class="bg-white rounded-lg shadow-lg p-6 flex items-center space-x-3">
@@ -190,8 +190,8 @@ if (isset($_POST['form-car-details'])) {
       // Inicializar cálculo por si hay valores precargados
       updateTotal();
 
-
       const stripe = Stripe('pk_test_51RLMoJPbBgCevtAVM56KGc8qoSIFFNFmcvm0Hw3Nzz1XaVI5Ezr1NU1S5mc9UFXudEULLN917pKDVDUMic4yt5DN00sY6PLas9');
+      
       const elements = stripe.elements();
       const card = elements.create('card');
       card.mount('#card-element');
