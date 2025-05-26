@@ -99,7 +99,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   <p id="error-text"></p>
 </div>
 
-<img src="/car-rent-services/assets/images/general/car-portada.png" alt="Car" class="mt-4 w-full max-w-xl">
+<img src="/car-rent-services/assets/images/general/car-portada.webp" alt="Car" class="mt-4 w-full max-w-xl">
 
 <section id="info-cards" class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md">
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">

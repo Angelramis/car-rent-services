@@ -76,4 +76,7 @@ return [
     'Privacy policy' => 'Datenschutzrichtlinie',
     'Legal Notice' => 'Impressum',
     'Cookies Policy' => 'Cookie-Richtlinie',
+    'Card number' => 'Kartennummer',
+    'Expiration date' => 'Ablaufdatum',
+    'CVC' => 'CVC',
 ];

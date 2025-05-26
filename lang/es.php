@@ -75,5 +75,8 @@ return [
     'Cancelled' => 'Cancelada',
     'Privacy policy' => 'Política de privacidad',
     'Legal Notice' => 'Aviso legal',
-    'Cookies Policy' => 'Política de cookies'
+    'Cookies Policy' => 'Política de cookies',
+    'Card number' => 'Número de tarjeta',
+    'Expiration date' => 'Fecha de vencimiento',
+    'CVC' => 'CVC',
 ];

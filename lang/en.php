@@ -76,5 +76,8 @@ return [
     'Cancelled' => 'Cancelled',
     'Privacy policy' => 'Privacy policy',
     'Legal Notice' => 'Legal Notice',
-    'Cookies Policy' => 'Cookies Policy'
+    'Cookies Policy' => 'Cookies Policy',
+    'Card number' => 'Card number',
+    'Expiration date' => 'Expiration date',
+    'CVC' => 'CVC'
 ]; 
