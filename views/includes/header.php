@@ -66,7 +66,7 @@ $currentFlag = $flagMap[$lang] ?? 'uk';
           // Si dentro de los roles del usuario contiene admin, mostrar html.
         ?>
           <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST" class="a-admin-icon flex p-1 transition rounded-lg hover:bg-yellow-400 cursor-pointer">
-              <img src=" /car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
+              <img src="/car-rent-services/assets/icons/admin-icon.png" alt="manual-icon">
             <input type="submit" class="text-white" value="Admin" name="form-car-admin">
           </form>
         <?php

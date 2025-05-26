@@ -4,7 +4,6 @@
       <a class="text-white" href=""><?= __('Privacy policy', $lang); ?></a>
       <a class="text-white" href=""><?= __('Legal Notice', $lang); ?></a>
       <a class="text-white" href=""><?= __('Cookies Policy', $lang); ?></a>
-      <a href="/car-rent-services/views/manuals/manual-installation.php" class="text-white">Installation manual</a>
       <a href="/car-rent-services/views/manuals/manual-user.php" class="text-white">User manual</a>
     </footer>
 
