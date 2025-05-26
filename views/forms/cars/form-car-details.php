@@ -313,6 +313,7 @@ if (isset($_POST['form-car-details'])) {
             addHiddenInput('dropoff-time', dropoffTime);
             addHiddenInput('extras-data', JSON.stringify(selectedExtras));
             addHiddenInput('total-amount', totalAmount.toFixed(2));
+            addHiddenInput('stripe-payment-id', result.paymentIntent.id);
 
             document.body.appendChild(confirmForm);
             confirmForm.submit();

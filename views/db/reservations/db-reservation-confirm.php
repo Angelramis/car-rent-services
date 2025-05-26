@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   $pickup_time  = mysqli_real_escape_string($conn, $_POST['pickup-time']);
   $dropoff_date = mysqli_real_escape_string($conn, $_POST['dropoff-date']);
   $dropoff_time = mysqli_real_escape_string($conn, $_POST['dropoff-time']);
+  $rs_stripe_payment_id = mysqli_real_escape_string($conn, $_POST['stripe-payment-id'] ?? '');
   $raw_extras   = json_decode($_POST['extras-data'], true);
 
   $r = mysqli_query($conn, "SELECT car_price_per_day 
@@ -69,14 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
       user_id, car_id,
       rs_pickup_date, rs_pickup_time,
       rs_dropoff_date, rs_dropoff_time,
-      rs_total_price, rs_status,
+      rs_total_price, rs_stripe_payment_id, rs_status,
       rs_extras,
       rs_created_at
     ) VALUES (
       $session_user_id, $car_id,
       '$pickup_date', '$pickup_time',
       '$dropoff_date', '$dropoff_time',
-      $total_price, 'Confirmed',
+      $total_price, '$rs_stripe_payment_id', 'Confirmed',
       '$extras_json',
       NOW()
     )";
