@@ -1,5 +1,5 @@
 <?php //Header
-include '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
 <h1 class="text-2xl font-medium"><?= __('Rent a car', $lang);?> <span class="text-[#1389e4]"> <?= __('fast', $lang);?></span> <?= __('and', $lang);?> <span class="text-[#1389e4]"><?= __('easy', $lang);?></span> </h1>

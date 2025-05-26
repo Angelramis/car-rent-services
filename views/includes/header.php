@@ -4,7 +4,12 @@ $session_user_id = $_SESSION['user_id'] ?? 'guest';
 $session_user_firstname = $_SESSION['user_firstname'] ?? 'User';
 $session_user_roles = $_SESSION['user_roles'] ?? 'None';
 
-include '/car-rent-services/views/includes/functions.php';
+if (empty($_SERVER['DOCUMENT_ROOT'])) {
+    // Ajustar ruta al usarse en Render
+    $_SERVER['DOCUMENT_ROOT'] = __DIR__;
+}
+
+include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/functions.php';
 
 $flagMap = [
   'en' => 'uk',
