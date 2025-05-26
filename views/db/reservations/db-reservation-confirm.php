@@ -2,18 +2,17 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
-
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
-  $car_id       = (int) $_POST['car-id'];
-  $pickup_date  = mysqli_real_escape_string($conn, $_POST['pickup-date']);
-  $pickup_time  = mysqli_real_escape_string($conn, $_POST['pickup-time']);
-  $dropoff_date = mysqli_real_escape_string($conn, $_POST['dropoff-date']);
-  $dropoff_time = mysqli_real_escape_string($conn, $_POST['dropoff-time']);
-  $rs_stripe_payment_id = mysqli_real_escape_string($conn, $_POST['stripe-payment-id'] ?? '');
+  $car_id       = $_POST['car-id'];
+  $pickup_date  = htmlspecialchars($_POST['pickup-date']);
+  $pickup_time  = htmlspecialchars($_POST['pickup-time']);
+  $dropoff_date = htmlspecialchars($_POST['dropoff-date']);
+  $dropoff_time = htmlspecialchars($_POST['dropoff-time']);
+  $rs_stripe_payment_id = htmlspecialchars($_POST['stripe-payment-id'] ?? '');
   $raw_extras   = json_decode($_POST['extras-data'], true);
 
   $r = mysqli_query($conn, "SELECT car_price_per_day 
@@ -93,8 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   // Redirige tras guardar para evitar reinserción al recargar
   header("Location: " . $_SERVER['PHP_SELF'] . "?id=$reservation_id");
 
+  // Cerrar conexión
+  mysqli_close($conn);
+
   exit;
-}  // Cierre del bloque POST
+}
 
 
 
@@ -161,8 +163,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <p class="text-red-600 text-center mt-4"><?= __('Reservation not available', $lang) ?></p>
 <?php
   }
-
-
 
   mysqli_close($conn);
 }
