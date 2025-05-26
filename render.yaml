@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: car-rent-services
-    env: docker
-    plan: free
-    dockerfilePath: Dockerfile
