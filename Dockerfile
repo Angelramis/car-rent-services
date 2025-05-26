@@ -1,11 +1,17 @@
-# Usa la imagen oficial de PHP con Apache
+# Usa una imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
-# Habilita extensiones necesarias
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+# Instala extensiones necesarias (puedes agregar más si las usas)
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
-# Copia todos los archivos del proyecto local al contenedor
-COPY . /var/www/html/
+# Habilita mod_rewrite si usas URLs limpias
+RUN a2enmod rewrite
 
-# Otorga permisos (opcional)
-RUN chown -R www-data:www-data /var/www/html
+# Establece la carpeta raíz del proyecto
+WORKDIR /var/www/html/car-rent-services
+
+# Copia todo el código del repo al contenedor
+COPY . /var/www/html
+
+# Expone el puerto por defecto de Apache
+EXPOSE 80
