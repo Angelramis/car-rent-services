@@ -76,7 +76,7 @@ if (isset($_POST['form-car-details'])) {
                 <?php if ($extra['extra_checkbox'] == 1) { ?>
                   <input type="checkbox" class="extra-input w-5 h-5" data-type="checkbox" data-price="<?php echo $extra['extra_unit_price']; ?>">
                 <?php } else { ?>
-                  <input type="number" id="child-seat-input" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="5" value="0">
+                  <input type="number" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="5" value="0">
                 <?php } ?>
               </div>
             </div>
@@ -221,6 +221,37 @@ if (isset($_POST['form-car-details'])) {
 
       const form = document.getElementById('extras-form');
       const errorDiv = document.getElementById('error-message');
+
+      let cardNumberComplete = false;
+      let cardExpiryComplete = false;
+      let cardCvcComplete = false;
+
+      function toggleSubmitButton() {
+        const isFormValid = cardNumberComplete && cardExpiryComplete && cardCvcComplete;
+        const submitButton = document.getElementById('submit');
+        submitButton.disabled = !isFormValid;
+        submitButton.classList.toggle('opacity-50', !isFormValid);
+        submitButton.classList.toggle('cursor-not-allowed', !isFormValid);
+      }
+
+      toggleSubmitButton();
+
+      // Monitor Stripe fields
+      cardNumber.on('change', function(event) {
+        cardNumberComplete = event.complete;
+        toggleSubmitButton();
+      });
+
+      cardExpiry.on('change', function(event) {
+        cardExpiryComplete = event.complete;
+        toggleSubmitButton();
+      });
+
+      cardCvc.on('change', function(event) {
+        cardCvcComplete = event.complete;
+        toggleSubmitButton();
+      });
+
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
