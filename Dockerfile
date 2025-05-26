@@ -1,22 +1,22 @@
 FROM php:8.2-apache
 
-# Extensiones y mod_rewrite
-RUN docker-php-ext-install mysqli pdo pdo_mysql \
- && a2enmod rewrite
+# Instala extensiones necesarias
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Crea la carpeta destino
-RUN mkdir -p /var/www/html/car-rent-services
+# Habilita mod_rewrite si lo necesitas
+RUN a2enmod rewrite
 
-# Copia SOLO lo que está dentro de la sub‑carpeta "car-rent-services"
-# (no copia la carpeta duplicada)
-COPY ./car-rent-services/ /var/www/html/car-rent-services/
+# Copia todo el contenido del repo (el actual car-rent-services)
+COPY . /var/www/html/car-rent-services
 
-# Ajusta DocumentRoot para que apunte al lugar correcto
+# Configura Apache para servir desde la subcarpeta
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/car-rent-services|g' /etc/apache2/sites-available/000-default.conf \
  && sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/car-rent-services>|g' /etc/apache2/apache2.conf
 
-# Opciones extra (ServerName, permisos, index.php por defecto)
+# Opcional: ServerName y permisos
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
  && chown -R www-data:www-data /var/www/html/car-rent-services \
- && chmod -R 755 /var/www/html/car-rent-services \
- && echo "DirectoryIndex index.php" > /etc/apache2/conf-enabled/directoryindex.conf
+ && chmod -R 755 /var/www/html/car-rent-services
+
+# Asegura que Apache sepa usar index.php
+RUN echo "DirectoryIndex index.php" > /etc/apache2/conf-enabled/directoryindex.conf
