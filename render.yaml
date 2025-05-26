@@ -3,5 +3,4 @@ services:
     name: car-rent-services
     env: docker
     plan: free
-    rootDir: car-rent-services  # Indica a Render que el código está aquí
-    dockerfilePath: car-rent-services/Dockerfile
+    dockerfilePath: Dockerfile
