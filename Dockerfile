@@ -6,10 +6,10 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 # Habilita mod_rewrite si lo necesitas
 RUN a2enmod rewrite
 
-# Copia el proyecto completo al contenedor
+# Copia SOLO el contenido interior, no la carpeta contenedora
 COPY . /var/www/html/car-rent-services
 
-# Cambia el DocumentRoot en Apache
+# Cambia DocumentRoot de Apache para que sirva la carpeta directamente
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/car-rent-services|g' /etc/apache2/sites-available/000-default.conf \
  && sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/car-rent-services>|g' /etc/apache2/apache2.conf
 
