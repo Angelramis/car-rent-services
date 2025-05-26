@@ -1,4 +1,8 @@
 <?php //Header
+if (empty($_SERVER['DOCUMENT_ROOT']) || $_SERVER['DOCUMENT_ROOT'] === '/var/www/html') {
+    // Cambia a la ruta raíz correcta de tu proyecto en Render
+    $_SERVER['DOCUMENT_ROOT'] = __DIR__; 
+}
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
 
