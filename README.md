@@ -1,6 +1,6 @@
 # Car Rent Services
 
-Este proyecto es una aplicación web para la gestión de alquiler de coches.
+Este proyecto es una aplicación web para gestionar el alquiler de coches.
 
 ## Requisitos
 
@@ -41,6 +41,12 @@ Este proyecto es una aplicación web para la gestión de alquiler de coches.
 
 7. **Accede a la aplicación**
    - Abre tu navegador y entra a `http://localhost/car-rent-services`
+
+8. **Arranca Tailwind**
+   - Abre la terminal y ejecuta:
+     ```sh
+     npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+     ```
 
 ## Tecnologías usadas
 
