@@ -1,4 +1,5 @@
 <?php //Header
+echo 'HOLA HOLA';
 if (empty($_SERVER['DOCUMENT_ROOT']) || $_SERVER['DOCUMENT_ROOT'] === '/var/www/html') {
     // Cambia a la ruta raíz correcta de tu proyecto en Render
     $_SERVER['DOCUMENT_ROOT'] = __DIR__; 
