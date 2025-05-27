@@ -16,7 +16,7 @@ if (isset($_POST['form-car-delete'])) {
         $sql = "DELETE 
                 FROM cars 
                 WHERE car_id = '$car_id';";
-        mysqli_query($conn, $sql);
+        pg_query($conn, $sql);
         ?>
         <div class="flex flex-col items-center">
           <p>Successfully deleted</p>
@@ -37,7 +37,7 @@ if (isset($_POST['form-car-delete'])) {
     }
 }
 
-mysqli_close($conn);
+pg_close($conn);
 ?>
 </div>
 <?php

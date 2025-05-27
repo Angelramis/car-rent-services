@@ -29,17 +29,17 @@
                   WHERE reservation_number = $reservation_number;";
 
      // Ejecutar consulta SQL a la BBDD
-     $execute_query = mysqli_query($conn, $sql_query);
+     $execute_query = pg_query($conn, $sql_query);
      
      if ($execute_query) {
           //Guardar resultado de la consulta
-         $result_query = mysqli_query($conn, $query_select);
+         $result_query = pg_query($conn, $query_select);
  
          // Verificar si se ha obtenido resultado
          if ($result_query) {
              
             // Obtener el resultado y mostrarlo
-            while ($row = mysqli_fetch_assoc($result_query)) {
+            while ($row = pg_fetch_assoc($result_query)) {
               ?>
                 <div class='div_border'>
                   <p>The reservation with number <?php echo $row['reservation_number']?> has been sucessfully cancelled.</p>
@@ -47,14 +47,14 @@
               <?php
             }
          } else { 
-      echo "No se ha encontrado el resultado de la consulta" . mysqli_error($conn);
+      echo "No se ha encontrado el resultado de la consulta" . pg_last_error($conn);
     }
   } else {
-    echo "Error con la consulta" . mysqli_error($conn);
+    echo "Error con la consulta" . pg_last_error($conn);
   }
 }
   // Cerrar conexión con BBD una vez acabada la consulta
-  mysqli_close($conn);
+  pg_close($conn);
 ?>  
 
 <a href="/index.php">

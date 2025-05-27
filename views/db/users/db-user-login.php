@@ -30,16 +30,16 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
 
   // Consulta SQL para encontrar el usuario
   $sql_query = "SELECT * 
-                FROM `users` 
+                FROM users
                 WHERE user_email = '$user_email'";
 
   // Ejecutar consulta SQL a la base de datos
-  $execute_query = mysqli_query($conn, $sql_query);
+  $execute_query = pg_query($conn, $sql_query);
 
   // Verificar si el usuario existe
-  if ($execute_query && mysqli_num_rows($execute_query) > 0) {
+  if ($execute_query && pg_num_rows($execute_query) > 0) {
     // Obtener el usuario
-    $user = mysqli_fetch_assoc($execute_query);
+    $user = pg_fetch_assoc($execute_query);
 
     // Si el usuario es correcto
     if ($user_pwd == $user['user_pwd']) {
@@ -85,7 +85,7 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
 }
 
 // Cerrar la conexión a la base de datos
-mysqli_close($conn);
+pg_close($conn);
 ?>
 
 <?php //Footer

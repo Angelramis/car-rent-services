@@ -19,13 +19,13 @@ if (isset($_POST['form-car-details'])) {
   $sql_query_extras = "SELECT * 
                       FROM extras;";
 
-  $execute_query_car = mysqli_query($conn, $sql_query_car);
-  $execute_query_extras = mysqli_query($conn, $sql_query_extras);
+  $execute_query_car = pg_query($conn, $sql_query_car);
+  $execute_query_extras = pg_query($conn, $sql_query_extras);
 
-  $car_details = mysqli_fetch_assoc($execute_query_car);
-  $extras = mysqli_fetch_all($execute_query_extras, MYSQLI_ASSOC);
+  $car_details = pg_fetch_assoc($execute_query_car);
+  $extras = pg_fetch_all($execute_query_extras);
 
-  if ($execute_query_car && $extras && mysqli_num_rows($execute_query_car) > 0) {
+  if ($execute_query_car && $extras && pg_num_rows($execute_query_car) > 0) {
 
     $pickup = new DateTime($pickup_date);
     $dropoff = new DateTime($dropoff_date);
@@ -343,11 +343,11 @@ if (isset($_POST['form-car-details'])) {
 
 <?php
   } else {
-    echo "<p class='text-red-500 text-center mt-4'>Error con la consulta: " . mysqli_error($conn) . "</p>";
+    echo "<p class='text-red-500 text-center mt-4'>Error con la consulta: " . pg_last_error($conn) . "</p>";
   }
 }
 
-mysqli_close($conn);
+pg_close($conn);
 
 include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

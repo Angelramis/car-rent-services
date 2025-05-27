@@ -77,7 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 
 
     // Ejecutar la consulta
-    if (mysqli_query($conn, $sql_insert)) {
+    if (pg_query($conn, $sql_insert)) {
   ?>
       <div class="flex flex-col items-center">
         <p>Successfully created</p>
@@ -88,12 +88,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
   <?php
     } else {
       // Si la actualización falla, mostrar mensaje error
-      echo "<p>Error updating car information: " . mysqli_error($conn) . "</p>";
+      echo "<p>Error updating car information: " . pg_last_error($conn) . "</p>";
     }
   }
 
   // Cerrar la conexión a la base de datos
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 </div>
 <?php

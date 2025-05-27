@@ -19,9 +19,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
               FROM users
               WHERE user_id = '$user_id';";
 
-    $execute_query = mysqli_query($conn, $sql_car);
+    $execute_query = pg_query($conn, $sql_car);
 
-    $user = mysqli_fetch_assoc($execute_query);
+    $user = pg_fetch_assoc($execute_query);
 
     if ($execute_query) {
   ?>
@@ -106,7 +106,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
     }
   }
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 
 </div>

@@ -28,8 +28,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
                       FROM cars;";
     }
 
-    $execute_query = mysqli_query($conn, $sql_cars);
-    $cars = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
+    $execute_query = pg_query($conn, $sql_cars);
+    $cars = pg_fetch_all($execute_query);
   ?>
       <nav class="w-full mb-2 flex flex-row justify-between items-center">
         <form action="/views/forms/cars/form-car-admin.php" method="GET">
@@ -89,7 +89,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
     }
    
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 
 </div>

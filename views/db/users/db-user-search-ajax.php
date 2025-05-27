@@ -15,10 +15,10 @@ if (!empty($search)) {
            OR user_firstname LIKE '%$safe_search%'";
 }
 
-$result = mysqli_query($conn, $sql);
+$result = pg_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while ($user = mysqli_fetch_assoc($result)) {
+if (pg_num_rows($result) > 0) {
+    while ($user = pg_fetch_assoc($result)) {
         echo '<form action="/views/forms/users/form-user-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-8 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">';
         echo '<input type="hidden" name="user_id" value="' . htmlspecialchars($user['user_id']) . '">';
         
@@ -38,4 +38,4 @@ if (mysqli_num_rows($result) > 0) {
     echo '<p class="col-span-12 text-center py-4 text-gray-500">No results found.</p>';
 }
 
-mysqli_close($conn);
+pg_close($conn);

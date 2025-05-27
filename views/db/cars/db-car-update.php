@@ -73,7 +73,7 @@ if (isset($_POST['form-car-update'])) {
                     WHERE car_id = '$car_id'";
 
     // Ejecutar la consulta
-    if (mysqli_query($conn, $sql_update)) {
+    if (pg_query($conn, $sql_update)) {
         ?>
         <div class="flex flex-col items-center">
           <p>Successfully updated</p>
@@ -84,12 +84,12 @@ if (isset($_POST['form-car-update'])) {
       <?php
     } else {
         // Si la actualización falla, mostrar mensaje error
-        echo "<p>Error updating car information: " . mysqli_error($conn) . "</p>";
+        echo "<p>Error updating car information: " . pg_last_error($conn) . "</p>";
     }
 }
 
 // Cerrar la conexión a la base de datos
-mysqli_close($conn);
+pg_close($conn);
 ?>
 </div>
 <?php

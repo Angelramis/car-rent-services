@@ -13,10 +13,11 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libzip-dev \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Instala extensiones comunes de PHP
-RUN docker-php-ext-install mysqli pdo pdo_mysql zip && docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql zip pgsql pdo_pgsql && docker-php-ext-enable pdo_mysql pdo_pgsql
 
 # Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -30,6 +31,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
 
 # Copia los archivos del proyecto
 COPY . /var/www/html/
+
+# Copia php.ini personalizado
+COPY php.ini /usr/local/etc/php/php.ini
 
 # Establece los permisos adecuados
 RUN chown -R www-data:www-data /var/www/html

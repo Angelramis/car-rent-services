@@ -14,10 +14,10 @@
                     WHERE user_id = '$session_user_id';";
 
       // Ejecutar consulta SQL
-      $execute_query = mysqli_query($conn, $sql_query);
-      $reservations = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
+      $execute_query = pg_query($conn, $sql_query);
+      $reservations = pg_fetch_all($execute_query);
 
-      if ($execute_query && mysqli_num_rows($execute_query) > 0) {
+      if ($execute_query && pg_num_rows($execute_query) > 0) {
         /* Mostrar sus reservas activas*/
         foreach ($reservations as $reservation) {
           ?>
@@ -40,7 +40,7 @@
         <?php
       }
 
-      mysqli_close($conn);
+      pg_close($conn);
 
     /* Si el usuario no ha iniciado sesión aún, redirigirlo al log in */
     } else if ($session_user_id == 'guest') {

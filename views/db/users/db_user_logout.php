@@ -13,5 +13,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/views/db/db_includes/db_connection.php';
           exit();
       
 // Cerrar la conexión a la base de datos
-mysqli_close($conn);
+pg_close($conn);
 ?>

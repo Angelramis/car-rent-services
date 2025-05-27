@@ -19,9 +19,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
               FROM cars
               WHERE car_id = '$car_id';";
 
-    $execute_query = mysqli_query($conn, $sql_car);
+    $execute_query = pg_query($conn, $sql_car);
 
-    $car = mysqli_fetch_assoc($execute_query);
+    $car = pg_fetch_assoc($execute_query);
 
     if ($execute_query) {
   ?>
@@ -127,7 +127,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
     }
   }
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 
 </div>

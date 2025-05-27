@@ -14,10 +14,10 @@ if (!empty($search)) {
            OR car_model LIKE '%$safe_search%'";
 }
 
-$result = mysqli_query($conn, $sql);
+$result = pg_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    while ($car = mysqli_fetch_assoc($result)) {
+if (pg_num_rows($result) > 0) {
+    while ($car = pg_fetch_assoc($result)) {
         echo '<form action="/views/forms/cars/form-car-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-12 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">';
         echo '<input type="hidden" name="car_id" value="' . htmlspecialchars($car['car_id']) . '">';
 
@@ -39,4 +39,4 @@ if (mysqli_num_rows($result) > 0) {
     echo '<p class="col-span-12 text-center py-4 text-gray-500">No results found.</p>';
 }
 
-mysqli_close($conn);
+pg_close($conn);

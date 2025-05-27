@@ -86,10 +86,10 @@
                   WHERE user_email = '$user_email'";
     
     // Ejecutar consulta SQL a la base de datos
-    $execute_sql_email = mysqli_query($conn, $sql_email);
+    $execute_sql_email = pg_query($conn, $sql_email);
 
     // Comprobar si el email ya existe en la BBDD
-    if (mysqli_num_rows( $execute_sql_email) > 0) {
+    if (pg_num_rows( $execute_sql_email) > 0) {
       ?>
         <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-red-500'>Email already exists. Try another one.</p>
@@ -107,7 +107,7 @@
                       VALUES ('$user_email', 'user', '$user_nif', '$user_firstname', '$user_lastname', '$user_phone', '$user_address', '$user_country', '$user_birthdate', '$user_pwd', '$user_license_number', '$user_license_expedition', '$user_license_expiration')";
 
     // Ejecutar consulta SQL a la base de datos
-    $execute_sql_insert_user = mysqli_query($conn, $sql_insert_user);
+    $execute_sql_insert_user = pg_query($conn, $sql_insert_user);
 
     // Comprobar si se ha insertado el usuario
     if ($execute_sql_insert_user) {
@@ -151,7 +151,7 @@
   }
 
   // Cerrar la conexión a la base de datos
-  mysqli_close($conn);
+  pg_close($conn);
 ?>
 
 <?php //Footer

@@ -24,7 +24,7 @@ if (isset($_POST['db-reservation-update'])) {
                     WHERE rs_number = '$rs_number'";
 
     // Ejecutar la consulta
-    if (mysqli_query($conn, $sql_update)) {
+    if (pg_query($conn, $sql_update)) {
         ?>
         <div class="flex flex-col items-center">
           <p>Successfully updated</p>
@@ -35,12 +35,12 @@ if (isset($_POST['db-reservation-update'])) {
       <?php
     } else {
         // Si la actualización falla, mostrar mensaje error
-        echo "<p>Error updating the reservation. " . mysqli_error($conn) . "</p>";
+        echo "<p>Error updating the reservation. " . pg_last_error($conn) . "</p>";
     }
 }
 
 // Cerrar la conexión a la base de datos
-mysqli_close($conn);
+pg_close($conn);
 ?>
 </div>
 <?php

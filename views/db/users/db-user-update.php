@@ -37,7 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
                     WHERE user_id = '$user_id'";
 
     // Ejecutar la consulta
-    if (mysqli_query($conn, $sql_update)) {
+    if (pg_query($conn, $sql_update)) {
   ?>
       <div class="flex flex-col items-center">
         <p>Successfully updated</p>
@@ -47,12 +47,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
       </div>
   <?php
     } else {
-      echo "<p>Error updating the user: " . mysqli_error($conn) . "</p>";
+      echo "<p>Error updating the user: " . pg_last_error($conn) . "</p>";
     }
   }
 
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 </div>
 <?php

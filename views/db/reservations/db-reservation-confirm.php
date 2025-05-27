@@ -15,18 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   $rs_stripe_payment_id = htmlspecialchars($_POST['stripe-payment-id'] ?? '');
   $raw_extras   = json_decode($_POST['extras-data'], true);
 
-  $r = mysqli_query($conn, "SELECT car_price_per_day 
+  $r = pg_query($conn, "SELECT car_price_per_day 
                             FROM cars 
                             WHERE car_id = $car_id");
 
-  if (!($r && mysqli_num_rows($r))) {
+  if (!($r && pg_num_rows($r))) {
 ?>
     <p class='text-red-600 text-center mt-4'><?= __('Car not found.', $lang); ?></p>
   <?php
     exit;
   }
 
-  $car_price_per_day = mysqli_fetch_assoc($r)['car_price_per_day'];
+  $car_price_per_day = pg_fetch_assoc($r)['car_price_per_day'];
   $pickup  = new DateTime($pickup_date);
   $dropoff = new DateTime($dropoff_date);
   $days    = max($pickup->diff($dropoff)->days, 1);
@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
       $total_extras += $subtotal;
 
       $en = mysqli_real_escape_string($conn, $name);
-      $qr = mysqli_query($conn, "SELECT extra_id 
+      $qr = pg_query($conn, "SELECT extra_id 
                                 FROM extras 
                                 WHERE extra_name = '$en' 
                                 LIMIT 1;");
-      $eid = $qr && mysqli_num_rows($qr)
-        ? (int) mysqli_fetch_assoc($qr)['extra_id']
+      $eid = $qr && pg_num_rows($qr)
+        ? (int) pg_fetch_assoc($qr)['extra_id']
         : null;
 
       $extras_to_store[] = [
@@ -81,9 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
       NOW()
     )";
 
-  if (!mysqli_query($conn, $sql)) {
+  if (!pg_query($conn, $sql)) {
     echo "<p class='text-red-600 text-center mt-4'>Error inserting reservation: "
-      . mysqli_error($conn) . "</p>";
+      . pg_last_error($conn) . "</p>";
     exit;
   }
 
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   header("Location: " . $_SERVER['PHP_SELF'] . "?id=$reservation_id");
 
   // Cerrar conexión
-  mysqli_close($conn);
+  pg_close($conn);
 
   exit;
 }
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   $reservation_id = (int)$_GET['id'];
 
-  $res = mysqli_query($conn, "
+  $res = pg_query($conn, "
   SELECT * FROM reservations_view
   WHERE rs_number = $reservation_id
   AND user_id = $session_user_id
@@ -112,8 +112,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   ");
 
 
-  if ($res && mysqli_num_rows($res)) {
-    $row = mysqli_fetch_assoc($res);
+  if ($res && pg_num_rows($res)) {
+    $row = pg_fetch_assoc($res);
     $extras_arr = json_decode($row['rs_extras'], true);
 
     $pickup = new DateTime($row['rs_pickup_date']);
@@ -164,7 +164,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <?php
   }
 
-  mysqli_close($conn);
+  pg_close($conn);
 }
 include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

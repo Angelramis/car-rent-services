@@ -28,9 +28,9 @@ if (isset($_POST['form-car-search'])) {
                                       );";
 
   // Ejecutar consulta SQL con BBDD
-  $execute_query = mysqli_query($conn, $sql_query);
+  $execute_query = pg_query($conn, $sql_query);
 
-  $cars = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
+  $cars = pg_fetch_all($execute_query);
 
 ?>
   <div class="grid grid-cols-1 w-full m-2 gap-3">
@@ -98,7 +98,7 @@ if (isset($_POST['form-car-search'])) {
       <?php
     }
   }
-  mysqli_close($conn);
+  pg_close($conn);
 ?>
 </div>
 

@@ -37,16 +37,30 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
    - Importa el esquema y los datos iniciales si están disponibles.
 
 6. **Configura el servidor web**
-   - Usa XAMPP o cualquier servidor Apache y apunta el DocumentRoot a la carpeta del proyecto.
+   - Para desarrollo utilizamos el comando
+      ```
+      docker compose up -d
+      ```
+      Esto nos desplegará en el puerto del fichero `docker-compose.yml` nuestro proyecto listo para desarrollo.
+
 
 7. **Accede a la aplicación**
-   - Abre tu navegador y entra a `http://localhost`
+   - Abre tu navegador y entra a `http://localhost:8080`
 
 8. **Arranca Tailwind**
    - Abre la terminal y ejecuta:
      ```sh
      npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
      ```
+
+9. **Despliegue a producción**
+   - Para desplegar en producción usar el Dockerfile. Ahora mismo lo desplegamos en render. Se despliega mediante github.
+   - Pasos para despliegue:
+   1. Compilar tailwind 
+   ```
+   npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css
+   ```
+   2. Hacer commit en la rama configurada (main)
 
 ## Tecnologías usadas
 
@@ -58,6 +72,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
 - Git
 - MariaDB
 - Apache
+- Docker
 
 ## Extras
 

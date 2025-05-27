@@ -16,7 +16,7 @@ if (isset($_POST['db-reservation-delete'])) {
         $sql = "DELETE 
                 FROM reservations 
                 WHERE rs_number = '$rs_number';";
-        mysqli_query($conn, $sql);
+        pg_query($conn, $sql);
         ?>
         <div class="flex flex-col items-center">
           <p>Successfully deleted</p>
@@ -37,7 +37,7 @@ if (isset($_POST['db-reservation-delete'])) {
     }
 }
 
-mysqli_close($conn);
+pg_close($conn);
 ?>
 </div>
 <?php

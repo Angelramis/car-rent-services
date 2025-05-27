@@ -19,9 +19,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
               FROM reservations_view
               WHERE rs_number = '$rs_number';";
 
-    $execute_query = mysqli_query($conn, $sql_rs);
+    $execute_query = pg_query($conn, $sql_rs);
 
-    $rs = mysqli_fetch_assoc($execute_query);
+    $rs = pg_fetch_assoc($execute_query);
 
     if ($execute_query) {
   ?>
@@ -97,7 +97,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
     }
   }
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 
 </div>

@@ -19,8 +19,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
                   FROM users;";
 
 
-    $execute_query = mysqli_query($conn, $sql_users);
-    $users = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
+    $execute_query = pg_query($conn, $sql_users);
+    $users = pg_fetch_all($execute_query);
   ?>
     <nav class="w-full mb-2">
       <form action="" method="GET">
@@ -64,7 +64,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
   }
 
 
-  mysqli_close($conn);
+  pg_close($conn);
   ?>
 
 </div>
