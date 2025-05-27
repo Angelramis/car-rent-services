@@ -38,7 +38,7 @@ if (isset($_POST['form-car-search'])) {
     <?php
     foreach ($cars as $car) {
     ?>
-      <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4  md:gap-2">
+      <div class="flex flex-col items-center justify-center w-full bg-white text-left rounded-md shadow p-2 md:grid md:grid-cols-4 md:gap-2">
         <img src="<?php echo $car['car_image']; ?>" class="w-full max-w-[350px] h-full md:object-contain md:h-36">
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="w-full">
@@ -47,28 +47,28 @@ if (isset($_POST['form-car-search'])) {
           </div>
         </div>
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
-          <div class="flex flex-row">
-            <img src="/car-rent-services/assets/icons/car-seats.png" class="w-6" alt="Car seats">
+          <div class="flex flex-row gap-1">
+            <img src="/car-rent-services/assets/icons/car-seats.png" class="w-6 h-6" alt="Car seats">
             <p><?php echo $car['car_seats']; ?> <?= __('seats', $lang);?></p>
           </div>
 
-          <div class="flex flex-row">
+          <div class="flex flex-row gap-1">
             <?php if ($car['car_fuel'] == "Diesel" || $car['car_fuel'] == "Gasoline") {
             ?>
-              <img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6 h-6" alt="Car gas fuel">
             <?php } elseif ($car['car_fuel'] == "Hybrid") {
             ?>
-              <img src="/car-rent-services/assets/icons/hybrid-fuel.png" class="w-6" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/hybrid-fuel.png" class="w-6 h-6" alt="Car hybrid fuel">
             <?php } else {
             ?>
-              <img src="/car-rent-services/assets/icons/electric-fuel.png" class="w-6" alt="Car seats">
+              <img src="/car-rent-services/assets/icons/electric-fuel.png" class="w-6 h-6" alt="Car electric">
             <?php
             } ?>
             <p><?= __($car['car_fuel'], $lang); ?></p>
           </div>
         
-        <div class="flex flex-row">
-          <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Car seats">
+        <div class="flex flex-row gap-1">
+          <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6 h-6" alt="Car seats">
           <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] == 1) {
                          echo __('Unlimited', $lang);
                       } else {
@@ -93,7 +93,9 @@ if (isset($_POST['form-car-search'])) {
 <?php
     }
     if (count($cars) == 0) {
-      echo "There are no cars available";
+      ?>
+        <p><?= __('There are no cars available at the moment. Please try again later', $lang);?>.</p>
+      <?php
     }
   }
   mysqli_close($conn);

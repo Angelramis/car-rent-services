@@ -1,6 +1,7 @@
 <?php // Header
 include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
 ?>
+
 <h1 class='text-center text-2xl p-3'>New car</h1>
 
 <?php //Admin models
@@ -29,7 +30,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
           <nav class="flex flex-col gap-1 p-2">
             <label for="car-plate">Plate<span class="text-red-500">*</span></label>
-            <input type="text" id="car-plate" name="car-plate" class="bg-gray-200 rounded-md border-[1px] p-1">
+            <input type="text" id="car-plate" placeholder="1234XMP" name="car-plate" class="bg-gray-200 rounded-md border-[1px] p-1">
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">

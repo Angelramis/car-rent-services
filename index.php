@@ -8,12 +8,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
   class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1"><?= __('Pick up date', $lang);?></label>
-    <input type="date" min="<?php echo date('Y-m-d'); ?>" id="pickup-date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+4 days')); ?>">
+    <input type="date" min="<?php echo date('Y-m-d'); ?>" id="pickup-date" name="pickup-date" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full p-1" value="<?php echo date('Y-m-d', strtotime('+4 days')); ?>">
   </div>
   
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-time" class="w-full mb-1"><?= __('Hour', $lang);?></label>
-    <select name="pickup-time" id="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
+    <select name="pickup-time" id="pickup-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full p-1">
       <option value="06:00">06:00h</option>
       <option value="06:30">06:30h</option>
       <option value="07:00">07:00h</option>
@@ -50,12 +50,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="dropoff-date" class="w-full mb-1"><?= __('Drop off date', $lang);?></label>
-    <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
+    <input type="date" name="dropoff-date" id="dropoff-date" min="<?php echo date('Y-m-d', strtotime('+2 days')); ?>" class=" border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full p-1" value="<?php echo date('Y-m-d', strtotime('+7 days')); ?>">
   </div>
 
   <div class="flex flex-col items-center justify-center w-full">
     <label for="dropoff-time" class="w-full mb-1"><?= __('Hour', $lang);?></label>
-    <select name="dropoff-time" id="dropoff-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full">
+    <select name="dropoff-time" id="dropoff-time" class="border-[1px] rounded-md border-gray-500 h-10 min-w-36 w-full p-1">
       <option value="06:00">06:00h</option>
       <option value="06:30">06:30h</option>
       <option value="07:00">07:00h</option>
@@ -90,7 +90,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     </select>
   </div>
 
-  <input type="submit" value="<?= __('Search', $lang);?>" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
+  <input type="submit" value="<?= __('Search', $lang);?>" name="form-car-search" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-full hover:bg-blue-600 transition text-center block">
 
 </form>
 

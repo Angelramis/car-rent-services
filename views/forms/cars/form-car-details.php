@@ -57,11 +57,11 @@ if (isset($_POST['form-car-details'])) {
           <img src="<?php echo $car_details['car_image']; ?>" alt="Car image" class="w-full max-w-[550px] rounded-lg">
         </div>
         <ul class="text-gray-800 space-y-2 text-sm basis-3/4 w-full">
-          <li class="flex items-center"><img src="/car-rent-services/assets/icons/car-transmission.png" class="w-6" alt="Transmission"><span class="ml-1"><?php echo __($car_details['car_fuel'], $lang); ?></span></li>
-          <li class="flex items-center"><img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Fuel"><span class="ml-1"><?= __('Full To Full', $lang); ?></span></li>
-          <li class="flex items-center"><img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Mileage"><span class="ml-1"><?= __('Mileage', $lang); ?>: <?= $car_details['car_unlimited_mileage'] ? __('Unlimited', $lang) : __('Limited', $lang); ?></span></li>
-          <li class="flex items-center"><img src="/car-rent-services/assets/icons/basic-insurance.png" class="w-6" alt="Insurance"><span class="ml-1"><?= __('Basic insurance with franchise', $lang); ?></span></li>
-          <li class="flex items-center"><img src="/car-rent-services/assets/icons/credit-card.png" class="w-6" alt="Deposit"><span class="ml-1"><?= __('Required deposit', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/car-transmission.png" class="w-6" alt="Transmission"><span class="ml-1"><?php echo __($car_details['car_fuel'], $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Fuel"><span class="ml-1"><?= __('Full To Full', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Mileage"><span class="ml-1"><?= __('Mileage', $lang); ?>: <?= $car_details['car_unlimited_mileage'] ? __('Unlimited', $lang) : __('Limited', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/basic-insurance.png" class="w-6" alt="Insurance"><span class="ml-1"><?= __('Basic insurance with franchise', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/credit-card.png" class="w-6" alt="Deposit"><span class="ml-1"><?= __('Required deposit', $lang); ?></span></li>
         </ul>
       </div>
 

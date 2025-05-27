@@ -36,7 +36,7 @@
         }
       } else {
         ?> 
-        <p class="text-left">You don't have any reservations.</p>
+        <p class="text-left"><?= __("You don't have any reservation", $lang);?>.</p>
         <?php
       }
 

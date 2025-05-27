@@ -79,4 +79,6 @@ return [
     'Card number' => 'Kartennummer',
     'Expiration date' => 'Ablaufdatum',
     'CVC' => 'CVC',
+    "You don't have any reservation" => "Sie haben keine Reservierungen",
+    "There are no cars available at the moment. Please try again later" => "Zurzeit sind keine Autos verfügbar. Bitte versuchen Sie es später erneut"
 ];

@@ -79,5 +79,7 @@ return [
     'Cookies Policy' => 'Cookies Policy',
     'Card number' => 'Card number',
     'Expiration date' => 'Expiration date',
-    'CVC' => 'CVC'
+    'CVC' => 'CVC',
+    "You don't have any reservation" => "You don't have any reservation",
+    "There are no cars available at the moment. Please try again later" => "There are no cars available at the moment. Please try again later"
 ]; 
