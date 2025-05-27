@@ -1,8 +1,8 @@
 <?php
 
 // Cargar variables del .env
-require_once($_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/vendor/autoload.php');
-Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'] . '/car-rent-services')->load();
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
+Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'] . '')->load();
 
 \Stripe\Stripe::setApiKey($_ENV['STRIPE_API_KEY']);
 

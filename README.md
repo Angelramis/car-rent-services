@@ -15,7 +15,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
 
 1. **Clona el repositorio**
    ```sh
-   git clone https://github.com/tu-usuario/car-rent-services.git
+   git clone https://github.com/tu-usuario.git
    cd car-rent-services
    ```
 
@@ -40,7 +40,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
    - Usa XAMPP o cualquier servidor Apache y apunta el DocumentRoot a la carpeta del proyecto.
 
 7. **Accede a la aplicación**
-   - Abre tu navegador y entra a `http://localhost/car-rent-services`
+   - Abre tu navegador y entra a `http://localhost`
 
 8. **Arranca Tailwind**
    - Abre la terminal y ejecuta:

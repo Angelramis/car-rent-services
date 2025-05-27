@@ -1,5 +1,5 @@
 <?php //Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 
@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
      Finalmente, procederá con el pago online y se le informará al pagar en la propia web del estado de la operación.
   </p>
 
-  <img src="/car-rent-services/assets/images/general/car-search.png" alt="Admin panel">
+  <img src="/assets/images/general/car-search.png" alt="Admin panel">
 
   <p>Las reservas hechas aparecen en la página "My Reservations", saliendo la información importante de estas.</p>
 
@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
     Puede ver las reservas, gestionar la flota de coches y ver los usuarios creados.
   </p>
 
-  <img src="/car-rent-services/assets/images/general/admin-panel.png" alt="Admin panel">
+  <img src="/assets/images/general/admin-panel.png" alt="Admin panel">
 
   <p>Como administrador, para cambiar el estado de las reservas, debe acceder al panel "Admin",
   > "Reservations" . Introducir el campo correspondiente para acceder a la reserva. 
@@ -49,5 +49,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 </div>
 
 <?php //Footer
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

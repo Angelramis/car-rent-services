@@ -1,10 +1,10 @@
 <?php // Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   $car_id       = $_POST['car-id'];
@@ -166,5 +166,5 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
   mysqli_close($conn);
 }
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

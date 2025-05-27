@@ -1,9 +1,9 @@
 <?php //Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
 if (isset($_POST['form-car-details'])) {
   $car_id = htmlspecialchars($_POST['car-id']);
@@ -57,11 +57,11 @@ if (isset($_POST['form-car-details'])) {
           <img src="<?php echo $car_details['car_image']; ?>" alt="Car image" class="w-full max-w-[550px] rounded-lg">
         </div>
         <ul class="text-gray-800 space-y-2 text-sm basis-3/4 w-full">
-          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/car-transmission.png" class="w-6" alt="Transmission"><span class="ml-1"><?php echo __($car_details['car_fuel'], $lang); ?></span></li>
-          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6" alt="Fuel"><span class="ml-1"><?= __('Full To Full', $lang); ?></span></li>
-          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6" alt="Mileage"><span class="ml-1"><?= __('Mileage', $lang); ?>: <?= $car_details['car_unlimited_mileage'] ? __('Unlimited', $lang) : __('Limited', $lang); ?></span></li>
-          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/basic-insurance.png" class="w-6" alt="Insurance"><span class="ml-1"><?= __('Basic insurance with franchise', $lang); ?></span></li>
-          <li class="flex items-center gap-0.5"><img src="/car-rent-services/assets/icons/credit-card.png" class="w-6" alt="Deposit"><span class="ml-1"><?= __('Required deposit', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/assets/icons/car-transmission.png" class="w-6" alt="Transmission"><span class="ml-1"><?php echo __($car_details['car_fuel'], $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/assets/icons/gas-fuel.png" class="w-6" alt="Fuel"><span class="ml-1"><?= __('Full To Full', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/assets/icons/car-mileage.png" class="w-6" alt="Mileage"><span class="ml-1"><?= __('Mileage', $lang); ?>: <?= $car_details['car_unlimited_mileage'] ? __('Unlimited', $lang) : __('Limited', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/assets/icons/basic-insurance.png" class="w-6" alt="Insurance"><span class="ml-1"><?= __('Basic insurance with franchise', $lang); ?></span></li>
+          <li class="flex items-center gap-0.5"><img src="/assets/icons/credit-card.png" class="w-6" alt="Deposit"><span class="ml-1"><?= __('Required deposit', $lang); ?></span></li>
         </ul>
       </div>
 
@@ -85,7 +85,7 @@ if (isset($_POST['form-car-details'])) {
       </div>
 
       <div id="error-div" class="w-full shadow-md bg-red-500 p-2 my-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
-        <img class="w-6" src="/car-rent-services/assets/icons/error.png" alt="Error icon">
+        <img class="w-6" src="/assets/icons/error.png" alt="Error icon">
         <p id="error-text"></p>
       </div>
 
@@ -124,7 +124,7 @@ if (isset($_POST['form-car-details'])) {
         <button id="submit" class="mt-4 bg-blue-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block"><?= __('Pay', $lang); ?></button>
         <div id="loading-popup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
           <div class="bg-white rounded-lg shadow-lg p-6 flex items-center space-x-3">
-            <img src="/car-rent-services/assets/icons/loading.png" alt="Loading" class="w-6 h-6 animate-spin">
+            <img src="/assets/icons/loading.png" alt="Loading" class="w-6 h-6 animate-spin">
             <span class="text-gray-800 font-semibold"><?= __('Processing transaction, please wait...', $lang); ?></span>
           </div>
         </div>
@@ -134,9 +134,9 @@ if (isset($_POST['form-car-details'])) {
         <div id="user-form-container" class="mt-4">
           <h2 class="text-xl font-bold mb-2"><?= __('Register to rent a car', $lang); ?></h2>
           <div class="mb-4 mt-2 text-gray-600 text-left">
-            <a href="/car-rent-services/views/forms/users/form-user-login.php" class="text-blue-600"><?= __('Already have an account? Login here', $lang); ?></a>
+            <a href="/views/forms/users/form-user-login.php" class="text-blue-600"><?= __('Already have an account? Login here', $lang); ?></a>
           </div>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
             <button name="form-user-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300"><?= __('Register', $lang); ?></button>
           </a>
         </div>
@@ -269,7 +269,7 @@ if (isset($_POST['form-car-details'])) {
         formData.append('total-amount', totalAmount.toFixed(2));
 
         try {
-          const response = await fetch('/car-rent-services/views/db/cars/db-car-book-pay.php', {
+          const response = await fetch('/views/db/cars/db-car-book-pay.php', {
             method: 'POST',
             body: formData
           });
@@ -296,7 +296,7 @@ if (isset($_POST['form-car-details'])) {
             // Redireccionar o enviar datos para guardar la reserva
             const confirmForm = document.createElement('form');
             confirmForm.method = 'POST';
-            confirmForm.action = '/car-rent-services/views/db/reservations/db-reservation-confirm.php';
+            confirmForm.action = '/views/db/reservations/db-reservation-confirm.php';
 
             const addHiddenInput = (name, value) => {
               const input = document.createElement('input');
@@ -349,5 +349,5 @@ if (isset($_POST['form-car-details'])) {
 
 mysqli_close($conn);
 
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

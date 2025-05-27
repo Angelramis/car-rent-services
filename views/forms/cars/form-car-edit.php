@@ -1,16 +1,16 @@
 <?php // Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 <h1 class='text-center text-2xl p-3'>Editing car</h1>
 
 <?php //Admin models
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-models.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
 ?>
 
 <div class="flex flex-col w-full min-h-screen bg-white rounded-xl shadow-lg p-6">
 
   <?php
-  include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
   if (isset($_POST['car_id'])) {
     $car_id = htmlspecialchars($_POST['car_id']);
@@ -26,16 +26,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     if ($execute_query) {
   ?>
       <nav class="flex flex-row-reverse gap-2 items-center">
-        <form action="/car-rent-services/views/db/cars/db-car-delete.php" method="POST" name="car-delete">
+        <form action="/views/db/cars/db-car-delete.php" method="POST" name="car-delete">
           <input type="hidden" name="car-id" value="<?php echo $car['car_id']; ?>">
           <input type="submit" value="Delete" name="form-car-delete" class="mt-2 bg-red-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-red-300 hover:cursor-pointer transition text-center block">
         </form>
-        <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="POST">
+        <form action="/views/forms/cars/form-car-admin.php" method="POST">
           <input type="submit" value="Cancel" name="form-car-admin" class="mt-2 bg-gray-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-gray-300 hover:cursor-pointer transition text-center block">
         </form>
       </nav>
 
-      <form action="/car-rent-services/views/db/cars/db-car-update.php" id="form-car-update" name="form-car-update" method="POST" class="w-full" enctype="multipart/form-data">
+      <form action="/views/db/cars/db-car-update.php" id="form-car-update" name="form-car-update" method="POST" class="w-full" enctype="multipart/form-data">
         <input type="hidden" name="car-id" value="<?php echo $car['car_id']; ?>">
         <div class="w-full grid grid-cols-2 gap-2">
           <nav class="flex flex-col gap-1 p-2">
@@ -112,7 +112,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
         </div>
 
         <div id="error-div" class="w-full shadow-md bg-red-500 p-2 mt-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
-          <img class="w-6" src="/car-rent-services/assets/icons/error.png" alt="Error icon">
+          <img class="w-6" src="/assets/icons/error.png" alt="Error icon">
           <p id="error-text"></p>
         </div>
 
@@ -193,5 +193,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 </script>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

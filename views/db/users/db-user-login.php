@@ -1,10 +1,10 @@
 <?php //Includes
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 <?php
 // include conexion a bbdd
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
 // Verificar si se ha enviado el formulario login o usuario se ha registrado
 if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'])) {
@@ -19,7 +19,7 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
 ?>
     <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
       <p class='text-center text-red-500'>All the fields need to be filled.</p>
-      <a href="/car-rent-services/views/forms/users/form-user-login.php">
+      <a href="/views/forms/users/form-user-login.php">
         <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
                   rounded-lg shadow-md transition duration-300">
       </a>
@@ -54,14 +54,14 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
 
 
       // Redirigir a la página principal
-      header("Location: /car-rent-services/index.php");
+      header("Location: /index.php");
       exit();
     } else {
       // Contraseña incorrecta
     ?>
       <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
         <p class='text-center text-red-500'>Incorrect password. Try again.</p>
-        <a href="/car-rent-services/views/forms/users/form-user-login.php">
+        <a href="/views/forms/users/form-user-login.php">
           <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
                   rounded-lg shadow-md transition duration-300">
         </a>
@@ -74,7 +74,7 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
     ?>
     <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
       <p class='text-center text-red-500'>User not found. Try again.</p>
-      <a href="/car-rent-services/views/forms/users/form-user-login.php">
+      <a href="/views/forms/users/form-user-login.php">
         <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
                   rounded-lg shadow-md transition duration-300">
       </a>
@@ -89,5 +89,5 @@ mysqli_close($conn);
 ?>
 
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/footer.php';
 ?>

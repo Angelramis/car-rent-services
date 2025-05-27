@@ -1,11 +1,11 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/header.php';
 ?>
 
   <div class="flex flex-col w-full gap-2 min-h-screen bg-white rounded-xl shadow-lg p-6">
   <?php
     // include conexion a bbdd
-    include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/views/db/db_includes/db_connection.php';
 
     if (!($session_user_id == 'guest')) {
       // Guardar consulta SQL
@@ -44,12 +44,12 @@
 
     /* Si el usuario no ha iniciado sesión aún, redirigirlo al log in */
     } else if ($session_user_id == 'guest') {
-      header("Location: /car-rent-services/views/forms/users/form-user-login.php"); 
+      header("Location: /views/forms/users/form-user-login.php"); 
     }
   ?>  
   </div>
 
 
 <?php
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/footer.php';
 ?>

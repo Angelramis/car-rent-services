@@ -1,7 +1,7 @@
 <?php
 // mi-db.php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
 // Sanitizar y recoger la búsqueda
 $search = isset($_POST['search']) ? trim($_POST['search']) : '';
@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($user = mysqli_fetch_assoc($result)) {
-        echo '<form action="/car-rent-services/views/forms/users/form-user-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-8 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">';
+        echo '<form action="/views/forms/users/form-user-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-8 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">';
         echo '<input type="hidden" name="user_id" value="' . htmlspecialchars($user['user_id']) . '">';
         
         echo '<p>' . htmlspecialchars($user['user_roles']) . '</p>';
@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '<p>' . htmlspecialchars($user['user_birthdate']) . '</p>';
         echo '<p>' . htmlspecialchars($user['user_license_number']) . '</p>';
         
-        echo '<img src="/car-rent-services/assets/icons/edit.png" alt="Edit" class="w-7">';
+        echo '<img src="/assets/icons/edit.png" alt="Edit" class="w-7">';
         echo '</form>';
     }
     

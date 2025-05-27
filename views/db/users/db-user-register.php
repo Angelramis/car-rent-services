@@ -1,10 +1,10 @@
 <?php //Includes
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/header.php';
 ?>
 
 <?php
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/db/db_includes/db_connection.php';
 
   // Verificar si se ha enviado el formulario register
   if (isset($_POST['form-user-register'])) {
@@ -46,7 +46,7 @@
       ?>
       <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-red-500'>All the fields need to be filled</p>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
             <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
             rounded-lg shadow-md transition duration-300">
           </a>
@@ -60,7 +60,7 @@
       ?>
         <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-red-500'>Invalid email</p>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
             <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
             rounded-lg shadow-md transition duration-300">
           </a>
@@ -73,7 +73,7 @@
     if ($user_pwd != $user_pwd_repeated) {
       ?>
         <p class='text-center text-red-500'>Passwords does not match</p>
-        <a href="/car-rent-services/views/forms/users/form_user_register.php">
+        <a href="/views/forms/users/form_user_register.php">
           <input type="button" value="Go Back" class="button_action">
         </a>
       <?php
@@ -93,7 +93,7 @@
       ?>
         <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-red-500'>Email already exists. Try another one.</p>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
             <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
             rounded-lg shadow-md transition duration-300">
           </a>
@@ -113,9 +113,9 @@
     if ($execute_sql_insert_user) {
       // Si el registro y el INSERT ha sido correcto
       ?>
-      <form action="/car-rent-services/views/db/users/db-user-login.php" method="POST" class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
+      <form action="/views/db/users/db-user-login.php" method="POST" class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-green-600'>User registered successfully</p>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
           <input type="text" name="user_email" value="<?php echo $user_email; ?>" class="hidden">
           <input type="text" name="user_pwd" value="<?php echo $user_pwd; ?>" class="hidden">
             <input type="submit" name="user_registered_autologin" value="Login now" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
@@ -141,7 +141,7 @@
       ?>
         <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
           <p class='text-center text-red-500'>An error ocurred registering the user.</p>
-          <a href="/car-rent-services/views/forms/users/form-user-register.php">
+          <a href="/views/forms/users/form-user-register.php">
             <input type="button" value="Go Back" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold mt-4 py-3 px-6
             rounded-lg shadow-md transition duration-300">
           </a>
@@ -155,5 +155,5 @@
 ?>
 
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/footer.php';
 ?>

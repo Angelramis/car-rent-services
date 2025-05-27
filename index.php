@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 
 <h1 class="text-2xl font-medium"><?= __('Rent a car', $lang);?> <span class="text-[#1389e4]"> <?= __('fast', $lang);?></span> <?= __('and', $lang);?> <span class="text-[#1389e4]"><?= __('easy', $lang);?></span> </h1>
 
-<form action="/car-rent-services/views/forms/cars/form-car-book-availables.php" id="form-cars-search" method="POST"
+<form action="/views/forms/cars/form-car-book-availables.php" id="form-cars-search" method="POST"
   class="bg-white shadow-md flex flex-col flex-wrap gap-2 text-left !p-3 !mt-2 w-full items-center justify-center rounded-md max-w-4xl mx-auto relative md:grid md:grid-cols-5 md:min-h-20 lg:flex-row lg:min-h-20">
   <div class="flex flex-col items-center justify-center w-full">
     <label for="pickup-date" class="w-full mb-1"><?= __('Pick up date', $lang);?></label>
@@ -95,29 +95,29 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 </form>
 
 <div id="error-div" class="w-full shadow-md bg-red-500 p-2 mt-2 min-h-12 text-white rounded-md hidden flex-row items-center gap-2">
-  <img class="w-6" src="/car-rent-services/assets/icons/error.png" alt="Error icon">
+  <img class="w-6" src="/assets/icons/error.png" alt="Error icon">
   <p id="error-text"></p>
 </div>
 
-<img src="/car-rent-services/assets/images/general/car-portada.webp" alt="Car" class="mt-4 w-full max-w-xl">
+<img src="/assets/images/general/car-portada.webp" alt="Car" class="mt-4 w-full max-w-xl">
 
 <section id="info-cards" class="flex w-full flex-col gap-2 mt-2 min-h-42 rounded-md">
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
-    <img src="/car-rent-services/assets/images/general/best-prices.webp" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
+    <img src="/assets/images/general/best-prices.webp" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
       <p class="font-bold text-xl"><?= __('Best prices', $lang);?></p>
       <p><?= __('Enjoy competitive rates with no hidden fees, quality car rentals that fit your budget.', $lang);?></p>
     </div>
   </div>
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
-    <img src="/car-rent-services/assets/images/general/car-fleet.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
+    <img src="/assets/images/general/car-fleet.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
       <p class="font-bold text-xl"><?= __('Large car fleet', $lang);?></p>
       <p><?= __('Choose from a wide variety of well-maintained vehicles to suit every need and preference.', $lang);?></p>
     </div>
   </div>
   <div class="flex flex-col h-auto w-full shadow-md rounded-md bg-white text-left p-2 items-center gap-2 md:flex-row md:h-44">
-    <img src="/car-rent-services/assets/images/general/security.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
+    <img src="/assets/images/general/security.png" alt="Car keys" class="w-full max-w-44 p-2 rounded-md object-contain md:h-full md:w-96">
     <div>
       <p class="font-bold text-xl"><?= __('Transparency and security', $lang);?></p>
       <p><?= __('Clear rental terms, secure payments, and full customer support for a worry-free experience.', $lang);?></p>
@@ -127,7 +127,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 
 
 <?php //Footer
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>
 
 <script>

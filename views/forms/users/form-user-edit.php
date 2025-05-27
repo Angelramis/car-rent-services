@@ -1,16 +1,16 @@
 <?php // Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 <h1 class='text-center text-2xl p-3'>Editing user</h1>
 
 <?php //Admin models
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-models.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
 ?>
 
 <div class="flex flex-col w-full min-h-screen bg-white rounded-xl shadow-lg p-6">
 
   <?php
-  include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
   if (isset($_POST['user_id'])) {
     $user_id = htmlspecialchars($_POST['user_id']);
@@ -26,16 +26,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     if ($execute_query) {
   ?>
       <nav class="flex flex-row-reverse gap-2 items-center">
-        <form action="/car-rent-services/views/db/users/db-user-delete.php" method="POST" name="user-delete">
+        <form action="/views/db/users/db-user-delete.php" method="POST" name="user-delete">
           <input type="hidden" name="user-id" value="<?php echo $user['user_id']; ?>">
           <input type="submit" value="Delete" name="form-user-delete" class="mt-2 bg-red-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-red-300 hover:cursor-pointer transition text-center block">
         </form>
-        <form action="/car-rent-services/views/forms/users/form-user-admin.php" method="POST">
+        <form action="/views/forms/users/form-user-admin.php" method="POST">
           <input type="submit" value="Cancel" name="form-user-admin" class="mt-2 bg-gray-500 text-white font-semibold min-h-12 py-2 !px-8 rounded-md w-auto hover:bg-gray-300 hover:cursor-pointer transition text-center block">
         </form>
       </nav>
 
-      <form action="/car-rent-services/views/db/users/db-user-update.php" name="form-user-update" method="POST" class="w-full">
+      <form action="/views/db/users/db-user-update.php" name="form-user-update" method="POST" class="w-full">
         <input type="hidden" name="user-id" value="<?php echo $user['user_id']; ?>">
         <div class="w-full grid grid-cols-2 gap-2">
 
@@ -112,5 +112,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 </div>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

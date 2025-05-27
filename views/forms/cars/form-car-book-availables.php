@@ -1,10 +1,10 @@
 <?php //Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 <?php
 
 // include conexion a bbdd
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
 // Si se ha pulsado el botón de submit, iniciar consulta.
 if (isset($_POST['form-car-search'])) {
@@ -48,27 +48,27 @@ if (isset($_POST['form-car-search'])) {
         </div>
         <div class="p-2 mb-3 mt-2 w-full border-black flex flex-col justify-between md:bg-white md:border-none md:mb-0 md:mt-0 md:rounded-none">
           <div class="flex flex-row gap-1">
-            <img src="/car-rent-services/assets/icons/car-seats.png" class="w-6 h-6" alt="Car seats">
+            <img src="/assets/icons/car-seats.png" class="w-6 h-6" alt="Car seats">
             <p><?php echo $car['car_seats']; ?> <?= __('seats', $lang);?></p>
           </div>
 
           <div class="flex flex-row gap-1">
             <?php if ($car['car_fuel'] == "Diesel" || $car['car_fuel'] == "Gasoline") {
             ?>
-              <img src="/car-rent-services/assets/icons/gas-fuel.png" class="w-6 h-6" alt="Car gas fuel">
+              <img src="/assets/icons/gas-fuel.png" class="w-6 h-6" alt="Car gas fuel">
             <?php } elseif ($car['car_fuel'] == "Hybrid") {
             ?>
-              <img src="/car-rent-services/assets/icons/hybrid-fuel.png" class="w-6 h-6" alt="Car hybrid fuel">
+              <img src="/assets/icons/hybrid-fuel.png" class="w-6 h-6" alt="Car hybrid fuel">
             <?php } else {
             ?>
-              <img src="/car-rent-services/assets/icons/electric-fuel.png" class="w-6 h-6" alt="Car electric">
+              <img src="/assets/icons/electric-fuel.png" class="w-6 h-6" alt="Car electric">
             <?php
             } ?>
             <p><?= __($car['car_fuel'], $lang); ?></p>
           </div>
         
         <div class="flex flex-row gap-1">
-          <img src="/car-rent-services/assets/icons/car-mileage.png" class="w-6 h-6" alt="Car seats">
+          <img src="/assets/icons/car-mileage.png" class="w-6 h-6" alt="Car seats">
           <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] == 1) {
                          echo __('Unlimited', $lang);
                       } else {
@@ -81,7 +81,7 @@ if (isset($_POST['form-car-search'])) {
 
 
       <!-- Formulario para ver detalles coche -->
-      <form method="POST" class="w-full" action="/car-rent-services/views/forms/cars/form-car-details.php">
+      <form method="POST" class="w-full" action="/views/forms/cars/form-car-details.php">
         <input type="hidden" name="car-id" value="<?php echo $car['car_id']; ?>">
         <input type="hidden" name="pickup-date" value="<?php echo $pickup_date; ?>">
         <input type="hidden" name="pickup-time" value="<?php echo $pickup_time; ?>">
@@ -104,5 +104,5 @@ if (isset($_POST['form-car-search'])) {
 
 
 <?php //Footer
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

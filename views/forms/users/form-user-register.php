@@ -1,10 +1,10 @@
 <?php //Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 <div class="w-full max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-2xl">
   <h1 class="text-center text-2xl">Register</h1>
-  <form action="/car-rent-services/views/db/users/db-user-register.php" method="POST">
+  <form action="/views/db/users/db-user-register.php" method="POST">
   <div>
   <label class="block text-sm font-medium text-gray-700 text-left">Email<span class="text-red-500">*</span></label>
   <input type="text" name="user_email" class="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm
@@ -80,5 +80,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.ph
 </div>
 
 <?php //Footer
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>

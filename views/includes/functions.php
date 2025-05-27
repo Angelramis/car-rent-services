@@ -14,7 +14,7 @@
     static $translations = [];
 
     if (!isset($translations[$lang])) {
-      $path = $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/lang/' . $lang . '.php';
+      $path = $_SERVER['DOCUMENT_ROOT'] . '/lang/' . $lang . '.php';
         if (file_exists($path)) {
             $translations[$lang] = include $path;
         } else {

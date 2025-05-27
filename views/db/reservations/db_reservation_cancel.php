@@ -1,5 +1,5 @@
 <?php //Header
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/header.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/header.php';
 ?>
 
 
@@ -8,7 +8,7 @@
 <?php
 
   // include conexion a bbdd
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/db/db_includes/db_connection.php';
 
   // Si se ha pulsado el botón form submit, iniciar gestión
   if (isset($_POST['form_reservation_cancel'])) {
@@ -57,7 +57,7 @@
   mysqli_close($conn);
 ?>  
 
-<a href="/car-rent-services/index.php">
+<a href="/index.php">
   <input type="button" value="Home" class="button_action">
 </a>
 
@@ -66,5 +66,5 @@
 
 
 <?php //Footer
-  include $_SERVER['DOCUMENT_ROOT'].'/car-rent-services/views/includes/footer.php';
+  include $_SERVER['DOCUMENT_ROOT'].'/views/includes/footer.php';
 ?>

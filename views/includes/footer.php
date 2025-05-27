@@ -4,13 +4,13 @@
       <a class="text-white" href=""><?= __('Privacy policy', $lang); ?></a>
       <a class="text-white" href=""><?= __('Legal Notice', $lang); ?></a>
       <a class="text-white" href=""><?= __('Cookies Policy', $lang); ?></a>
-      <a href="/car-rent-services/views/manuals/manual-user.php" class="text-white">User manual</a>
+      <a href="/views/manuals/manual-user.php" class="text-white">User manual</a>
     </footer>
 
-    <script src="/car-rent-services/js/functions.js"></script>
+    <script src="/js/functions.js"></script>
     <script>
       function setLang(lang) {
-        window.location.href = `/car-rent-services/index.php?lang=${lang}`;
+        window.location.href = `/index.php?lang=${lang}`;
       }
     </script>
     </body>

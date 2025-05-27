@@ -1,17 +1,17 @@
 <?php // Header
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 ?>
 
 <h1 class='text-center text-2xl p-3'>Cars</h1>
 
 <?php //Admin models
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-models.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
 ?>
 
 <div class="flex flex-col w-full min-h-screen bg-white rounded-xl shadow-lg p-6">
 
   <?php
-  include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/db/db_includes/db_connection.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
   // Mostrar coches en bbdd
 
   if (isset($_POST['form-car-admin']) || isset($_GET['car-search'])) {
@@ -32,14 +32,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
     $cars = mysqli_fetch_all($execute_query, MYSQLI_ASSOC);
   ?>
       <nav class="w-full mb-2 flex flex-row justify-between items-center">
-        <form action="/car-rent-services/views/forms/cars/form-car-admin.php" method="GET">
+        <form action="/views/forms/cars/form-car-admin.php" method="GET">
           <nav class="flex flex-row gap-2 items-center">
-            <img src="/car-rent-services/assets/icons/search.png" alt="search" class="w-7 h-7">
+            <img src="/assets/icons/search.png" alt="search" class="w-7 h-7">
             <input type="text" id="buscador" name="user_nif" class="w-48 h-8 p-2 rounded-md shadow
           focus:ring-blue-500 focus:border-blue-500" placeholder="Model or brand...">
           </nav>
         </form>
-        <form action="/car-rent-services/views/forms/cars/form-car-create.php" method="POST">
+        <form action="/views/forms/cars/form-car-create.php" method="POST">
           <input type="submit" value="Create car" name="form-car-create" class="bg-blue-500 text-white font-semibold min-h-12 py-1 !px-8 rounded-md w-auto hover:bg-blue-600 transition text-center block">
         </form>
       </nav>
@@ -61,7 +61,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
       <?php
       foreach ($cars as $car) {
       ?>
-        <form id="resultados" action="/car-rent-services/views/forms/cars/form-car-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-12 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
+        <form id="resultados" action="/views/forms/cars/form-car-edit.php" method="POST" onclick="this.submit()" class="w-full grid grid-cols-12 items-center gap-2 rounded-md shadow px-2 py-4 transition hover:cursor-pointer hover:bg-blue-300">
           <input type="hidden" name="car_id" value="<?php echo $car['car_id']; ?>">
 
           <p><?php echo $car['car_brand']; ?></p>
@@ -77,7 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
           <p><?php echo $car['car_min_age']; ?></p>
           <p><?php echo $car['car_active']; ?></p>
 
-          <img src="/car-rent-services/assets/icons/edit.png" alt="Edit" class="w-7">
+          <img src="/assets/icons/edit.png" alt="Edit" class="w-7">
 
         </form>
 
@@ -106,7 +106,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
       resultadosContainer.innerHTML = "";
 
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "/car-rent-services/views/db/cars/db-car-search-ajax.php", true);
+      xhr.open("POST", "/views/db/cars/db-car-search-ajax.php", true);
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
       xhr.onload = function () {
@@ -124,5 +124,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/admin-mod
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/car-rent-services/views/includes/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/footer.php';
 ?>
