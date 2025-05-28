@@ -8,11 +8,5 @@
     </footer>
 
     <script src="/js/functions.js"></script>
-    <script>
-      function setLang(lang) {
-        window.location.href = `/index.php?lang=${lang}`;
-      }
-    </script>
-    </body>
-
-    </html>
+</body>
+</html>

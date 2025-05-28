@@ -14,3 +14,8 @@ function showError(errorMessage) {
   errorDiv.classList.remove('hidden');
   errorText.innerHTML = errorMessage;
 }
+
+// Asignar traducción escogida
+function setLang(lang) {
+  window.location.href = `/index.php?lang=${lang}`;
+}
