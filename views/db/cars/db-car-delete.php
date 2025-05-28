@@ -10,10 +10,30 @@ if (isset($_POST['form-car-delete'])) {
     $car_id = htmlspecialchars($_POST['car-id']);
 
     try {
-        // Ejecutar la consulta
-        $sql = "DELETE 
-                FROM cars 
+        // 1. Obtener la ruta de la imagen del coche
+        $query_image = "SELECT car_image 
+                        FROM cars 
+                        WHERE car_id = '$car_id';";
+
+        $result_image = pg_query($conn, $query_image);
+
+        if ($result_image && pg_num_rows($result_image) > 0) {
+            $car = pg_fetch_assoc($result_image);
+            $car_image_path = $car['car_image'];
+
+            // 2. Eliminar la imagen si existe
+            if (!empty($car_image_path)) {
+                $absolute_path = $_SERVER['DOCUMENT_ROOT'] . $car_image_path;
+                if (file_exists($absolute_path)) {
+                    unlink($absolute_path);
+                }
+            }
+        }
+
+        // 3. Eliminar el coche de la base de datos
+        $sql = "DELETE FROM cars 
                 WHERE car_id = '$car_id';";
+                
         pg_query($conn, $sql);
         ?>
         <div class="flex flex-col items-center">
@@ -24,7 +44,7 @@ if (isset($_POST['form-car-delete'])) {
         </div>
         <?php
     } catch (Exception $e) {
-      ?>
+        ?>
         <div class="flex flex-col items-center">
           <p>Error: You can't delete a car registered in reservations.</p>
           <form action="/views/forms/cars/form-car-admin.php" method="POST">
@@ -34,6 +54,7 @@ if (isset($_POST['form-car-delete'])) {
         <?php
     }
 }
+
 
 pg_close($conn);
 ?>

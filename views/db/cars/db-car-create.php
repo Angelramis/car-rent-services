@@ -40,10 +40,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
     $car_seats = htmlspecialchars($_POST['car-seats']);
     $car_space_bags = htmlspecialchars($_POST['car-space-bags']);
     $car_fuel = htmlspecialchars($_POST['car-fuel']);
-    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 1 : 0;
-    $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 1 : 0;
+    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 'TRUE' : 'FALSE';
+    $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 'TRUE' : 'FALSE';
     $car_min_age = htmlspecialchars($_POST['car-min-age']);
-    $car_active = isset($_POST['car-active']) ? 1 : 0;
+    $car_active = isset($_POST['car-active']) ? 'TRUE' : 'FALSE';
 
     $sql_insert = "INSERT INTO cars (
       car_brand,
