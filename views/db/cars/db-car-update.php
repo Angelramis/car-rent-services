@@ -20,12 +20,11 @@ if (isset($_POST['form-car-update'])) {
     $car_seats = htmlspecialchars($_POST['car-seats']);
     $car_space_bags = htmlspecialchars($_POST['car-space-bags']);
     $car_fuel = htmlspecialchars($_POST['car-fuel']);
-    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 1 : 0; // 1 si está marcado, 0 si no
-    $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 1 : 0;
+    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 'TRUE' : 'FALSE';
+    $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 'TRUE' : 'FALSE';
     $car_min_age = htmlspecialchars($_POST['car-min-age']);
-    
-    $car_active = isset($_POST['car-active']) ? 1 : 0; // 1 si está marcado, 0 si no
-    
+    $car_active = isset($_POST['car-active']) ? 'TRUE' : 'FALSE';
+
 
     // -- Gestión imagen --
 
@@ -49,7 +48,7 @@ if (isset($_POST['form-car-update'])) {
         echo "<p style='color:red'>Error uploading image</p>";
         exit;
       }
-      $car_image_sql = " car_image = '$ruta_final_subir',";
+      $car_image_sql = "car_image = '$ruta_final_subir',";
     }
       // FIN gestión imagen --
 
@@ -67,10 +66,10 @@ if (isset($_POST['form-car-update'])) {
                     car_fuel = '$car_fuel',
                     car_unlimited_mileage = $car_unlimited_mileage,
                     car_free_cancellation = $car_free_cancellation,
-                    car_min_age = '$car_min_age',
-                    $car_image_sql
-                    car_active = $car_active
-                    WHERE car_id = '$car_id'";
+                    car_min_age = '$car_min_age'," . 
+                    ($car_image_sql ? "$car_image_sql" : "") .
+                    "car_active = $car_active
+                  WHERE car_id = '$car_id'";
 
     // Ejecutar la consulta
     if (pg_query($conn, $sql_update)) {
