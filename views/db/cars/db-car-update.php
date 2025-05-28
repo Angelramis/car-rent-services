@@ -65,11 +65,11 @@ if (isset($_POST['form-car-update'])) {
                     car_seats = '$car_seats',
                     car_space_bags = '$car_space_bags',
                     car_fuel = '$car_fuel',
-                    car_unlimited_mileage = '$car_unlimited_mileage',
-                    car_free_cancellation = '$car_free_cancellation',
+                    car_unlimited_mileage = $car_unlimited_mileage,
+                    car_free_cancellation = $car_free_cancellation,
                     car_min_age = '$car_min_age',
                     $car_image_sql
-                    car_active = '$car_active'
+                    car_active = $car_active
                     WHERE car_id = '$car_id'";
 
     // Ejecutar la consulta

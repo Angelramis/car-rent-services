@@ -40,10 +40,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
     $car_seats = htmlspecialchars($_POST['car-seats']);
     $car_space_bags = htmlspecialchars($_POST['car-space-bags']);
     $car_fuel = htmlspecialchars($_POST['car-fuel']);
-    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 1 : 0; // 1 si está marcado, 0 si no
+    $car_unlimited_mileage = isset($_POST['car-unlimited-mileage']) ? 1 : 0;
     $car_free_cancellation = isset($_POST['car-free-cancellation']) ? 1 : 0;
     $car_min_age = htmlspecialchars($_POST['car-min-age']);
-    $car_active = isset($_POST['car-active']) ? 1 : 0; // 1 si está marcado, 0 si no
+    $car_active = isset($_POST['car-active']) ? 1 : 0;
 
     $sql_insert = "INSERT INTO cars (
       car_brand,
@@ -68,11 +68,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
       '$car_seats',
       '$car_space_bags',
       '$car_fuel',
-      '$car_unlimited_mileage',
-      '$car_free_cancellation',
+      $car_unlimited_mileage,
+      $car_free_cancellation,
       '$car_min_age',
       '$ruta_final_subir',
-      '$car_active'
+      $car_active
   )";
 
 

@@ -85,12 +85,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
 
           <nav class="flex flex-row gap-2 p-2">
             <label for="car-unlimited-mileage">Unlimited mileage</label>
-            <input type="checkbox" id="car-unlimited-mileage" name="car-unlimited-mileage" class="w-6 h-6" <?php if ($car['car_unlimited_mileage'] == 1) echo 'checked'; ?>>
+            <input type="checkbox" id="car-unlimited-mileage" name="car-unlimited-mileage" class="w-6 h-6" <?php if ($car['car_unlimited_mileage'] === 't') echo 'checked'; ?>>
           </nav>
 
           <nav class="flex flex-row gap-2 p-2">
             <label for="car-free-cancellation">Free cancellation</label>
-            <input type="checkbox" id="car-free-cancellation" name="car-free-cancellation" class="w-6 h-6" <?php if ($car['car_free_cancellation'] == 1) echo 'checked'; ?>>
+            <input type="checkbox" id="car-free-cancellation" name="car-free-cancellation" class="w-6 h-6" <?php if ($car['car_free_cancellation'] === 't') echo 'checked'; ?>>
           </nav>
 
           <nav class="flex flex-col gap-1 p-2">
@@ -107,7 +107,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/admin-models.php';
 
           <nav class="flex flex-row items-center gap-2 p-2">
             <label for="car-active">Active</label>
-            <input type="checkbox" id="car-active" name="car-active" class="w-6 h-6" <?php if ($car['car_active'] == 1) echo 'checked'; ?>>
+            <input type="checkbox" id="car-active" name="car-active" class="w-6 h-6" <?php if ($car['car_active'] === 't') echo 'checked'; ?>>
           </nav>
         </div>
 

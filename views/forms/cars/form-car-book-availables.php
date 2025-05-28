@@ -69,7 +69,7 @@ if (isset($_POST['form-car-search'])) {
         
         <div class="flex flex-row gap-1">
           <img src="/assets/icons/car-mileage.png" class="w-6 h-6" alt="Car seats">
-          <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] == 1) {
+          <p><?= __('Mileage', $lang);?>: <?php if ($car['car_unlimited_mileage'] === 't') {
                          echo __('Unlimited', $lang);
                       } else {
                          echo __('Limited', $lang);
