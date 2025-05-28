@@ -6,8 +6,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/views/includes/header.php';
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/views/db/db_includes/db_connection.php';
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
 if (isset($_POST['form-car-delete'])) {
     $car_id = htmlspecialchars($_POST['car-id']);
 
@@ -25,7 +23,7 @@ if (isset($_POST['form-car-delete'])) {
           </form>
         </div>
         <?php
-    } catch (mysqli_sql_exception $e) {
+    } catch (Exception $e) {
       ?>
         <div class="flex flex-col items-center">
           <p>Error: You can't delete a car registered in reservations.</p>

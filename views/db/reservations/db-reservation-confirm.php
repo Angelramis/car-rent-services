@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
       $subtotal = $qty * $unit;
       $total_extras += $subtotal;
 
-      $en = mysqli_real_escape_string($conn, $name);
+      $en = pg_escape_string($conn, $name);
       $qr = pg_query($conn, "SELECT extra_id 
                                 FROM extras 
                                 WHERE extra_name = '$en' 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
   }
 
   $total_price = $base_rent + $total_extras;
-  $extras_json = mysqli_real_escape_string($conn, json_encode($extras_to_store));
+  $extras_json = pg_escape_string($conn, json_encode($extras_to_store));
 
   $sql = "
     INSERT INTO reservations (
@@ -79,15 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['car-id'])) {
       $total_price, '$rs_stripe_payment_id', 'Confirmed',
       '$extras_json',
       NOW()
-    )";
+    )
+      RETURNING rs_number";
 
-  if (!pg_query($conn, $sql)) {
+  $result = pg_query($conn, $sql);
+
+  if (!$result) {
     echo "<p class='text-red-600 text-center mt-4'>Error inserting reservation: "
       . pg_last_error($conn) . "</p>";
     exit;
   }
 
-  $reservation_id = mysqli_insert_id($conn);
+  $reservation_id = pg_fetch_result($result, 0, 'rs_number');
 
   // Redirige tras guardar para evitar reinserción al recargar
   header("Location: " . $_SERVER['PHP_SELF'] . "?id=$reservation_id");

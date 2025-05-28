@@ -1,10 +1,15 @@
 <?php
+
+// Cargar variables del .env
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
+Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'] . '')->load();
+
 // Datos BBDD
-$host = 'dpg-d0qqm9adbo4c73cbqsdg-a.frankfurt-postgres.render.com';
-$user = 'admin';
-$password = 'bvcF43Sct7HqXN2SRe5087jASoXGNUZw';
-$dbname = 'car_rent_services';
-$port = 5432;
+$host = $_ENV['DB_HOST'];
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$dbname =  $_ENV['DB_NAME'];
+$port =  $_ENV['DB_PORT'];
 
 $conn_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
 

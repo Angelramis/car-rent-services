@@ -73,7 +73,7 @@ if (isset($_POST['form-car-details'])) {
               <p class="text-sm font-medium extra-name"><?= __($extra['extra_name'], $lang) ?></p>
               <div class="flex flex-row gap-2 md:flex-row-reverse">
                 <p class="text-sm font-medium"><?php echo $extra['extra_unit_price']; ?>€</p>
-                <?php if ($extra['extra_checkbox'] == 1) { ?>
+                <?php if ($extra['extra_checkbox'] === 't') { ?>
                   <input type="checkbox" class="extra-input w-5 h-5" data-type="checkbox" data-price="<?php echo $extra['extra_unit_price']; ?>">
                 <?php } else { ?>
                   <input type="number" class="extra-input h-5" data-type="number" data-price="<?php echo $extra['extra_unit_price']; ?>" min="0" max="5" value="0">

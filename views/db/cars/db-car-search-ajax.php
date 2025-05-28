@@ -9,7 +9,7 @@ $search = isset($_POST['search']) ? trim($_POST['search']) : '';
 $sql = "SELECT * FROM cars";
 
 if (!empty($search)) {
-    $safe_search = mysqli_real_escape_string($conn, $search);
+    $safe_search = pg_escape_string($conn, $search);
     $sql .= " WHERE car_brand LIKE '%$safe_search%' 
            OR car_model LIKE '%$safe_search%'";
 }

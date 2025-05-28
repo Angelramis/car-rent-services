@@ -10,7 +10,7 @@ $sql = "SELECT *
         FROM reservations_view";
 
 if (!empty($search)) {
-    $safe_search = mysqli_real_escape_string($conn, $search);
+    $safe_search = pg_escape_string($conn, $search);
     $sql .= " WHERE rs_number LIKE '%$safe_search%' 
            OR user_nif LIKE '%$safe_search%'
            OR user_fullname LIKE '%$safe_search%'";

@@ -10,7 +10,7 @@
     if (!($session_user_id == 'guest')) {
       // Guardar consulta SQL
       $sql_query = "SELECT * 
-                    FROM `reservations_view`
+                    FROM reservations_view
                     WHERE user_id = '$session_user_id';";
 
       // Ejecutar consulta SQL

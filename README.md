@@ -7,9 +7,11 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
 - PHP >= 5.6.0
 - Composer
 - Node.js y npm
-- MariaDB/MySQL
-- Apache (recomendado: XAMPP)
+- PostgreSQL
+- Apache
 - Git
+- Docker
+- pgAdmin
 
 ## Instalación
 
@@ -33,7 +35,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
    ```
 
 5. **Configura la base de datos**
-   - Crea una base de datos en MariaDB/MySQL.
+   - Crea una base de datos en pgAdmin.
    - Importa el esquema y los datos iniciales si están disponibles.
 
 6. **Configura el servidor web**
@@ -54,9 +56,9 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
      ```
 
 9. **Despliegue a producción**
-   - Para desplegar en producción usar el Dockerfile. Ahora mismo lo desplegamos en render. Se despliega mediante github.
+   - Para desplegar en producción publicamente usar el Dockerfile. Ahora mismo lo desplegamos en el servidor web Render. Se despliega mediante Github.
    - Pasos para despliegue:
-   1. Compilar tailwind 
+   1. Compilar tailwind para compilar las clases de CSS
    ```
    npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css
    ```
@@ -70,9 +72,10 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
 - Stripe (pagos)
 - Composer
 - Git
-- MariaDB
+- PostgreSQL
 - Apache
 - Docker
+- vlucas para el fichero .env
 
 ## Extras
 

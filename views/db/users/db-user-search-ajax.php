@@ -10,7 +10,7 @@ $sql = "SELECT *
         FROM users";
 
 if (!empty($search)) {
-    $safe_search = mysqli_real_escape_string($conn, $search);
+    $safe_search = pg_escape_string($conn, $search);
     $sql .= " WHERE user_nif LIKE '%$safe_search%' 
            OR user_firstname LIKE '%$safe_search%'";
 }
