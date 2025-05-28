@@ -42,7 +42,7 @@ if (isset($_POST['form-user-login']) || isset($_POST['user_registered_autologin'
     $user = pg_fetch_assoc($execute_query);
 
     // Si el usuario es correcto
-    if ($user_pwd == $user['user_pwd']) {
+    if (password_verify($password, $user['user_pwd'])) {
       // Obtener el resto de datos
       $user_firstname = $user['user_firstname'];
       $user_lastname = $user['user_lastname'];

@@ -82,7 +82,7 @@
 
     // Consulta SQL por si el email ya existe en la BBDD
     $sql_email = "SELECT user_email 
-                  FROM `users` 
+                  FROM users 
                   WHERE user_email = '$user_email'";
     
     // Ejecutar consulta SQL a la base de datos
@@ -102,9 +102,12 @@
       exit();
     }
 
+  // Encriptar contraseña
+  $hashed_pwd= password_hash($password, PASSWORD_DEFAULT);
+
     // Consulta SQL para insertar el usuario si todo es correcto
-    $sql_insert_user = "INSERT INTO `users` (user_email, user_roles, user_nif, user_firstname, user_lastname, user_phone, user_address, user_country, user_birthdate, user_pwd, user_license_number, user_license_expedition, user_license_expiration) 
-                      VALUES ('$user_email', 'user', '$user_nif', '$user_firstname', '$user_lastname', '$user_phone', '$user_address', '$user_country', '$user_birthdate', '$user_pwd', '$user_license_number', '$user_license_expedition', '$user_license_expiration')";
+    $sql_insert_user = "INSERT INTO users (user_email, user_roles, user_nif, user_firstname, user_lastname, user_phone, user_address, user_country, user_birthdate, user_pwd, user_license_number, user_license_expedition, user_license_expiration) 
+                      VALUES ('$user_email', ARRAY['user'], '$user_nif', '$user_firstname', '$user_lastname', '$user_phone', '$user_address', '$user_country', '$user_birthdate', '$hashed_pwd', '$user_license_number', '$user_license_expedition', '$user_license_expiration')";
 
     // Ejecutar consulta SQL a la base de datos
     $execute_sql_insert_user = pg_query($conn, $sql_insert_user);

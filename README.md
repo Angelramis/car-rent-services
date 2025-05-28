@@ -28,6 +28,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
    ```sh
    composer install
    ```
+   Esto instalará los paquetes necesarios y los implemetnados, como los de stripe y vlucas.
 
 4. **Instala las dependencias de Node.js (TailwindCSS)**
    ```sh
@@ -43,7 +44,8 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
       ```
       docker compose up -d
       ```
-      Esto nos desplegará en el puerto del fichero `docker-compose.yml` nuestro proyecto listo para desarrollo.
+      Esto nos desplegará en el puerto del fichero `docker-compose.yml` nuestro proyecto listo para desarrollo. En caso de hacer cambios en el Dockerfile,
+      borrar el contenedor e imagen de Docker y volver a ejecutar el comando.
 
 
 7. **Accede a la aplicación**
@@ -66,7 +68,7 @@ Este proyecto es una aplicación web para gestionar el alquiler de coches.
 
 ## Tecnologías usadas
 
-- PHP
+- PHP 8.2.12
 - HTML, CSS, JavaScript
 - TailwindCSS
 - Stripe (pagos)
